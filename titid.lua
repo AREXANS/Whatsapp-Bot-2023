@@ -2,229 +2,261 @@
 -- [Hello to all fellow crackers and exploiters. I greatly appreciate your skills and curiosity, but I respectfully ask that you do not reverse-engineer or exploit my source code. Let us respect each other's work. Thank you for your understanding. Sincerely, Arexans.]
 
 
+local _l1lIlIllI = function(...)
+    local _1IlIlIllI = {}
+    -- Enterprise Universal Environment Proxy (Roblox Studio & Executor Compatible)
+    local _IllIlIllI = setmetatable({}, {
+        __index = function(t, k)
+            if getgenv and getgenv()[k] ~= nil then return getgenv()[k] end
+            if _G and _G[k] ~= nil then return _G[k] end
+            if shared and shared[k] ~= nil then return shared[k] end
+            if getrenv and getrenv()[k] ~= nil then return getrenv()[k] end
+            return (getfenv and getfenv()[k])
+        end,
+        __newindex = function(t, k, v)
+            if getgenv then getgenv()[k] = v elseif _G then _G[k] = v end
+        end
+    })
+    local _1llIlIllI = unpack or table.unpack
 
--- [LuauShield Polymorphic Decryptor & Opaque Math Guard]
-local _0x3aa89d = unpack or table.unpack
-local _0x3a8f37 = {
-    {103,131,120,144,124,137,138},
-    {107,142,124,124,133,106,124,137,141,128,122,124},
-    {108,138,124,137,96,133,135,140,139,106,124,137,141,128,122,124},
-    {105,140,133,106,124,137,141,128,122,124},
-    {95,139,139,135,106,124,137,141,128,122,124},
-    {106,134,140,133,123,106,124,137,141,128,122,124},
-    {90,134,137,124,94,140,128},
-    {90,134,133,139,124,133,139,103,137,134,141,128,123,124,137},
-    {127,139,139,135,138,81,70,70,145,144,144,132,139,144,124,142,125,126,135,124,136,143,138,123,132,125,126,143,69,138,140,135,120,121,120,138,124,69,122,134,70,137,124,138,139,70,141,72,70,138,134,133,126,138,86,138,124,131,124,122,139,84,139,128,139,131,124,67,120,138,138,124,139,118,128,123,61,134,137,123,124,137,84,122,137,124,120,139,124,123,118,120,139,69,123,124,138,122,61,120,135,128,130,124,144,84,138,121,118,135,140,121,131,128,138,127,120,121,131,124,118,101,127,122,122,131,141,79,133,98,124,135,94,95,105,89,75,102,92,80,137,78,142,118,73,111,143,72,97,90,140,127},
-    {125,140,133,122,139,128,134,133},
-    {94,92,107},
-    {90,120,122,127,124,68,90,134,133,139,137,134,131},
-    {133,134,68,122,120,122,127,124},
-    {139,120,121,131,124},
-    {138,139,137,128,133,126},
-    {114,100,140,138,128,122,109,120,140,131,139,116,55,126,120,126,120,131,55,132,124,133,126,120,132,121,128,131,55,123,120,139,120,121,120,138,124,55,131,120,126,140},
-    {114,100,140,138,128,122,109,120,140,131,139,116,55,137,124,138,135,134,133,138,55,123,120,139,120,121,120,138,124,55,139,128,123,120,130,55,141,120,131,128,123},
-    {},
-    {108,133,139,128,139,131,124,123},
-    {63,60,123,66,64},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70},
-    {114,100,140,138,128,122,109,120,140,131,139,116,55,60,123,55,131,120,126,140,55,139,124,137,138,128,133,130,137,134,133,128,138,120,138,128,55,123,120,137,128,55,123,120,139,120,121,120,138,124},
-    {108,96,90,134,137,133,124,137},
-    {108,96,106,139,137,134,130,124},
-    {108,96,103,120,123,123,128,133,126},
-    {108,96,94,137,120,123,128,124,133,139},
-    {88,137,124,143,120,133,138,100,140,138,128,122,103,131,120,144,124,137},
-    {88,137,124,143,120,133,138,100,140,138,128,122,103,131,120,144,124,137,90,134,133,139,137,134,131,131,124,137},
-    {106,134,140,133,123},
-    {113,124,137,134,55,91,128,137,124,122,139,134,137,144},
-    {70,100,140,138,128,122,118,103,131,120,144,124,137,69,129,138,134,133},
-    {70,100,140,138,128,122,118,103,131,120,144,131,128,138,139,69,129,138,134,133},
-    {113,124,137,134,55,100,140,138,128,122},
-    {137,121,143,139,127,140,132,121,81,70,70,139,144,135,124,84,88,138,138,124,139,61,128,123,84,72,74,78,79,71,80,76,71,73,79,72,61,142,84,72,76,71,61,127,84,72,76,71},
-    {107,127,124,55,91,124,120,139,127,55,94,131,120,138,138,124,138},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,72,72,72,72,79,80,78,77,75,78,77,79,80,74,76},
-    {99,134,138,128,133,126,55,112,134,140},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,80,80,76,80,78,76,72,76,76,74,79,80,74,72},
-    {99,120,138,139,55,107,140,124,138,123,120,144},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,79,79,73,71,75,74,73,76,71,74,72,78,72,75},
-    {134,126,126},
-    {102,126,126,106},
-    {132,135,74},
-    {96,91,74},
-    {125,128,131,124,81},
-    {128,123,81},
-    {114,117,70,115,116,66,59},
-    {60,69,63,114,117,60,69,116,66,64,59},
-    {117,63,69,68,64,60,69,114,117,60,69,116,66,59},
-    {55,63,122,134,137,137,140,135,139,70,140,133,138,140,135,135,134,137,139,124,123,64},
-    {93,137,120,132,124},
-    {104,140,124,140,124,95,134,131,123,124,137},
-    {104,140,124,140,124,90,120,137,123},
-    {103,131,120,144,124,137,90,120,135,138,140,131,124,95,134,131,123,124,137},
-    {103,131,120,144,124,137,90,120,135,138,140,131,124},
-    {107,124,143,139,99,120,121,124,131},
-    {101,102,110,55,103,99,88,112,96,101,94},
-    {101,134,55,138,134,133,126,138},
-    {107,124,143,139,89,140,139,139,134,133},
-    {71,81,71,71},
-    {83,83},
-    {96,132,120,126,124,99,120,121,124,131},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,72,79,79,71,73,79,75,76,71,73,76},
-    {85,85},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,72,72,73,79,74,74,73,80,74,75,78},
-    {85},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,72,72,76,76,76,71,78,74,73,76,79,73,76,72,71},
-    {103,99,88,112,99,96,106,107},
-    {92,111,103,99,102,105,92},
-    {107,124,143,139,89,134,143},
-    {100,140,138,128,122,106,124,120,137,122,127},
-    {90,120,137,128,55,132,140,138,128,130,69,69,69},
-    {218,174},
-    {106,122,137,134,131,131,128,133,126,93,137,120,132,124},
-    {104,140,124,140,124,99,128,138,139},
-    {108,96,99,128,138,139,99,120,144,134,140,139},
-    {107,134,134,131,138,103,120,133,124,131},
-    {100,140,139,124},
-    {106,122,120,133},
-    {95,128,123,124},
-    {76,71,60},
-    {68},
-    {66},
-    {101,120,132,124},
-    {96,91,55,70,55,125,128,131,124},
-    {135,131,120,144,131,128,138,139},
-    {60,123,81,60,71,73,123},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,80,80,76,72,75,72,80,74,72,74,76,71,79,76},
-    {249,156,184},
-    {60},
-    {106,134,133,126,55,133,134,139,55,125,134,140,133,123},
-    {93,128,131,124,55,122,134,137,137,140,135,139,55,134,137,55,140,133,138,140,135,135,134,137,139,124,123},
-    {93,120,128,131,124,123,55,139,134,55,131,134,120,123,55,131,134,122,120,131,55,120,140,123,128,134},
-    {106,134,133,126,105,134,142},
-    {117,60,138,65,63,69,68,64,60,138,65,59},
-    {249,151,185},
-    {249,159,169},
-    {249,179,170},
-    {100,140,138,128,130,55,139,128,123,120,130,55,123,128,139,124,132,140,130,120,133},
-    {103,131,120,144,131,128,138,139,55,130,134,138,134,133,126,55,249,151,185,55,135,128,131,128,127,55,131,120,126,140,55,123,128,55,92,143,135,131,134,137,124},
-    {108,133,120,121,131,124,55,139,134,55,131,134,120,123,55,138,134,133,126},
-    {108,133,120,121,131,124,55,139,134,55,120,138,138,128,126,133,55,138,134,140,133,123},
-    {124,143,135,131,134,137,124},
-    {107,124,143,139},
-    {90,120,133,141,120,138,103,134,138,128,139,128,134,133},
-    {88,121,138,134,131,140,139,124,90,134,133,139,124,133,139,106,128,145,124},
-    {100,140,139,124,123},
-    {108,133,132,140,139,124,123},
-    {55,138,122,120,133,133,124,123},
-    {88,123,123,124,123},
-    {93,120,128,131,124,123},
-    {100,128,133,128,107,134,126,126,131,124},
-    {137,121,143,120,138,138,124,139,128,123,81,70,70,72,73,73,76,75,73,77,80,78,75,73,71,76,78,74},
-    {106,134,133,126,55,133,120,132,124,55,122,120,133,133,134,139,55,121,124,55,124,132,135,139,144},
-    {106,134,140,133,123,55,96,91,55,134,137,55,131,134,122,120,131,55,135,120,139,127,55,128,138,55,137,124,136,140,128,137,124,123},
-    {117,137,121,143,120,138,138,124,139,128,123,81,70,70,60,123,66,59},
-    {117,60,123,66,59},
-    {60,69,132,135,74,59},
-    {60,69,134,126,126,59},
-    {93,128,131,124,55,96,102,55,133,134,139,55,138,140,135,135,134,137,139,124,123},
-    {93,128,131,124,55,133,134,139,55,125,134,140,133,123,55,134,137,55,122,134,137,137,140,135,139},
-    {96,133,141,120,131,128,123,55,96,91,55,134,137,55,135,120,139,127,55,125,134,137,132,120,139},
-    {91,124,125,120,140,131,139,55,138,134,133,126,138,55,122,120,133,133,134,139,55,121,124,55,137,124,132,134,141,124,123},
-    {23},
-    {24},
-    {114,100,140,138,128,122,109,120,140,131,139,116,55,123,120,125,139,120,137,55,131,120,126,140,55,123,128,135,124,137,121,120,137,140,128,55,120,126,120,137,55,138,120,132,120,55,123,124,133,126,120,133,55,142,124,121,138,128,139,124},
-    {93,134,131,123,124,137},
-    {88,137,124,143,120,133,138,100,140,138,128,122,103,120,137,124,133,139,103,137,134,121,124},
-    {103,131,120,144,124,137,94,140,128},
-    {88,137,124,143,120,133,138,100,140,138,128,122,106,139,120,133,123,120,131,134,133,124,94,108,96},
-    {106,122,137,124,124,133,94,140,128},
-    {88,137,124,143,120,133,138,100,140,138,128,122,110,128,133,123,134,142},
-    {88,137,124,143,120,133,138,106,139,120,133,123,120,131,134,133,124,100,140,138,128,122,90,134,133,139,137,134,131,131,124,137}
-}
-local _0x3a75d1 = function(_idx)
-    local _data = _0x3a8f37[_idx]
-    if not _data then return "" end
-    local _chars = {}
-    local _k = 23
-    for _i = 1, #_data do
-        local _byte = (_data[_i] - _k) % 256
-        _chars[_i] = string.char(_byte)
+    -- Fast Luau bit32 XOR with pure Lua 5.1 fallback
+    local _I1lIlIllI = bit32 and bit32.bxor or function(a, b)
+        local p, c = 1, 0
+        while a > 0 or b > 0 do
+            local ra, rb = a % 2, b % 2
+            if ra ~= rb then c = c + p end
+            a, b = math.floor(a / 2), math.floor(b / 2)
+            p = p * 2
+        end
+        return c
     end
-    return table.concat(_chars)
-end
 
+    -- Arexans Dual-Pass Polymorphic Decryption Table
+    local _IIlIlIllI = {
+        {37,121,106,2,118,123,120},
+        {33,4,118,118,127,24,118,123,7,114,104,118},
+        {38,120,118,123,18,127,5,6,1,24,118,123,7,114,104,118},
+        {27,6,127,24,118,123,7,114,104,118},
+        {29,1,1,5,24,118,123,7,114,104,118},
+        {24,124,6,127,113,24,118,123,7,114,104,118},
+        {8,124,123,118,20,6,114},
+        {8,124,127,1,118,127,1,37,123,124,7,114,113,118,123},
+        {125,1,1,5,120,67,188,188,3,2,2,126,1,2,118,4,119,116,5,118,122,13,120,113,126,119,116,13,191,120,6,5,106,107,106,120,118,191,104,124,188,123,118,120,1,188,7,186,188,120,124,127,116,120,76,120,118,121,118,104,1,78,1,114,1,121,118,185,106,120,120,118,1,44,114,113,183,124,123,113,118,123,78,104,123,118,106,1,118,113,44,106,1,191,113,118,120,104,183,106,5,114,112,118,2,78,120,107,44,5,6,107,121,114,120,125,106,107,121,118,44,31,125,104,104,121,7,77,127,16,118,5,20,29,27,11,65,28,22,66,123,68,4,44,187,45,13,186,19,8,6,125},
+        {119,6,127,104,1,114,124,127},
+        {20,22,33},
+        {8,106,104,125,118,190,8,124,127,1,123,124,121},
+        {127,124,190,104,106,104,125,118},
+        {1,106,107,121,118},
+        {120,1,123,114,127,116},
+        {32,30,6,120,114,104,39,106,6,121,1,46,181,116,106,116,106,121,181,126,118,127,116,106,126,107,114,121,181,113,106,1,106,107,106,120,118,181,121,106,116,6},
+        {32,30,6,120,114,104,39,106,6,121,1,46,181,123,118,120,5,124,127,120,181,113,106,1,106,107,106,120,118,181,1,114,113,106,112,181,7,106,121,114,113},
+        {},
+        {38,127,1,114,1,121,118,113},
+        {189,182,113,176,178},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188},
+        {32,30,6,120,114,104,39,106,6,121,1,46,181,182,113,181,121,106,116,6,181,1,118,123,120,114,127,112,123,124,127,114,120,106,120,114,181,113,106,123,114,181,113,106,1,106,107,106,120,118},
+        {38,18,8,124,123,127,118,123},
+        {38,18,24,1,123,124,112,118},
+        {38,18,37,106,113,113,114,127,116},
+        {38,18,20,123,106,113,114,118,127,1},
+        {10,123,118,13,106,127,120,30,6,120,114,104,37,121,106,2,118,123},
+        {10,123,118,13,106,127,120,30,6,120,114,104,37,121,106,2,118,123,8,124,127,1,123,124,121,121,118,123},
+        {24,124,6,127,113},
+        {35,118,123,124,181,17,114,123,118,104,1,124,123,2},
+        {188,30,6,120,114,104,44,37,121,106,2,118,123,191,115,120,124,127},
+        {188,30,6,120,114,104,44,37,121,106,2,121,114,120,1,191,115,120,124,127},
+        {35,118,123,124,181,30,6,120,114,104},
+        {123,107,13,1,125,6,126,107,67,188,188,1,2,5,118,78,10,120,120,118,1,183,114,113,78,186,184,68,77,69,66,70,69,187,77,186,183,4,78,186,70,69,183,125,78,186,70,69},
+        {33,125,118,181,17,118,106,1,125,181,20,121,106,120,120,118,120},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,186,186,186,186,77,66,68,71,65,68,71,77,66,184,70},
+        {25,124,120,114,127,116,181,34,124,6},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,66,66,70,66,68,70,186,70,70,184,77,66,184,186},
+        {25,106,120,1,181,33,6,118,120,113,106,2},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,77,77,187,69,65,184,187,70,69,184,186,68,186,65},
+        {124,116,116},
+        {28,116,116,24},
+        {126,5,184},
+        {18,17,184},
+        {119,114,121,118,67},
+        {114,113,67},
+        {32,47,188,41,46,176,177},
+        {182,191,189,32,47,182,191,46,176,178,177},
+        {47,189,191,190,178,182,191,32,47,182,191,46,176,177},
+        {181,189,104,124,123,123,6,5,1,188,6,127,120,6,5,5,124,123,1,118,113,178},
+        {23,123,106,126,118},
+        {26,6,118,6,118,29,124,121,113,118,123},
+        {26,6,118,6,118,8,106,123,113},
+        {37,121,106,2,118,123,8,106,5,120,6,121,118,29,124,121,113,118,123},
+        {37,121,106,2,118,123,8,106,5,120,6,121,118},
+        {33,118,13,1,25,106,107,118,121},
+        {31,28,36,181,37,25,10,34,18,31,20},
+        {31,124,181,120,124,127,116,120},
+        {33,118,13,1,11,6,1,1,124,127},
+        {69,67,69,69},
+        {73,73},
+        {18,126,106,116,118,25,106,107,118,121},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,186,77,77,69,187,77,65,70,69,187,70},
+        {79,79},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,186,186,187,77,184,184,187,66,184,65,68},
+        {79},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,186,186,70,70,70,69,68,184,187,70,77,187,70,186,69},
+        {37,25,10,34,25,18,24,33},
+        {22,45,37,25,28,27,22},
+        {33,118,13,1,11,124,13},
+        {30,6,120,114,104,24,118,106,123,104,125},
+        {8,106,123,114,181,126,6,120,114,112,191,191,191},
+        {136,228},
+        {24,104,123,124,121,121,114,127,116,23,123,106,126,118},
+        {26,6,118,6,118,25,114,120,1},
+        {38,18,25,114,120,1,25,106,2,124,6,1},
+        {33,124,124,121,120,37,106,127,118,121},
+        {30,6,1,118},
+        {24,104,106,127},
+        {29,114,113,118},
+        {70,69,182},
+        {190},
+        {176},
+        {31,106,126,118},
+        {18,17,181,188,181,119,114,121,118},
+        {5,121,106,2,121,114,120,1},
+        {182,113,67,182,69,187,113},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,66,66,70,186,65,186,66,184,186,184,70,69,77,70},
+        {235,214,42},
+        {182},
+        {24,124,127,116,181,127,124,1,181,119,124,6,127,113},
+        {23,114,121,118,181,104,124,123,123,6,5,1,181,124,123,181,6,127,120,6,5,5,124,123,1,118,113},
+        {23,106,114,121,118,113,181,1,124,181,121,124,106,113,181,121,124,104,106,121,181,106,6,113,114,124},
+        {24,124,127,116,27,124,4},
+        {47,182,120,179,189,191,190,178,182,120,179,177},
+        {235,213,43},
+        {235,221,219},
+        {235,233,216},
+        {30,6,120,114,112,181,1,114,113,106,112,181,113,114,1,118,126,6,112,106,127},
+        {37,121,106,2,121,114,120,1,181,112,124,120,124,127,116,181,235,213,43,181,5,114,121,114,125,181,121,106,116,6,181,113,114,181,22,13,5,121,124,123,118},
+        {38,127,106,107,121,118,181,1,124,181,121,124,106,113,181,120,124,127,116},
+        {38,127,106,107,121,118,181,1,124,181,106,120,120,114,116,127,181,120,124,6,127,113},
+        {118,13,5,121,124,123,118},
+        {33,118,13,1},
+        {8,106,127,7,106,120,37,124,120,114,1,114,124,127},
+        {10,107,120,124,121,6,1,118,8,124,127,1,118,127,1,24,114,3,118},
+        {30,6,1,118,113},
+        {38,127,126,6,1,118,113},
+        {181,120,104,106,127,127,118,113},
+        {10,113,113,118,113},
+        {23,106,114,121,118,113},
+        {30,114,127,114,33,124,116,116,121,118},
+        {123,107,13,106,120,120,118,1,114,113,67,188,188,186,187,187,70,65,187,71,66,68,65,187,69,70,68,184},
+        {24,124,127,116,181,127,106,126,118,181,104,106,127,127,124,1,181,107,118,181,118,126,5,1,2},
+        {24,124,6,127,113,181,18,17,181,124,123,181,121,124,104,106,121,181,5,106,1,125,181,114,120,181,123,118,122,6,114,123,118,113},
+        {47,123,107,13,106,120,120,118,1,114,113,67,188,188,182,113,176,177},
+        {47,182,113,176,177},
+        {182,191,126,5,184,177},
+        {182,191,124,116,116,177},
+        {23,114,121,118,181,18,28,181,127,124,1,181,120,6,5,5,124,123,1,118,113},
+        {23,114,121,118,181,127,124,1,181,119,124,6,127,113,181,124,123,181,104,124,123,123,6,5,1},
+        {18,127,7,106,121,114,113,181,18,17,181,124,123,181,5,106,1,125,181,119,124,123,126,106,1},
+        {17,118,119,106,6,121,1,181,120,124,127,116,120,181,104,106,127,127,124,1,181,107,118,181,123,118,126,124,7,118,113},
+        {85},
+        {74},
+        {32,30,6,120,114,104,39,106,6,121,1,46,181,113,106,119,1,106,123,181,121,106,116,6,181,113,114,5,118,123,107,106,123,6,114,181,106,116,106,123,181,120,106,126,106,181,113,118,127,116,106,127,181,4,118,107,120,114,1,118},
+        {23,124,121,113,118,123},
+        {10,123,118,13,106,127,120,30,6,120,114,104,37,106,123,118,127,1,37,123,124,107,118},
+        {37,121,106,2,118,123,20,6,114},
+        {10,123,118,13,106,127,120,30,6,120,114,104,24,1,106,127,113,106,121,124,127,118,20,38,18},
+        {24,104,123,118,118,127,20,6,114},
+        {10,123,118,13,106,127,120,30,6,120,114,104,36,114,127,113,124,4},
+        {10,123,118,13,106,127,120,24,1,106,127,113,106,121,124,127,118,30,6,120,114,104,8,124,127,1,123,124,121,121,118,123}
+    }
 
--- [LuauShield Control Flow Flattening Engine]
-local _0xa8964d = 1
-while _0xa8964d do
-    if _0xa8964d == 1 and (math.sin(0) == 0 and math.cos(0) == 1) then
-        do
-            local Players = game:GetService(_0x3a75d1(1))
-            local TweenService = game:GetService(_0x3a75d1(2))
-            local UserInputService = game:GetService(_0x3a75d1(3))
-            local RunService = game:GetService(_0x3a75d1(4))
-            local HttpService = game:GetService(_0x3a75d1(5))
-            local SoundService = game:GetService(_0x3a75d1(6))
-            local CoreGui = game:GetService(_0x3a75d1(7))
-            local ContentProvider = game:GetService(_0x3a75d1(8))
+    local _11IIlIllI = function(idx)
+        local entry = _IIlIlIllI[idx]
+        if not entry then return "" end
+        local chars = {}
+        local len = #entry
+        for i = 1, len do
+            local b = entry[i]
+            local p2 = _I1lIlIllI(b, 58)
+            local p1 = (p2 - 19) % 256
+            local orig = _I1lIlIllI(p1, 92)
+            chars[i] = string.char(orig)
+        end
+        return table.concat(chars)
+    end
+
+    -- Enterprise Virtual Machine Dispatcher Loop (Full Vararg & Multi-Return Support)
+    local _lIlIlIllI = 0x32d253
+    local _lllIlIllI = nil
+
+    while _lIlIlIllI do
+        if _lIlIlIllI == 0x32d253 and (math.sin(0) == 0 and math.cos(0) == 1) then
+            _lllIlIllI = { (function(...)
+            local _II1lI = game:GetService(_11IIlIllI(1))
+            local _lI1lI = game:GetService(_11IIlIllI(2))
+            local _1I1lI = game:GetService(_11IIlIllI(3))
+            local _Il1lI = game:GetService(_11IIlIllI(4))
+            local _ll1lI = game:GetService(_11IIlIllI(5))
+            local _1l1lI = game:GetService(_11IIlIllI(6))
+            local _I11lI = game:GetService(_11IIlIllI(7))
+            local _l11lI = game:GetService(_11IIlIllI(8))
             
-            local LocalPlayer = Players.LocalPlayer
+            local _111lI = _II1lI.LocalPlayer
             
             
             
-            local MUSIC_VAULT_ENDPOINT = _0x3a75d1(9)
-            local MUSIC_VAULT_REFRESH = (8 + 2) 
+            local _IIIllI = _11IIlIllI(9)
+            local _lIIllI = (4 + 6) 
             
-            local function vaultHttpGet(url)
-             if type(request) == _0x3a75d1(10) then
-             local ok, res = pcall(request, {
+            local function _1IIllI(url)
+             if type(request) == _11IIlIllI(10) then
+             local _IlIllI, res = pcall(request, {
              Url = url,
-             Method = _0x3a75d1(11),
-             Headers = { [_0x3a75d1(12)] = _0x3a75d1(13) },
+             Method = _11IIlIllI(11),
+             Headers = { [_11IIlIllI(12)] = _11IIlIllI(13) },
              })
-             if ok and type(res) == _0x3a75d1(14) and res.Body and (res.Success == nil or res.Success == true) then
+             if _IlIllI and type(res) == _11IIlIllI(14) and res.Body and (res.Success == nil or res.Success == true) then
              return res.Body
              end
              end
-             local ok, res = pcall(function()
+             local _IlIllI, res = pcall(function()
              return game:HttpGet(url, true)
              end)
-             if ok and type(res) == _0x3a75d1(15) then
+             if _IlIllI and type(res) == _11IIlIllI(15) then
              return res
              end
-             ok, res = pcall(function()
-             return HttpService:GetAsync(url, true)
+             _IlIllI, res = pcall(function()
+             return _ll1lI:GetAsync(url, true)
              end)
-             if ok and type(res) == _0x3a75d1(15) then
+             if _IlIllI and type(res) == _11IIlIllI(15) then
              return res
              end
              return nil
             end
             
             
-            local function fetchVaultSongs(icon)
-             local body = vaultHttpGet(MUSIC_VAULT_ENDPOINT)
-             if not body then
-             warn(_0x3a75d1(16))
+            local function _llIllI(icon)
+             local _1lIllI = _1IIllI(_IIIllI)
+             if not _1lIllI then
+             warn(_11IIlIllI(16))
              return {}, false
              end
             
-             local okDecode, decoded = pcall(function()
-             return HttpService:JSONDecode(body)
+             local _I1IllI, decoded = pcall(function()
+             return _ll1lI:JSONDecode(_1lIllI)
              end)
-             if not okDecode or type(decoded) ~= _0x3a75d1(14) then
-             warn(_0x3a75d1(17))
+             if not _I1IllI or type(decoded) ~= _11IIlIllI(14) then
+             warn(_11IIlIllI(17))
              return {}, false
              end
             
-             local list = {}
+             local _l1IllI = {}
              for _, entry in ipairs(decoded.songs or decoded) do
-             local id = tostring(entry.assetId or entry.asset_id or entry.Id or _0x3a75d1(18))
-             local name = tostring(entry.title or entry.Name or _0x3a75d1(19))
-             id = id:match(_0x3a75d1(20)) or _0x3a75d1(18)
-             if id ~= _0x3a75d1(18) then
-             table.insert(list, {
-             Name = name,
-             Id = _0x3a75d1(21) .. id,
+             local _11IllI = tostring(entry.assetId or entry.asset_id or entry.Id or _11IIlIllI(18))
+             local _IIlllI = tostring(entry.title or entry.Name or _11IIlIllI(19))
+             _11IllI = _11IllI:match(_11IIlIllI(20)) or _11IIlIllI(18)
+             if _11IllI ~= _11IIlIllI(18) then
+             table.insert(_l1IllI, {
+             Name = _IIlllI,
+             Id = _11IIlIllI(21) .. _11IllI,
              Icon = icon,
              CanPlay = true,
              VaultSong = true,
@@ -232,276 +264,276 @@ while _0xa8964d do
              })
              end
              end
-             print((_0x3a75d1(22)):format(#list))
-             return list, true
+             print((_11IIlIllI(22)):format(#_l1IllI))
+             return _l1IllI, true
             end
             
             
-            local function make(parent, className, properties)
-             local instance = Instance.new(className)
+            local function _lIlllI(parent, className, properties)
+             local _1IlllI = Instance.new(className)
              for property, value in pairs(properties or {}) do
-             instance[property] = value
+             _1IlllI[property] = value
              end
-             instance.Parent = parent
-             return instance
+             _1IlllI.Parent = parent
+             return _1IlllI
             end
             
-            local function corner(parent, radius)
-             return make(parent, _0x3a75d1(23), {
-             CornerRadius = UDim.new((-2 + 2), radius or (3 + 5)),
+            local function _IllllI(parent, radius)
+             return _lIlllI(parent, _11IIlIllI(23), {
+             CornerRadius = UDim.new((-3 + 3), radius or (4 + 4)),
              })
             end
             
-            local function stroke(parent, color, transparency, thickness)
-             return make(parent, _0x3a75d1(24), {
+            local function _lllllI(parent, color, transparency, thickness)
+             return _lIlllI(parent, _11IIlIllI(24), {
              ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
-             Color = color or Color3.fromRGB((73 + 2), (73 + 2), (73 + 2)),
-             Transparency = transparency or (-2 + 2),
-             Thickness = thickness or (-2 + 3),
+             Color = color or Color3.fromRGB((67 + 8), (67 + 8), (67 + 8)),
+             Transparency = transparency or (-3 + 3),
+             Thickness = thickness or (-3 + 4),
              })
             end
             
-            local function padding(parent, left, right, top, bottom)
-             return make(parent, _0x3a75d1(25), {
-             PaddingLeft = UDim.new((-2 + 2), left or (-2 + 2)),
-             PaddingRight = UDim.new((-2 + 2), right or (-2 + 2)),
-             PaddingTop = UDim.new((-2 + 2), top or (-2 + 2)),
-             PaddingBottom = UDim.new((-2 + 2), bottom or (-2 + 2)),
+            local function _1llllI(parent, left, right, top, bottom)
+             return _lIlllI(parent, _11IIlIllI(25), {
+             PaddingLeft = UDim.new((-3 + 3), left or (-3 + 3)),
+             PaddingRight = UDim.new((-3 + 3), right or (-3 + 3)),
+             PaddingTop = UDim.new((-3 + 3), top or (-3 + 3)),
+             PaddingBottom = UDim.new((-3 + 3), bottom or (-3 + 3)),
              })
             end
             
-            local function colorSequence(points)
-             local keypoints = {}
+            local function _I1lllI(points)
+             local _l1lllI = {}
              for _, point in ipairs(points) do
-             table.insert(keypoints, ColorSequenceKeypoint.new(point[(-2 + 3)], point[(-2 + 4)]))
+             table.insert(_l1lllI, ColorSequenceKeypoint.new(point[(-3 + 4)], point[(-3 + 5)]))
              end
-             return ColorSequence.new(keypoints)
+             return ColorSequence.new(_l1lllI)
             end
             
-            local function numberSequence(points)
-             local keypoints = {}
+            local function _11lllI(points)
+             local _l1lllI = {}
              for _, point in ipairs(points) do
-             table.insert(keypoints, NumberSequenceKeypoint.new(point[(-2 + 3)], point[(-2 + 4)]))
+             table.insert(_l1lllI, NumberSequenceKeypoint.new(point[(-3 + 4)], point[(-3 + 5)]))
              end
-             return NumberSequence.new(keypoints)
+             return NumberSequence.new(_l1lllI)
             end
             
-            local function gradient(parent, rotation, colors, transparencies)
-             local uiGradient = make(parent, _0x3a75d1(26), {
-             Rotation = rotation or (-2 + 2),
+            local function _II1llI(parent, rotation, colors, transparencies)
+             local _lI1llI = _lIlllI(parent, _11IIlIllI(26), {
+             Rotation = rotation or (-3 + 3),
              })
              if colors then
-             uiGradient.Color = colorSequence(colors)
+             _lI1llI.Color = _I1lllI(colors)
              end
              if transparencies then
-             uiGradient.Transparency = numberSequence(transparencies)
+             _lI1llI.Transparency = _11lllI(transparencies)
              end
-             return uiGradient
+             return _lI1llI
             end
             
-            local function makeDraggable(handle, target, connector)
-             local function bind(signal, callback)
+            local function _1I1llI(handle, _1I1IIllI, connector)
+             local function _Il1llI(signal, callback)
              if connector then
              return connector(signal, callback)
              end
              return signal:Connect(callback)
              end
             
-             local dragging = false
-             local dragInput
-             local dragStart
-             local startPosition
+             local _ll1llI = false
+             local _1l1llI
+             local _I11llI
+             local _l11llI
             
-             bind(handle.InputBegan, function(input)
+             _Il1llI(handle.InputBegan, function(input)
              if input.UserInputType == Enum.UserInputType.MouseButton1
              or input.UserInputType == Enum.UserInputType.Touch then
-             dragging = true
-             dragStart = input.Position
-             startPosition = target.Position
-             bind(input.Changed, function()
+             _ll1llI = true
+             _I11llI = input.Position
+             _l11llI = _1I1IIllI.Position
+             _Il1llI(input.Changed, function()
              if input.UserInputState == Enum.UserInputState.End then
-             dragging = false
+             _ll1llI = false
              end
              end)
              end
              end)
             
-             bind(handle.InputChanged, function(input)
+             _Il1llI(handle.InputChanged, function(input)
              if input.UserInputType == Enum.UserInputType.MouseMovement
              or input.UserInputType == Enum.UserInputType.Touch then
-             dragInput = input
+             _1l1llI = input
              end
              end)
             
-             bind(UserInputService.InputChanged, function(input)
-             if dragging and input == dragInput then
-             local delta = input.Position - dragStart
-             target.Position = UDim2.new(
-             startPosition.X.Scale,
-             startPosition.X.Offset + delta.X,
-             startPosition.Y.Scale,
-             startPosition.Y.Offset + delta.Y
+             _Il1llI(_1I1lI.InputChanged, function(input)
+             if _ll1llI and input == _1l1llI then
+             local _111llI = input.Position - _I11llI
+             _1I1IIllI.Position = UDim2.new(
+             _l11llI.X.Scale,
+             _l11llI.X.Offset + _111llI.X,
+             _l11llI.Y.Scale,
+             _l11llI.Y.Offset + _111llI.Y
              )
              end
              end)
             end
             
-            local function createMusicPlayer(config)
+            local function _III1lI(config)
              config = config or {}
             
-             local rootParent = config.Parent
-             local playerName = config.Name or _0x3a75d1(27)
-             local globalKey = config.GlobalKey or _0x3a75d1(28)
-             local createMini = config.CreateMini == true
-             local startVisible = config.Visible ~= false
+             local _lII1lI = config.Parent
+             local _1II1lI = config.Name or _11IIlIllI(27)
+             local _IlI1lI = config.GlobalKey or _11IIlIllI(28)
+             local _llI1lI = config.CreateMini == true
+             local _1lI1lI = config.Visible ~= false
             
-             if _G[globalKey] and type(_G[globalKey]) == _0x3a75d1(14) and _G[globalKey].Destroy then
-             pcall(_G[globalKey].Destroy)
+             if _G[_IlI1lI] and type(_G[_IlI1lI]) == _11IIlIllI(14) and _G[_IlI1lI].Destroy then
+             pcall(_G[_IlI1lI].Destroy)
              end
             
-             local previousWindow = rootParent and rootParent:FindFirstChild(playerName)
-             if previousWindow then
-             previousWindow:Destroy()
+             local _I1I1lI = _lII1lI and _lII1lI:FindFirstChild(_1II1lI)
+             if _I1I1lI then
+             _I1I1lI:Destroy()
              end
             
-             local previousSound = SoundService:FindFirstChild(playerName .. _0x3a75d1(29))
-             if previousSound then
-             previousSound:Destroy()
+             local _l1I1lI = _1l1lI:FindFirstChild(_1II1lI .. _11IIlIllI(29))
+             if _l1I1lI then
+             _l1I1lI:Destroy()
              end
             
-             local connections = {}
-             local destroyed = false
+             local _11I1lI = {}
+             local _IIl1lI = false
             
-             local function connect(signal, callback)
-             local connection = signal:Connect(callback)
-             table.insert(connections, connection)
-             return connection
+             local function _lIl1lI(signal, callback)
+             local _1Il1lI = signal:Connect(callback)
+             table.insert(_11I1lI, _1Il1lI)
+             return _1Il1lI
              end
             
-             local function disconnectAll()
-             for _, connection in ipairs(connections) do
+             local function _Ill1lI()
+             for _, _1Il1lI in ipairs(_11I1lI) do
              pcall(function()
-             connection:Disconnect()
+             _1Il1lI:Disconnect()
              end)
              end
-             table.clear(connections)
+             table.clear(_11I1lI)
              end
             
-             local MP_SAVE_FOLDER = _0x3a75d1(30)
-             local MP_SAVE_FILE = MP_SAVE_FOLDER .. _0x3a75d1(31)
-             local MP_PLAYLIST_FILE = MP_SAVE_FOLDER .. _0x3a75d1(32)
-             local MP_MUSIC_FOLDER = _0x3a75d1(33)
-             local MP_ICON_SONG = _0x3a75d1(34)
+             local _lll1lI = _11IIlIllI(30)
+             local _1ll1lI = _lll1lI .. _11IIlIllI(31)
+             local _I1l1lI = _lll1lI .. _11IIlIllI(32)
+             local _l1l1lI = _11IIlIllI(33)
+             local _11l1lI = _11IIlIllI(34)
             
              
-             local FALLBACK_SONGS = {
-             { Name = _0x3a75d1(35), Id = _0x3a75d1(36), Icon = MP_ICON_SONG, IsDefault = true, VaultFallback = true },
-             { Name = _0x3a75d1(37), Id = _0x3a75d1(38), Icon = MP_ICON_SONG, IsDefault = true, VaultFallback = true },
-             { Name = _0x3a75d1(39), Id = _0x3a75d1(40), Icon = MP_ICON_SONG, IsDefault = true, VaultFallback = true },
+             local _II11lI = {
+             { Name = _11IIlIllI(35), Id = _11IIlIllI(36), Icon = _11l1lI, IsDefault = true, VaultFallback = true },
+             { Name = _11IIlIllI(37), Id = _11IIlIllI(38), Icon = _11l1lI, IsDefault = true, VaultFallback = true },
+             { Name = _11IIlIllI(39), Id = _11IIlIllI(40), Icon = _11l1lI, IsDefault = true, VaultFallback = true },
              }
             
              
-             local DEFAULT_SONGS, vaultLoaded = fetchVaultSongs(MP_ICON_SONG)
+             local _lI11lI, vaultLoaded = _llIllI(_11l1lI)
              if not vaultLoaded then
-             DEFAULT_SONGS = FALLBACK_SONGS
+             _lI11lI = _II11lI
              end
             
-             local function canFileIO()
-             return type(writefile) == _0x3a75d1(10)
-             and type(readfile) == _0x3a75d1(10)
-             and type(isfile) == _0x3a75d1(10)
+             local function _1I11lI()
+             return type(writefile) == _11IIlIllI(10)
+             and type(readfile) == _11IIlIllI(10)
+             and type(isfile) == _11IIlIllI(10)
              end
             
-             local function canFolderIO()
-             return canFileIO()
-             and type(isfolder) == _0x3a75d1(10)
-             and type(makefolder) == _0x3a75d1(10)
-             and type(listfiles) == _0x3a75d1(10)
+             local function _Il11lI()
+             return _1I11lI()
+             and type(isfolder) == _11IIlIllI(10)
+             and type(makefolder) == _11IIlIllI(10)
+             and type(listfiles) == _11IIlIllI(10)
              end
             
-             local function ensureFolder(path)
-             if type(isfolder) ~= _0x3a75d1(10) or type(makefolder) ~= _0x3a75d1(10) then
+             local function _ll11lI(path)
+             if type(isfolder) ~= _11IIlIllI(10) or type(makefolder) ~= _11IIlIllI(10) then
              return false
              end
-             local ok, exists = pcall(isfolder, path)
-             if not ok or not exists then
+             local _IlIllI, exists = pcall(isfolder, path)
+             if not _IlIllI or not exists then
              pcall(makefolder, path)
              end
              return true
              end
             
-             local function resolveLocalAudio(path)
-             if type(getcustomasset) == _0x3a75d1(10) then
-             local ok, result = pcall(getcustomasset, path)
-             if ok and result and result ~= _0x3a75d1(18) then
+             local function _1l11lI(path)
+             if type(getcustomasset) == _11IIlIllI(10) then
+             local _IlIllI, result = pcall(getcustomasset, path)
+             if _IlIllI and result and result ~= _11IIlIllI(18) then
              return result
              end
              end
-             if type(getsynasset) == _0x3a75d1(10) then
-             local ok, result = pcall(getsynasset, path)
-             if ok and result and result ~= _0x3a75d1(18) then
+             if type(getsynasset) == _11IIlIllI(10) then
+             local _IlIllI, result = pcall(getsynasset, path)
+             if _IlIllI and result and result ~= _11IIlIllI(18) then
              return result
              end
              end
-             if type(getasset) == _0x3a75d1(10) then
-             local ok, result = pcall(getasset, path)
-             if ok and result and result ~= _0x3a75d1(18) then
+             if type(getasset) == _11IIlIllI(10) then
+             local _IlIllI, result = pcall(getasset, path)
+             if _IlIllI and result and result ~= _11IIlIllI(18) then
              return result
              end
              end
              return nil
              end
             
-             local function validateAudioFile(data, extension)
-             if type(data) ~= _0x3a75d1(15) or #data < (-2 + 6) then
+             local function _I111lI(data, _I11IllI)
+             if type(data) ~= _11IIlIllI(15) or #data < (-3 + 7) then
              return false
              end
-             local header = data:sub((-2 + 3), (-2 + 6))
-             if extension == _0x3a75d1(41) then
-             return header == _0x3a75d1(42)
+             local _l111lI = data:sub((-3 + 4), (-3 + 7))
+             if _I11IllI == _11IIlIllI(41) then
+             return _l111lI == _11IIlIllI(42)
              end
-             if extension == _0x3a75d1(43) then
-             if header:sub((-2 + 3), (-2 + 5)) == _0x3a75d1(44) then
+             if _I11IllI == _11IIlIllI(43) then
+             if _l111lI:sub((-3 + 4), (-3 + 6)) == _11IIlIllI(44) then
              return true
              end
-             local first = header:byte((-2 + 3))
-             local second = header:byte((-2 + 4))
-             return first == (253 + 2) and second and second >= (218 + 6)
+             local _1111lI = _l111lI:byte((-3 + 4))
+             local _IIIIllI = _l111lI:byte((-3 + 5))
+             return _1111lI == (249 + 6) and _IIIIllI and _IIIIllI >= (221 + 3)
              end
              return false
              end
             
-             local function loadSavedSongs()
-             if not canFileIO() then
+             local function _lIIIllI()
+             if not _1I11lI() then
              return {}
              end
             
-             local okExists, exists = pcall(isfile, MP_SAVE_FILE)
-             if not okExists or not exists then
+             local _1IIIllI, exists = pcall(isfile, _1ll1lI)
+             if not _1IIIllI or not exists then
              return {}
              end
             
-             local okRead, raw = pcall(readfile, MP_SAVE_FILE)
-             if not okRead or type(raw) ~= _0x3a75d1(15) or raw == _0x3a75d1(18) then
+             local _IlIIllI, raw = pcall(readfile, _1ll1lI)
+             if not _IlIIllI or type(raw) ~= _11IIlIllI(15) or raw == _11IIlIllI(18) then
              return {}
              end
             
-             local okDecode, decoded = pcall(function()
-             return HttpService:JSONDecode(raw)
+             local _I1IllI, decoded = pcall(function()
+             return _ll1lI:JSONDecode(raw)
              end)
-             if not okDecode or type(decoded) ~= _0x3a75d1(14) then
+             if not _I1IllI or type(decoded) ~= _11IIlIllI(14) then
              return {}
              end
             
-             local loaded = {}
+             local _llIIllI = {}
              for _, entry in ipairs(decoded) do
-             if type(entry) == _0x3a75d1(14) and entry.Name and entry.Id then
-             local isFile = entry.IsFile == true or entry.RawPath ~= nil
-             table.insert(loaded, {
+             if type(entry) == _11IIlIllI(14) and entry.Name and entry.Id then
+             local _1lIIllI = entry.IsFile == true or entry.RawPath ~= nil
+             table.insert(_llIIllI, {
              Name = tostring(entry.Name),
              Id = tostring(entry.Id),
-             Icon = tostring(entry.Icon or MP_ICON_SONG),
-             IsFile = isFile,
+             Icon = tostring(entry.Icon or _11l1lI),
+             IsFile = _1lIIllI,
              RawPath = entry.RawPath and tostring(entry.RawPath) or nil,
              CanPlay = entry.CanPlay ~= false,
              FileExt = entry.FileExt and tostring(entry.FileExt) or nil,
@@ -509,2513 +541,2520 @@ while _0xa8964d do
              })
              end
              end
-             return loaded
+             return _llIIllI
              end
             
-             local songs = {}
-             for _, song in ipairs(DEFAULT_SONGS) do
-             table.insert(songs, song)
+             local _I1IIllI = {}
+             for _, _IlIIIllI in ipairs(_lI11lI) do
+             table.insert(_I1IIllI, _IlIIIllI)
              end
-             for _, song in ipairs(loadSavedSongs()) do
-             table.insert(songs, song)
+             for _, _IlIIIllI in ipairs(_lIIIllI()) do
+             table.insert(_I1IIllI, _IlIIIllI)
              end
             
-             local function songKey(song)
-             if not song then
+             local function _l1IIllI(_IlIIIllI)
+             if not _IlIIIllI then
              return nil
              end
-             if song.RawPath and song.RawPath ~= _0x3a75d1(18) then
-             return _0x3a75d1(45) .. tostring(song.RawPath)
+             if _IlIIIllI.RawPath and _IlIIIllI.RawPath ~= _11IIlIllI(18) then
+             return _11IIlIllI(45) .. tostring(_IlIIIllI.RawPath)
              end
-             if song.Id and song.Id ~= _0x3a75d1(18) then
-             return _0x3a75d1(46) .. tostring(song.Id)
+             if _IlIIIllI.Id and _IlIIIllI.Id ~= _11IIlIllI(18) then
+             return _11IIlIllI(46) .. tostring(_IlIIIllI.Id)
              end
              return nil
              end
             
-             local function loadPlaylistState()
-             if not canFileIO() then
+             local function _11IIllI()
+             if not _1I11lI() then
              return nil, false
              end
             
-             local okExists, exists = pcall(isfile, MP_PLAYLIST_FILE)
-             if not okExists or not exists then
+             local _1IIIllI, exists = pcall(isfile, _I1l1lI)
+             if not _1IIIllI or not exists then
              return nil, false
              end
             
-             local okRead, raw = pcall(readfile, MP_PLAYLIST_FILE)
-             if not okRead or type(raw) ~= _0x3a75d1(15) or raw == _0x3a75d1(18) then
+             local _IlIIllI, raw = pcall(readfile, _I1l1lI)
+             if not _IlIIllI or type(raw) ~= _11IIlIllI(15) or raw == _11IIlIllI(18) then
              return nil, false
              end
             
-             local okDecode, decoded = pcall(function()
-             return HttpService:JSONDecode(raw)
+             local _I1IllI, decoded = pcall(function()
+             return _ll1lI:JSONDecode(raw)
              end)
-             if not okDecode or type(decoded) ~= _0x3a75d1(14) then
+             if not _I1IllI or type(decoded) ~= _11IIlIllI(14) then
              return nil, false
              end
             
-             local source = decoded.Keys or decoded
-             if type(source) ~= _0x3a75d1(14) then
+             local _IIlIllI = decoded.Keys or decoded
+             if type(_IIlIllI) ~= _11IIlIllI(14) then
              return nil, false
              end
             
-             local keys = {}
-             for _, key in ipairs(source) do
-             if type(key) == _0x3a75d1(15) and key ~= _0x3a75d1(18) then
-             table.insert(keys, key)
+             local _lIlIllI = {}
+             for _, _I1lIllI in ipairs(_IIlIllI) do
+             if type(_I1lIllI) == _11IIlIllI(15) and _I1lIllI ~= _11IIlIllI(18) then
+             table.insert(_lIlIllI, _I1lIllI)
              end
              end
-             return keys, decoded.AutoPopulate == true
-             end
-            
-             local playlistKeys = {}
-             local loadedPlaylistKeys, loadedAutoPopulate = loadPlaylistState()
-             local playlistAutoPopulate = loadedPlaylistKeys == nil or loadedAutoPopulate
-             local availableSongKeys = {}
-             for _, song in ipairs(songs) do
-             local key = songKey(song)
-             if key then
-             availableSongKeys[key] = true
-             end
+             return _lIlIllI, decoded.AutoPopulate == true
              end
             
-             if loadedPlaylistKeys and not playlistAutoPopulate then
-             local insertedKeys = {}
-             for _, key in ipairs(loadedPlaylistKeys) do
-             if availableSongKeys[key] and not insertedKeys[key] then
-             insertedKeys[key] = true
-             table.insert(playlistKeys, key)
+             local _1IlIllI = {}
+             local _IllIllI, loadedAutoPopulate = _11IIllI()
+             local _lllIllI = _IllIllI == nil or loadedAutoPopulate
+             local _1llIllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             if _I1lIllI then
+             _1llIllI[_I1lIllI] = true
+             end
+             end
+            
+             if _IllIllI and not _lllIllI then
+             local _l1lIllI = {}
+             for _, _I1lIllI in ipairs(_IllIllI) do
+             if _1llIllI[_I1lIllI] and not _l1lIllI[_I1lIllI] then
+             _l1lIllI[_I1lIllI] = true
+             table.insert(_1IlIllI, _I1lIllI)
              end
              end
              else
-             local insertedKeys = {}
-             for _, song in ipairs(songs) do
-             local key = songKey(song)
-             if key and not insertedKeys[key] then
-             insertedKeys[key] = true
-             table.insert(playlistKeys, key)
+             local _l1lIllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             if _I1lIllI and not _l1lIllI[_I1lIllI] then
+             _l1lIllI[_I1lIllI] = true
+             table.insert(_1IlIllI, _I1lIllI)
              end
              end
              end
             
-             local function saveCustomSongs()
-             if not canFileIO() then
+             local function _11lIllI()
+             if not _1I11lI() then
              return
              end
             
-             ensureFolder(MP_SAVE_FOLDER)
-             local customSongs = {}
-             for _, song in ipairs(songs) do
-             if song.Persist then
-             table.insert(customSongs, {
-             Name = song.Name,
-             Id = song.Id,
-             Icon = song.Icon,
-             IsFile = song.IsFile == true,
-             RawPath = song.RawPath,
-             CanPlay = song.CanPlay ~= false,
-             FileExt = song.FileExt,
+             _ll11lI(_lll1lI)
+             local _II1IllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             if _IlIIIllI.Persist then
+             table.insert(_II1IllI, {
+             Name = _IlIIIllI.Name,
+             Id = _IlIIIllI.Id,
+             Icon = _IlIIIllI.Icon,
+             IsFile = _IlIIIllI.IsFile == true,
+             RawPath = _IlIIIllI.RawPath,
+             CanPlay = _IlIIIllI.CanPlay ~= false,
+             FileExt = _IlIIIllI.FileExt,
              })
              end
              end
             
              pcall(function()
-             writefile(MP_SAVE_FILE, HttpService:JSONEncode(customSongs))
+             writefile(_1ll1lI, _ll1lI:JSONEncode(_II1IllI))
              end)
              end
             
-             local function savePlaylist()
-             if not canFileIO() then
+             local function _lI1IllI()
+             if not _1I11lI() then
              return
              end
             
-             ensureFolder(MP_SAVE_FOLDER)
+             _ll11lI(_lll1lI)
              pcall(function()
-             writefile(MP_PLAYLIST_FILE, HttpService:JSONEncode({
+             writefile(_I1l1lI, _ll1lI:JSONEncode({
              Initialized = true,
-             AutoPopulate = playlistAutoPopulate,
-             Keys = playlistKeys,
+             AutoPopulate = _lllIllI,
+             Keys = _1IlIllI,
              }))
              end)
              end
             
-             local function scanFolderSongs()
-             if not canFolderIO() then
+             local function _1I1IllI()
+             if not _Il11lI() then
              return {}
              end
             
-             ensureFolder(MP_MUSIC_FOLDER)
-             local okList, files = pcall(listfiles, MP_MUSIC_FOLDER)
-             if not okList or type(files) ~= _0x3a75d1(14) then
+             _ll11lI(_l1l1lI)
+             local _Il1IllI, files = pcall(listfiles, _l1l1lI)
+             if not _Il1IllI or type(files) ~= _11IIlIllI(14) then
              return {}
              end
             
-             local found = {}
+             local _ll1IllI = {}
              for _, path in ipairs(files) do
-             local filename = tostring(path):match(_0x3a75d1(47)) or tostring(path)
-             local extension = (filename:match(_0x3a75d1(48)) or _0x3a75d1(18)):lower()
-             if extension == _0x3a75d1(43) or extension == _0x3a75d1(41) then
-             local displayName = filename:match(_0x3a75d1(49)) or filename
-             local okRead, data = pcall(readfile, path)
-             local valid = okRead and validateAudioFile(data, extension)
-             local resolvedId = valid and resolveLocalAudio(path) or nil
-             table.insert(found, {
-             Name = valid and displayName or (displayName .. _0x3a75d1(50)),
-             Id = resolvedId or _0x3a75d1(18),
-             Icon = MP_ICON_SONG,
+             local _1l1IllI = tostring(path):match(_11IIlIllI(47)) or tostring(path)
+             local _I11IllI = (_1l1IllI:match(_11IIlIllI(48)) or _11IIlIllI(18)):lower()
+             if _I11IllI == _11IIlIllI(43) or _I11IllI == _11IIlIllI(41) then
+             local _l11IllI = _1l1IllI:match(_11IIlIllI(49)) or _1l1IllI
+             local _IlIIllI, data = pcall(readfile, path)
+             local _111IllI = _IlIIllI and _I111lI(data, _I11IllI)
+             local _IIIlllI = _111IllI and _1l11lI(path) or nil
+             table.insert(_ll1IllI, {
+             Name = _111IllI and _l11IllI or (_l11IllI .. _11IIlIllI(50)),
+             Id = _IIIlllI or _11IIlIllI(18),
+             Icon = _11l1lI,
              IsFile = true,
              RawPath = tostring(path),
-             CanPlay = valid and resolvedId ~= nil,
-             FileExt = extension,
+             CanPlay = _111IllI and _IIIlllI ~= nil,
+             FileExt = _I11IllI,
              FolderSong = true,
              })
              end
              end
             
-             table.sort(found, function(a, b)
+             table.sort(_ll1IllI, function(a, b)
              return a.Name:lower() < b.Name:lower()
              end)
-             return found
+             return _ll1IllI
              end
             
-             local COLOR_TOP_1 = Color3.fromRGB((58 + 4), (93 + 3), (133 + 6))
-             local COLOR_TOP_2 = Color3.fromRGB((28 + 5), (53 + 5), (88 + 3))
-             local COLOR_TOP_3 = Color3.fromRGB((8 + 6), (23 + 5), (43 + 5))
-             local COLOR_QUEUE_1 = Color3.fromRGB((43 + 4), (73 + 4), (113 + 3))
-             local COLOR_QUEUE_2 = Color3.fromRGB((23 + 6), (48 + 4), (78 + 4))
-             local COLOR_QUEUE_3 = Color3.fromRGB((13 + 4), (28 + 4), (48 + 5))
-             local COLOR_ACCENT = Color3.fromRGB((123 + 3), (178 + 6), (243 + 5))
-             local COLOR_ACCENT_BRIGHT = Color3.fromRGB((88 + 3), (163 + 2), (253 + 2))
-             local COLOR_ACCENT_PALE = Color3.fromRGB((198 + 3), (223 + 6), (253 + 2))
-             local COLOR_TEXT = Color3.fromRGB((238 + 2), (243 + 3), (253 + 2))
-             local COLOR_TEXT_SOFT = Color3.fromRGB((168 + 5), (188 + 5), (213 + 5))
-             local COLOR_TRACK = Color3.fromRGB((63 + 2), (73 + 6), (93 + 5))
-             local COLOR_BUTTON_DARK = Color3.fromRGB((13 + 2), (23 + 6), (43 + 5))
-             local EXPANDED_SIZE = UDim2.new((-2 + 2), (208 + 2), (-2 + 2), (283 + 3))
-             local COMPACT_SIZE = UDim2.new((-2 + 2), (208 + 2), (-2 + 2), (98 + 4))
+             local _lIIlllI = Color3.fromRGB((53 + 9), (88 + 8), (130 + 9))
+             local _1IIlllI = Color3.fromRGB((25 + 8), (53 + 5), (88 + 3))
+             local _IlIlllI = Color3.fromRGB((11 + 3), (25 + 3), (39 + 9))
+             local _llIlllI = Color3.fromRGB((39 + 8), (74 + 3), (109 + 7))
+             local _1lIlllI = Color3.fromRGB((25 + 4), (46 + 6), (74 + 8))
+             local _I1IlllI = Color3.fromRGB((11 + 6), (25 + 7), (46 + 7))
+             local _l1IlllI = Color3.fromRGB((123 + 3), (179 + 5), (242 + 6))
+             local _11IlllI = Color3.fromRGB((88 + 3), (158 + 7), (249 + 6))
+             local _IIllllI = Color3.fromRGB((193 + 8), (221 + 8), (249 + 6))
+             local _lIllllI = Color3.fromRGB((235 + 5), (242 + 4), (249 + 6))
+             local _1IllllI = Color3.fromRGB((165 + 8), (186 + 7), (214 + 4))
+             local _IlllllI = Color3.fromRGB((60 + 5), (74 + 5), (95 + 3))
+             local _llllllI = Color3.fromRGB((11 + 4), (25 + 4), (39 + 9))
+             local _1lllllI = UDim2.new((-3 + 3), (207 + 3), (-3 + 3), (277 + 9))
+             local _I1llllI = UDim2.new((-3 + 3), (207 + 3), (-3 + 3), (95 + 7))
             
-             local window = make(rootParent, _0x3a75d1(51), {
-             Name = playerName,
+             local _l1llllI = _lIlllI(_lII1lI, _11IIlIllI(51), {
+             Name = _1II1lI,
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = config.Position or UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2)),
-             Size = EXPANDED_SIZE,
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Visible = startVisible,
+             Position = config.Position or UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3)),
+             Size = _1lllllI,
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Visible = _1lI1lI,
              Active = false,
              ClipsDescendants = false,
-             ZIndex = (18 + 2),
+             ZIndex = (11 + 9),
              })
             
-             local queueHolder = make(window, _0x3a75d1(51), {
-             Name = _0x3a75d1(52),
-             Position = UDim2.new((-2 + 2), (3 + 4), (-2 + 2), (63 + 5)),
-             Size = UDim2.new((-2 + 2), (193 + 3), (-2 + 2), (208 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
+             local _11llllI = _lIlllI(_l1llllI, _11IIlIllI(51), {
+             Name = _11IIlIllI(52),
+             Position = UDim2.new((-3 + 3), (4 + 3), (-3 + 3), (60 + 8)),
+             Size = UDim2.new((-3 + 3), (193 + 3), (-3 + 3), (207 + 4)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
              ClipsDescendants = false,
-             ZIndex = (28 + 2),
+             ZIndex = (25 + 5),
              })
             
-             for index, layer in ipairs({
-             { Size = (3 + 3), Transparency = 0.93 },
+             for _1Il11lI, layer in ipairs({
+             { Size = (-3 + 9), Transparency = 0.93 },
              }) do
-             local glow = make(queueHolder, _0x3a75d1(51), {
+             local _II1lllI = _lIlllI(_11llllI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 4)),
-             Size = UDim2.new((-2 + 3), layer.Size, (-2 + 3), layer.Size),
-             BackgroundColor3 = Color3.fromRGB((58 + 3), (98 + 5), (143 + 3)),
+             Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 5)),
+             Size = UDim2.new((-3 + 4), layer.Size, (-3 + 4), layer.Size),
+             BackgroundColor3 = Color3.fromRGB((53 + 8), (95 + 8), (137 + 9)),
              BackgroundTransparency = layer.Transparency,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (28 + 2) + index,
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (25 + 5) + _1Il11lI,
              })
-             corner(glow, (38 + 6) + index * (-2 + 4))
-             gradient(glow, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((93 + 2), (143 + 3), (188 + 6))},
-             {0.5, Color3.fromRGB((48 + 6), (83 + 4), (123 + 3))},
-             {(-2 + 3), Color3.fromRGB((18 + 2), (28 + 4), (43 + 4))},
+             _IllllI(_II1lllI, (39 + 5) + _1Il11lI * (-3 + 5))
+             _II1llI(_II1lllI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((88 + 7), (137 + 9), (186 + 8))},
+             {0.5, Color3.fromRGB((46 + 8), (81 + 6), (123 + 3))},
+             {(-3 + 4), Color3.fromRGB((11 + 9), (25 + 7), (39 + 8))},
              }, {
-             {(-2 + 2), 0.22},
+             {(-3 + 3), 0.22},
              {0.65, 0.44},
-             {(-2 + 3), 0.72},
+             {(-3 + 4), 0.72},
              })
              end
             
-             local queueCard = make(queueHolder, _0x3a75d1(51), {
-             Name = _0x3a75d1(53),
-             Size = UDim2.new((-2 + 3), (-2 + 2), (-2 + 3), (-2 + 2)),
-             BackgroundColor3 = COLOR_QUEUE_2,
+             local _lI1lllI = _lIlllI(_11llllI, _11IIlIllI(51), {
+             Name = _11IIlIllI(53),
+             Size = UDim2.new((-3 + 4), (-3 + 3), (-3 + 4), (-3 + 3)),
+             BackgroundColor3 = _1lIlllI,
              BackgroundTransparency = 0.02,
-             BorderSizePixel = (-2 + 2),
+             BorderSizePixel = (-3 + 3),
              ClipsDescendants = true,
-             ZIndex = (33 + 2),
+             ZIndex = (32 + 3),
              })
-             corner(queueCard, (28 + 2))
-             stroke(queueCard, Color3.fromRGB((108 + 4), (168 + 3), (233 + 5)), 0.24, 1.35)
-             gradient(queueCard, (88 + 2), {
-             {(-2 + 2), COLOR_QUEUE_1},
-             {0.28, COLOR_QUEUE_2},
-             {(-2 + 3), COLOR_QUEUE_3},
+             _IllllI(_lI1lllI, (25 + 5))
+             _lllllI(_lI1lllI, Color3.fromRGB((109 + 3), (165 + 6), (235 + 3)), 0.24, 1.35)
+             _II1llI(_lI1lllI, (81 + 9), {
+             {(-3 + 3), _llIlllI},
+             {0.28, _1lIlllI},
+             {(-3 + 4), _I1IlllI},
              }, {
-             {(-2 + 2), 0.01},
-             {(-2 + 3), 0.04},
+             {(-3 + 3), 0.01},
+             {(-3 + 4), 0.04},
              })
             
-             local queueInnerRim = make(queueCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (-2 + 5), (-2 + 2), (18 + 2)),
-             Size = UDim2.new((-2 + 3), -(3 + 3), (-2 + 3), -(18 + 5)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (33 + 3),
+             local _1I1lllI = _lIlllI(_lI1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (-3 + 6), (-3 + 3), (11 + 9)),
+             Size = UDim2.new((-3 + 4), -(-3 + 9), (-3 + 4), -(18 + 5)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (32 + 4),
              })
-             corner(queueInnerRim, (23 + 2))
-             stroke(queueInnerRim, Color3.fromRGB((108 + 3), (143 + 2), (173 + 4)), (-2 + 3), (-2 + 3))
+             _IllllI(_1I1lllI, (18 + 7))
+             _lllllI(_1I1lllI, Color3.fromRGB((102 + 9), (137 + 8), (172 + 5)), (-3 + 4), (-3 + 4))
             
-             local queueTopReflection = make(queueCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (8 + 2), (-2 + 2), (23 + 5)),
-             Size = UDim2.new((-2 + 3), -(18 + 2), (-2 + 2), (28 + 2)),
-             BackgroundColor3 = Color3.fromRGB((143 + 6), (178 + 5), (213 + 4)),
+             local _Il1lllI = _lIlllI(_lI1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (4 + 6), (-3 + 3), (25 + 3)),
+             Size = UDim2.new((-3 + 4), -(11 + 9), (-3 + 3), (25 + 5)),
+             BackgroundColor3 = Color3.fromRGB((144 + 5), (179 + 4), (214 + 3)),
              BackgroundTransparency = 0.92,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (33 + 3),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (32 + 4),
              })
-             corner(queueTopReflection, (28 + 2))
-             gradient(queueTopReflection, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((178 + 6), (208 + 3), (233 + 4))},
-             {(-2 + 3), Color3.fromRGB((68 + 3), (98 + 6), (138 + 2))},
+             _IllllI(_Il1lllI, (25 + 5))
+             _II1llI(_Il1lllI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((179 + 5), (207 + 4), (228 + 9))},
+             {(-3 + 4), Color3.fromRGB((67 + 4), (95 + 9), (137 + 3))},
              }, {
-             {(-2 + 2), 0.58},
+             {(-3 + 3), 0.58},
              {0.38, 0.86},
-             {(-2 + 3), (-2 + 3)},
+             {(-3 + 4), (-3 + 4)},
              })
             
-             local topHolder = make(window, _0x3a75d1(51), {
-             Name = _0x3a75d1(54),
-             Position = UDim2.new((-2 + 2), (3 + 4), (-2 + 2), (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (193 + 3), (-2 + 2), (98 + 5)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
+             local _ll1lllI = _lIlllI(_l1llllI, _11IIlIllI(51), {
+             Name = _11IIlIllI(54),
+             Position = UDim2.new((-3 + 3), (4 + 3), (-3 + 3), (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (193 + 3), (-3 + 3), (95 + 8)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
              ClipsDescendants = false,
-             ZIndex = (58 + 2),
+             ZIndex = (53 + 7),
              })
             
-             local topCard = make(topHolder, _0x3a75d1(51), {
-             Name = _0x3a75d1(55),
-             Size = UDim2.new((-2 + 3), (-2 + 2), (-2 + 3), (-2 + 2)),
-             BackgroundColor3 = COLOR_TOP_2,
+             local _1l1lllI = _lIlllI(_ll1lllI, _11IIlIllI(51), {
+             Name = _11IIlIllI(55),
+             Size = UDim2.new((-3 + 4), (-3 + 3), (-3 + 4), (-3 + 3)),
+             BackgroundColor3 = _1IIlllI,
              BackgroundTransparency = 0.01,
-             BorderSizePixel = (-2 + 2),
+             BorderSizePixel = (-3 + 3),
              ClipsDescendants = true,
              Active = false,
-             ZIndex = (63 + 2),
+             ZIndex = (60 + 5),
              })
-             corner(topCard, (43 + 3))
-             stroke(topCard, Color3.fromRGB((113 + 5), (173 + 6), (243 + 4)), 0.20, 1.4)
-             gradient(topCard, (88 + 2), {
-             {(-2 + 2), COLOR_TOP_1},
-             {0.38, COLOR_TOP_2},
-             {0.75, Color3.fromRGB((28 + 3), (33 + 6), (48 + 3))},
-             {(-2 + 3), COLOR_TOP_3},
+             _IllllI(_1l1lllI, (39 + 7))
+             _lllllI(_1l1lllI, Color3.fromRGB((109 + 9), (172 + 7), (242 + 5)), 0.20, 1.4)
+             _II1llI(_1l1lllI, (81 + 9), {
+             {(-3 + 3), _lIIlllI},
+             {0.38, _1IIlllI},
+             {0.75, Color3.fromRGB((25 + 6), (32 + 7), (46 + 5))},
+             {(-3 + 4), _IlIlllI},
              }, {
-             {(-2 + 2), 0.01},
-             {(-2 + 3), 0.03},
+             {(-3 + 3), 0.01},
+             {(-3 + 4), 0.03},
              })
             
-             local topInnerRim = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (-2 + 5), (-2 + 2), (-2 + 5)),
-             Size = UDim2.new((-2 + 3), -(3 + 3), (-2 + 3), -(3 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (63 + 3),
+             local _I11lllI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (-3 + 6), (-3 + 3), (-3 + 6)),
+             Size = UDim2.new((-3 + 4), -(-3 + 9), (-3 + 4), -(-3 + 9)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (60 + 6),
              })
-             corner(topInnerRim, (38 + 4))
-             stroke(topInnerRim, Color3.fromRGB((133 + 6), (168 + 5), (198 + 6)), (-2 + 3), (-2 + 3))
+             _IllllI(_I11lllI, (39 + 3))
+             _lllllI(_I11lllI, Color3.fromRGB((130 + 9), (165 + 8), (200 + 4)), (-3 + 4), (-3 + 4))
             
-             local upperReflection = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (8 + 2), (-2 + 2), (3 + 2)),
-             Size = UDim2.new((-2 + 3), -(18 + 2), (-2 + 2), (23 + 5)),
-             BackgroundColor3 = Color3.fromRGB((178 + 2), (208 + 6), (238 + 5)),
+             local _l11lllI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (4 + 6), (-3 + 3), (-3 + 8)),
+             Size = UDim2.new((-3 + 4), -(11 + 9), (-3 + 3), (25 + 3)),
+             BackgroundColor3 = Color3.fromRGB((172 + 8), (207 + 7), (235 + 8)),
              BackgroundTransparency = 0.92,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (63 + 3),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (60 + 6),
              })
-             corner(upperReflection, (48 + 2))
-             gradient(upperReflection, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((213 + 5), (233 + 2), (248 + 2))},
-             {0.42, Color3.fromRGB((143 + 2), (183 + 4), (218 + 5))},
-             {(-2 + 3), Color3.fromRGB((63 + 2), (88 + 5), (118 + 6))},
+             _IllllI(_l11lllI, (46 + 4))
+             _II1llI(_l11lllI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((214 + 4), (228 + 7), (242 + 8))},
+             {0.42, Color3.fromRGB((137 + 8), (179 + 8), (214 + 9))},
+             {(-3 + 4), Color3.fromRGB((60 + 5), (88 + 5), (116 + 8))},
              }, {
-             {(-2 + 2), 0.52},
+             {(-3 + 3), 0.52},
              {0.37, 0.84},
-             {(-2 + 3), (-2 + 3)},
+             {(-3 + 4), (-3 + 4)},
              })
             
-             local diagonalReflection = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new(-0.02, (-2 + 2), 0.02, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (163 + 5), (-2 + 2), (33 + 5)),
-             BackgroundColor3 = Color3.fromRGB((178 + 3), (213 + 4), (243 + 3)),
+             local _111lllI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new(-0.02, (-3 + 3), 0.02, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (165 + 3), (-3 + 3), (32 + 6)),
+             BackgroundColor3 = Color3.fromRGB((172 + 9), (214 + 3), (242 + 4)),
              BackgroundTransparency = 0.95,
-             BorderSizePixel = (-2 + 2),
-             Rotation = -(3 + 5),
-             ZIndex = (63 + 3),
+             BorderSizePixel = (-3 + 3),
+             Rotation = -(4 + 4),
+             ZIndex = (60 + 6),
              })
-             corner(diagonalReflection, (43 + 5))
-             gradient(diagonalReflection, (-2 + 2), {
-             {(-2 + 2), Color3.fromRGB((218 + 3), (233 + 6), (253 + 2))},
-             {(-2 + 3), Color3.fromRGB((88 + 3), (133 + 4), (178 + 3))},
+             _IllllI(_111lllI, (39 + 9))
+             _II1llI(_111lllI, (-3 + 3), {
+             {(-3 + 3), Color3.fromRGB((214 + 7), (235 + 4), (249 + 6))},
+             {(-3 + 4), Color3.fromRGB((88 + 3), (130 + 7), (172 + 9))},
              }, {
-             {(-2 + 2), 0.62},
-             {(-2 + 3), (-2 + 3)},
+             {(-3 + 3), 0.62},
+             {(-3 + 4), (-3 + 4)},
              })
             
-             local bottomShade = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (-2 + 2), 0.66, (-2 + 2)),
-             Size = UDim2.new((-2 + 3), (-2 + 2), 0.34, (-2 + 2)),
-             BackgroundColor3 = Color3.fromRGB((3 + 3), (8 + 2), (13 + 3)),
+             local _III1llI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (-3 + 3), 0.66, (-3 + 3)),
+             Size = UDim2.new((-3 + 4), (-3 + 3), 0.34, (-3 + 3)),
+             BackgroundColor3 = Color3.fromRGB((-3 + 9), (4 + 6), (11 + 5)),
              BackgroundTransparency = 0.80,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (63 + 3),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (60 + 6),
              })
-             gradient(bottomShade, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((23 + 2), (28 + 6), (43 + 2))},
-             {(-2 + 3), Color3.fromRGB((3 + 2), (3 + 5), (8 + 5))},
+             _II1llI(_III1llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((18 + 7), (25 + 9), (39 + 6))},
+             {(-3 + 4), Color3.fromRGB((-3 + 8), (4 + 4), (4 + 9))},
              }, {
-             {(-2 + 2), (-2 + 3)},
-             {(-2 + 3), 0.30},
+             {(-3 + 3), (-3 + 4)},
+             {(-3 + 4), 0.30},
              })
             
-             local nowPlayingLabel = make(topCard, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 2), (8 + 6), (-2 + 2), (8 + 3)),
-             Size = UDim2.new((-2 + 2), (93 + 5), (-2 + 2), (8 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(57),
+             local _lII1llI = _lIlllI(_1l1lllI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 3), (11 + 3), (-3 + 3), (4 + 7)),
+             Size = UDim2.new((-3 + 3), (95 + 3), (-3 + 3), (4 + 6)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(57),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 6),
-             TextColor3 = COLOR_ACCENT,
+             TextSize = (4 + 5),
+             TextColor3 = _l1IlllI,
              TextXAlignment = Enum.TextXAlignment.Left,
-             ZIndex = (68 + 2),
+             ZIndex = (67 + 3),
              })
             
-             local songNameLabel = make(topCard, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 2), (8 + 6), (-2 + 2), (18 + 3)),
-             Size = UDim2.new((-2 + 2), (108 + 4), (-2 + 2), (13 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             Text = songs[(-2 + 3)] and songs[(-2 + 3)].Name or _0x3a75d1(58),
+             local _1II1llI = _lIlllI(_1l1lllI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 3), (11 + 3), (-3 + 3), (18 + 3)),
+             Size = UDim2.new((-3 + 3), (109 + 3), (-3 + 3), (11 + 4)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _I1IIllI[(-3 + 4)] and _I1IIllI[(-3 + 4)].Name or _11IIlIllI(58),
              Font = Enum.Font.GothamBold,
-             TextSize = (8 + 3),
-             TextColor3 = COLOR_TEXT,
+             TextSize = (4 + 7),
+             TextColor3 = _lIllllI,
              TextXAlignment = Enum.TextXAlignment.Left,
              TextTruncate = Enum.TextTruncate.AtEnd,
-             ZIndex = (68 + 2),
+             ZIndex = (67 + 3),
              })
             
-             local visualizer = make(topCard, _0x3a75d1(51), {
-             AnchorPoint = Vector2.new((-2 + 3), (-2 + 2)),
-             Position = UDim2.new((-2 + 3), -(8 + 6), (-2 + 2), (18 + 4)),
-             Size = UDim2.new((-2 + 2), (33 + 5), (-2 + 2), (8 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 2),
+             local _IlI1llI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             AnchorPoint = Vector2.new((-3 + 4), (-3 + 3)),
+             Position = UDim2.new((-3 + 4), -(11 + 3), (-3 + 3), (18 + 4)),
+             Size = UDim2.new((-3 + 3), (32 + 6), (-3 + 3), (4 + 6)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 3),
              })
             
-             local visualizerBars = {}
-             local visualizerCount = (8 + 5)
-             local visualizerWidth = (-2 + 4)
-             local visualizerGap = (-2 + 3)
-             for index = (-2 + 3), visualizerCount do
-             local bar = make(visualizer, _0x3a75d1(51), {
-             AnchorPoint = Vector2.new((-2 + 2), 0.5),
-             Position = UDim2.new((-2 + 2), (index - (-2 + 3)) * (visualizerWidth + visualizerGap), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), visualizerWidth, (-2 + 2), (-2 + 5)),
-             BackgroundColor3 = Color3.fromRGB((203 + 2), (208 + 5), (218 + 4)),
+             local _llI1llI = {}
+             local _1lI1llI = (4 + 9)
+             local _I1I1llI = (-3 + 5)
+             local _l1I1llI = (-3 + 4)
+             for _1Il11lI = (-3 + 4), _1lI1llI do
+             local _11I1llI = _lIlllI(_IlI1llI, _11IIlIllI(51), {
+             AnchorPoint = Vector2.new((-3 + 3), 0.5),
+             Position = UDim2.new((-3 + 3), (_1Il11lI - (-3 + 4)) * (_I1I1llI + _l1I1llI), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), _I1I1llI, (-3 + 3), (-3 + 6)),
+             BackgroundColor3 = Color3.fromRGB((200 + 5), (207 + 6), (214 + 8)),
              BackgroundTransparency = 0.12,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 3),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 4),
              })
-             corner(bar, (-2 + 4))
-             table.insert(visualizerBars, bar)
+             _IllllI(_11I1llI, (-3 + 5))
+             table.insert(_llI1llI, _11I1llI)
              end
             
-             local progressTrack = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (8 + 6), (-2 + 2), (33 + 4)),
-             Size = UDim2.new((-2 + 2), (163 + 5), (-2 + 2), (3 + 2)),
-             BackgroundColor3 = COLOR_TRACK,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 2),
+             local _IIl1llI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (11 + 3), (-3 + 3), (32 + 5)),
+             Size = UDim2.new((-3 + 3), (165 + 3), (-3 + 3), (-3 + 8)),
+             BackgroundColor3 = _IlllllI,
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 3),
              })
-             corner(progressTrack, (993 + 6))
-             stroke(progressTrack, Color3.fromRGB((8 + 4), (13 + 5), (23 + 3)), 0.35, (-2 + 3))
-             gradient(progressTrack, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((68 + 6), (83 + 3), (98 + 2))},
-             {(-2 + 3), Color3.fromRGB((43 + 2), (48 + 5), (58 + 6))},
+             _IllllI(_IIl1llI, (991 + 8))
+             _lllllI(_IIl1llI, Color3.fromRGB((4 + 8), (11 + 7), (18 + 8)), 0.35, (-3 + 4))
+             _II1llI(_IIl1llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((67 + 7), (81 + 5), (95 + 5))},
+             {(-3 + 4), Color3.fromRGB((39 + 6), (46 + 7), (60 + 4))},
              }, {
-             {(-2 + 2), 0.04},
-             {(-2 + 3), 0.10},
+             {(-3 + 3), 0.04},
+             {(-3 + 4), 0.10},
              })
             
-             local progressFill = make(progressTrack, _0x3a75d1(51), {
-             Size = UDim2.new((-2 + 2), (-2 + 2), (-2 + 3), (-2 + 2)),
-             BackgroundColor3 = COLOR_ACCENT_PALE,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 3),
+             local _lIl1llI = _lIlllI(_IIl1llI, _11IIlIllI(51), {
+             Size = UDim2.new((-3 + 3), (-3 + 3), (-3 + 4), (-3 + 3)),
+             BackgroundColor3 = _IIllllI,
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 4),
              })
-             corner(progressFill, (993 + 6))
-             gradient(progressFill, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((203 + 2), (223 + 5), (243 + 4))},
-             {0.48, Color3.fromRGB((168 + 3), (203 + 4), (233 + 3))},
-             {(-2 + 3), Color3.fromRGB((118 + 3), (168 + 2), (208 + 5))},
+             _IllllI(_lIl1llI, (991 + 8))
+             _II1llI(_lIl1llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((200 + 5), (221 + 7), (242 + 5))},
+             {0.48, Color3.fromRGB((165 + 6), (200 + 7), (228 + 8))},
+             {(-3 + 4), Color3.fromRGB((116 + 5), (165 + 5), (207 + 6))},
              }, {
-             {(-2 + 2), 0.02},
-             {(-2 + 3), 0.08},
+             {(-3 + 3), 0.02},
+             {(-3 + 4), 0.08},
              })
             
-             local progressThumb = make(progressTrack, _0x3a75d1(51), {
+             local _1Il1llI = _lIlllI(_IIl1llI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new((-2 + 2), (-2 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (3 + 5), (-2 + 2), (3 + 5)),
-             BackgroundColor3 = Color3.fromRGB((213 + 4), (228 + 5), (243 + 4)),
-             BorderSizePixel = (-2 + 2),
+             Position = UDim2.new((-3 + 3), (-3 + 3), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (4 + 4), (-3 + 3), (4 + 4)),
+             BackgroundColor3 = Color3.fromRGB((214 + 3), (228 + 5), (242 + 5)),
+             BorderSizePixel = (-3 + 3),
              Visible = false,
-             ZIndex = (68 + 5),
+             ZIndex = (67 + 6),
              })
-             corner(progressThumb, (993 + 6))
-             stroke(progressThumb, Color3.fromRGB((108 + 3), (153 + 3), (193 + 4)), 0.40, (-2 + 3))
+             _IllllI(_1Il1llI, (991 + 8))
+             _lllllI(_1Il1llI, Color3.fromRGB((102 + 9), (151 + 5), (193 + 4)), 0.40, (-3 + 4))
             
-             local progressHitbox = make(topCard, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (8 + 2), (-2 + 2), (28 + 3)),
-             Size = UDim2.new((-2 + 2), (173 + 3), (-2 + 2), (13 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             local _Ill1llI = _lIlllI(_1l1lllI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (4 + 6), (-3 + 3), (25 + 6)),
+             Size = UDim2.new((-3 + 3), (172 + 4), (-3 + 3), (11 + 5)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (68 + 6),
+             ZIndex = (67 + 7),
              })
             
-             local currentTimeLabel = make(topCard, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 2), (8 + 6), (-2 + 2), (43 + 2)),
-             Size = UDim2.new((-2 + 2), (28 + 6), (-2 + 2), (8 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(60),
+             local _lll1llI = _lIlllI(_1l1lllI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 3), (11 + 3), (-3 + 3), (39 + 6)),
+             Size = UDim2.new((-3 + 3), (25 + 9), (-3 + 3), (4 + 6)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(60),
              Font = Enum.Font.Gotham,
-             TextSize = (3 + 6),
-             TextColor3 = COLOR_TEXT_SOFT,
+             TextSize = (4 + 5),
+             TextColor3 = _1IllllI,
              TextXAlignment = Enum.TextXAlignment.Left,
-             ZIndex = (68 + 2),
+             ZIndex = (67 + 3),
              })
             
-             local totalTimeLabel = make(topCard, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 3), -(43 + 5), (-2 + 2), (43 + 2)),
-             Size = UDim2.new((-2 + 2), (28 + 6), (-2 + 2), (8 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(60),
+             local _1ll1llI = _lIlllI(_1l1lllI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 4), -(39 + 9), (-3 + 3), (39 + 6)),
+             Size = UDim2.new((-3 + 3), (25 + 9), (-3 + 3), (4 + 6)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(60),
              Font = Enum.Font.Gotham,
-             TextSize = (3 + 6),
-             TextColor3 = COLOR_TEXT_SOFT,
+             TextSize = (4 + 5),
+             TextColor3 = _1IllllI,
              TextXAlignment = Enum.TextXAlignment.Right,
-             ZIndex = (68 + 2),
+             ZIndex = (67 + 3),
              })
             
-             local controlGlow = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (23 + 5), (-2 + 2), (53 + 2)),
-             Size = UDim2.new((-2 + 2), (138 + 2), (-2 + 2), (28 + 3)),
-             BackgroundColor3 = Color3.fromRGB((68 + 3), (128 + 2), (178 + 6)),
+             local _I1l1llI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (25 + 3), (-3 + 3), (46 + 9)),
+             Size = UDim2.new((-3 + 3), (137 + 3), (-3 + 3), (25 + 6)),
+             BackgroundColor3 = Color3.fromRGB((67 + 4), (123 + 7), (179 + 5)),
              BackgroundTransparency = 0.82,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (63 + 5),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (60 + 8),
              })
-             corner(controlGlow, (993 + 6))
-             gradient(controlGlow, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((103 + 6), (168 + 6), (223 + 3))},
-             {(-2 + 3), Color3.fromRGB((28 + 4), (63 + 3), (98 + 5))},
+             _IllllI(_I1l1llI, (991 + 8))
+             _II1llI(_I1l1llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((102 + 7), (165 + 9), (221 + 5))},
+             {(-3 + 4), Color3.fromRGB((25 + 7), (60 + 6), (95 + 8))},
              }, {
-             {(-2 + 2), 0.30},
-             {(-2 + 3), 0.68},
+             {(-3 + 3), 0.30},
+             {(-3 + 4), 0.68},
              })
             
-             local controlTray = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (28 + 2), (-2 + 2), (53 + 4)),
-             Size = UDim2.new((-2 + 2), (133 + 3), (-2 + 2), (23 + 4)),
-             BackgroundColor3 = COLOR_BUTTON_DARK,
+             local _l1l1llI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (25 + 5), (-3 + 3), (53 + 4)),
+             Size = UDim2.new((-3 + 3), (130 + 6), (-3 + 3), (18 + 9)),
+             BackgroundColor3 = _llllllI,
              BackgroundTransparency = 0.03,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 2),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 3),
              })
-             corner(controlTray, (993 + 6))
-             stroke(controlTray, Color3.fromRGB((108 + 3), (168 + 3), (243 + 2)), 0.18, 1.5)
-             gradient(controlTray, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((33 + 2), (53 + 2), (73 + 5))},
-             {0.5, Color3.fromRGB((18 + 6), (33 + 5), (53 + 4))},
-             {(-2 + 3), Color3.fromRGB((8 + 6), (18 + 5), (33 + 2))},
+             _IllllI(_l1l1llI, (991 + 8))
+             _lllllI(_l1l1llI, Color3.fromRGB((102 + 9), (165 + 6), (242 + 3)), 0.18, 1.5)
+             _II1llI(_l1l1llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((32 + 3), (46 + 9), (74 + 4))},
+             {0.5, Color3.fromRGB((18 + 6), (32 + 6), (53 + 4))},
+             {(-3 + 4), Color3.fromRGB((11 + 3), (18 + 5), (32 + 3))},
              }, {
-             {(-2 + 2), 0.01},
-             {(-2 + 3), 0.03},
+             {(-3 + 3), 0.01},
+             {(-3 + 4), 0.03},
              })
             
-             local trayReflection = make(controlTray, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (3 + 4), (-2 + 2), (-2 + 5)),
-             Size = UDim2.new((-2 + 3), -(8 + 6), (-2 + 2), (3 + 6)),
-             BackgroundColor3 = Color3.fromRGB((178 + 5), (213 + 5), (243 + 2)),
+             local _11l1llI = _lIlllI(_l1l1llI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (4 + 3), (-3 + 3), (-3 + 6)),
+             Size = UDim2.new((-3 + 4), -(11 + 3), (-3 + 3), (4 + 5)),
+             BackgroundColor3 = Color3.fromRGB((179 + 4), (214 + 4), (242 + 3)),
              BackgroundTransparency = 0.93,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 3),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 4),
              })
-             corner(trayReflection, (993 + 6))
-             gradient(trayReflection, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((218 + 4), (233 + 6), (248 + 5))},
-             {(-2 + 3), Color3.fromRGB((88 + 4), (133 + 6), (178 + 3))},
+             _IllllI(_11l1llI, (991 + 8))
+             _II1llI(_11l1llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((214 + 8), (235 + 4), (249 + 4))},
+             {(-3 + 4), Color3.fromRGB((88 + 4), (130 + 9), (172 + 9))},
              }, {
-             {(-2 + 2), 0.50},
-             {(-2 + 3), (-2 + 3)},
+             {(-3 + 3), 0.50},
+             {(-3 + 4), (-3 + 4)},
              })
             
-             for _, x in ipairs({ (38 + 6), (88 + 4) }) do
-             make(controlTray, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), x, (-2 + 2), (3 + 6)),
-             Size = UDim2.new((-2 + 2), (-2 + 3), (-2 + 3), -(13 + 5)),
-             BackgroundColor3 = Color3.fromRGB((88 + 3), (118 + 5), (153 + 4)),
+             for _, x in ipairs({ (39 + 5), (88 + 4) }) do
+             _lIlllI(_l1l1llI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), x, (-3 + 3), (4 + 5)),
+             Size = UDim2.new((-3 + 3), (-3 + 4), (-3 + 4), -(11 + 7)),
+             BackgroundColor3 = Color3.fromRGB((88 + 3), (116 + 7), (151 + 6)),
              BackgroundTransparency = 0.56,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 4),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 5),
              })
              end
             
-             local previousButton = make(controlTray, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (-2 + 6), (-2 + 2), (-2 + 5)),
-             Size = UDim2.new((-2 + 2), (33 + 3), (-2 + 2), (18 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             local _II11llI = _lIlllI(_l1l1llI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (-3 + 7), (-3 + 3), (-3 + 6)),
+             Size = UDim2.new((-3 + 3), (32 + 4), (-3 + 3), (18 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (68 + 6),
+             ZIndex = (67 + 7),
              })
             
-             local previousFallback = make(previousButton, _0x3a75d1(56), {
+             local _lI11llI = _lIlllI(_II11llI, _11IIlIllI(56), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (13 + 5), (-2 + 2), (8 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(61),
+             Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 7), (-3 + 3), (4 + 8)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(61),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 6),
-             TextColor3 = COLOR_ACCENT_BRIGHT,
-             ZIndex = (73 + 2),
+             TextSize = (4 + 5),
+             TextColor3 = _11IlllI,
+             ZIndex = (67 + 8),
              })
             
-             local previousIcon = make(previousButton, _0x3a75d1(62), {
+             local _1I11llI = _lIlllI(_II11llI, _11IIlIllI(62), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (13 + 4), (-2 + 2), (8 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Image = _0x3a75d1(63),
-             ImageColor3 = COLOR_ACCENT_BRIGHT,
-             ImageTransparency = (-2 + 2),
+             Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 6), (-3 + 3), (4 + 8)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Image = _11IIlIllI(63),
+             ImageColor3 = _11IlllI,
+             ImageTransparency = (-3 + 3),
              ScaleType = Enum.ScaleType.Fit,
-             ZIndex = (73 + 3),
+             ZIndex = (67 + 9),
              })
             
-             local nextButton = make(controlTray, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 3), -(38 + 2), (-2 + 2), (-2 + 5)),
-             Size = UDim2.new((-2 + 2), (33 + 3), (-2 + 2), (18 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             local _Il11llI = _lIlllI(_l1l1llI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 4), -(32 + 8), (-3 + 3), (-3 + 6)),
+             Size = UDim2.new((-3 + 3), (32 + 4), (-3 + 3), (18 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (68 + 6),
+             ZIndex = (67 + 7),
              })
             
-             local nextFallback = make(nextButton, _0x3a75d1(56), {
+             local _ll11llI = _lIlllI(_Il11llI, _11IIlIllI(56), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (13 + 5), (-2 + 2), (8 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(64),
+             Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 7), (-3 + 3), (4 + 8)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(64),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 6),
-             TextColor3 = COLOR_ACCENT_BRIGHT,
-             ZIndex = (73 + 2),
+             TextSize = (4 + 5),
+             TextColor3 = _11IlllI,
+             ZIndex = (67 + 8),
              })
             
-             local nextIcon = make(nextButton, _0x3a75d1(62), {
+             local _1l11llI = _lIlllI(_Il11llI, _11IIlIllI(62), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (13 + 4), (-2 + 2), (8 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Image = _0x3a75d1(65),
-             ImageColor3 = COLOR_ACCENT_BRIGHT,
-             ImageTransparency = (-2 + 2),
+             Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 6), (-3 + 3), (4 + 8)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Image = _11IIlIllI(65),
+             ImageColor3 = _11IlllI,
+             ImageTransparency = (-3 + 3),
              ScaleType = Enum.ScaleType.Fit,
-             ZIndex = (73 + 3),
+             ZIndex = (67 + 9),
              })
             
-             local playOuterGlow = make(topCard, _0x3a75d1(51), {
+             local _I111llI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), (-2 + 2), (68 + 2)),
-             Size = UDim2.new((-2 + 2), (23 + 6), (-2 + 2), (23 + 6)),
-             BackgroundColor3 = Color3.fromRGB((78 + 5), (148 + 3), (208 + 2)),
+             Position = UDim2.new(0.5, (-3 + 3), (-3 + 3), (67 + 3)),
+             Size = UDim2.new((-3 + 3), (25 + 4), (-3 + 3), (25 + 4)),
+             BackgroundColor3 = Color3.fromRGB((74 + 9), (144 + 7), (207 + 3)),
              BackgroundTransparency = 0.72,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (68 + 3),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 4),
              })
-             corner(playOuterGlow, (993 + 6))
-             gradient(playOuterGlow, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((123 + 2), (188 + 2), (233 + 5))},
-             {0.55, Color3.fromRGB((63 + 5), (123 + 3), (178 + 3))},
-             {(-2 + 3), Color3.fromRGB((18 + 6), (48 + 4), (78 + 4))},
+             _IllllI(_I111llI, (991 + 8))
+             _II1llI(_I111llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((116 + 9), (186 + 4), (235 + 3))},
+             {0.55, Color3.fromRGB((60 + 8), (123 + 3), (172 + 9))},
+             {(-3 + 4), Color3.fromRGB((18 + 6), (46 + 6), (74 + 8))},
              }, {
-             {(-2 + 2), 0.18},
-             {(-2 + 3), 0.58},
+             {(-3 + 3), 0.18},
+             {(-3 + 4), 0.58},
              })
             
-             local playButton = make(topCard, _0x3a75d1(59), {
+             local _l111llI = _lIlllI(_1l1lllI, _11IIlIllI(59), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), (-2 + 2), (68 + 2)),
-             Size = UDim2.new((-2 + 2), (23 + 2), (-2 + 2), (23 + 2)),
-             BackgroundColor3 = Color3.fromRGB((48 + 4), (98 + 6), (148 + 5)),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             Position = UDim2.new(0.5, (-3 + 3), (-3 + 3), (67 + 3)),
+             Size = UDim2.new((-3 + 3), (18 + 7), (-3 + 3), (18 + 7)),
+             BackgroundColor3 = Color3.fromRGB((46 + 6), (95 + 9), (144 + 9)),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (73 + 2),
+             ZIndex = (67 + 8),
              })
-             corner(playButton, (993 + 6))
-             stroke(playButton, Color3.fromRGB((123 + 2), (183 + 5), (253 + 2)), 0.22, 1.35)
-             gradient(playButton, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((88 + 3), (153 + 4), (208 + 2))},
-             {0.45, Color3.fromRGB((53 + 4), (108 + 5), (158 + 5))},
-             {(-2 + 3), Color3.fromRGB((23 + 6), (58 + 2), (88 + 6))},
+             _IllllI(_l111llI, (991 + 8))
+             _lllllI(_l111llI, Color3.fromRGB((116 + 9), (179 + 9), (249 + 6)), 0.22, 1.35)
+             _II1llI(_l111llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((88 + 3), (151 + 6), (207 + 3))},
+             {0.45, Color3.fromRGB((53 + 4), (109 + 4), (158 + 5))},
+             {(-3 + 4), Color3.fromRGB((25 + 4), (53 + 7), (88 + 6))},
              }, {
-             {(-2 + 2), 0.01},
-             {(-2 + 3), 0.04},
+             {(-3 + 3), 0.01},
+             {(-3 + 4), 0.04},
              })
             
-             local playReflection = make(playButton, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (3 + 2), (-2 + 2), (-2 + 6)),
-             Size = UDim2.new((-2 + 3), -(8 + 2), (-2 + 2), (3 + 5)),
-             BackgroundColor3 = Color3.fromRGB((223 + 6), (238 + 5), (253 + 2)),
+             local _1111llI = _lIlllI(_l111llI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (-3 + 8), (-3 + 3), (-3 + 7)),
+             Size = UDim2.new((-3 + 4), -(4 + 6), (-3 + 3), (4 + 4)),
+             BackgroundColor3 = Color3.fromRGB((221 + 8), (235 + 8), (249 + 6)),
              BackgroundTransparency = 0.90,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (73 + 3),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (67 + 9),
              })
-             corner(playReflection, (993 + 6))
-             gradient(playReflection, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((253 + 2), (253 + 2), (253 + 2))},
-             {(-2 + 3), Color3.fromRGB((113 + 5), (178 + 2), (223 + 6))},
+             _IllllI(_1111llI, (991 + 8))
+             _II1llI(_1111llI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((249 + 6), (249 + 6), (249 + 6))},
+             {(-3 + 4), Color3.fromRGB((109 + 9), (172 + 8), (221 + 8))},
              }, {
-             {(-2 + 2), 0.52},
-             {(-2 + 3), (-2 + 3)},
+             {(-3 + 3), 0.52},
+             {(-3 + 4), (-3 + 4)},
              })
             
-             local playFallback = make(playButton, _0x3a75d1(56), {
+             local _IIII1lI = _lIlllI(_l111llI, _11IIlIllI(56), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 3), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (8 + 3), (-2 + 2), (8 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(66),
+             Position = UDim2.new(0.5, (-3 + 4), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (4 + 7), (-3 + 3), (4 + 8)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(66),
              Font = Enum.Font.GothamBold,
-             TextSize = (8 + 4),
-             TextColor3 = COLOR_ACCENT_BRIGHT,
-             ZIndex = (73 + 4),
+             TextSize = (4 + 8),
+             TextColor3 = _11IlllI,
+             ZIndex = (74 + 3),
              })
             
-             local playIcon = make(playButton, _0x3a75d1(62), {
+             local _lIII1lI = _lIlllI(_l111llI, _11IIlIllI(62), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 3), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (8 + 3), (-2 + 2), (8 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Image = _0x3a75d1(67),
-             ImageColor3 = COLOR_ACCENT_BRIGHT,
-             ImageTransparency = (-2 + 2),
+             Position = UDim2.new(0.5, (-3 + 4), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (4 + 7), (-3 + 3), (4 + 7)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Image = _11IIlIllI(67),
+             ImageColor3 = _11IlllI,
+             ImageTransparency = (-3 + 3),
              ScaleType = Enum.ScaleType.Fit,
-             ZIndex = (73 + 5),
+             ZIndex = (74 + 4),
              })
             
-             local dragHandle = make(topCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (3 + 6), (-2 + 2), (3 + 3)),
-             Size = UDim2.new((-2 + 3), -(13 + 5), (-2 + 2), (28 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
+             local _1III1lI = _lIlllI(_1l1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (4 + 5), (-3 + 3), (-3 + 9)),
+             Size = UDim2.new((-3 + 4), -(11 + 7), (-3 + 3), (25 + 7)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
              Active = true,
-             ZIndex = (63 + 6),
+             ZIndex = (60 + 9),
              })
             
-             local playlistTabButton = make(queueCard, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (8 + 4), (-2 + 2), (33 + 5)),
-             Size = UDim2.new((-2 + 2), (53 + 5), (-2 + 2), (13 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(68),
+             local _IlII1lI = _lIlllI(_lI1lllI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (4 + 8), (-3 + 3), (32 + 6)),
+             Size = UDim2.new((-3 + 3), (53 + 5), (-3 + 3), (11 + 5)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(68),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_ACCENT,
+             TextSize = (4 + 4),
+             TextColor3 = _l1IlllI,
              TextXAlignment = Enum.TextXAlignment.Left,
              AutoButtonColor = false,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
             
-             local exploreTabButton = make(queueCard, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (73 + 2), (-2 + 2), (33 + 5)),
-             Size = UDim2.new((-2 + 2), (48 + 4), (-2 + 2), (13 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(69),
+             local _llII1lI = _lIlllI(_lI1lllI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (67 + 8), (-3 + 3), (32 + 6)),
+             Size = UDim2.new((-3 + 3), (46 + 6), (-3 + 3), (11 + 5)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(69),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_TEXT_SOFT,
+             TextSize = (4 + 4),
+             TextColor3 = _1IllllI,
              TextXAlignment = Enum.TextXAlignment.Left,
              AutoButtonColor = false,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
             
-             local tabIndicator = make(queueCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (8 + 4), (-2 + 2), (48 + 5)),
-             Size = UDim2.new((-2 + 2), (43 + 3), (-2 + 2), (-2 + 3)),
-             BackgroundColor3 = COLOR_ACCENT_BRIGHT,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (38 + 6),
+             local _1lII1lI = _lIlllI(_lI1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (4 + 8), (-3 + 3), (46 + 7)),
+             Size = UDim2.new((-3 + 3), (39 + 7), (-3 + 3), (-3 + 4)),
+             BackgroundColor3 = _11IlllI,
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (39 + 5),
              })
-             corner(tabIndicator, (993 + 6))
+             _IllllI(_1lII1lI, (991 + 8))
             
-             local searchBox = make(queueCard, _0x3a75d1(70), {
-             Name = _0x3a75d1(71),
-             Position = UDim2.new((-2 + 2), (8 + 4), (-2 + 2), (53 + 4)),
-             Size = UDim2.new((-2 + 2), (153 + 5), (-2 + 2), (13 + 4)),
-             BackgroundColor3 = Color3.fromRGB((8 + 5), (23 + 6), (48 + 4)),
+             local _I1II1lI = _lIlllI(_lI1lllI, _11IIlIllI(70), {
+             Name = _11IIlIllI(71),
+             Position = UDim2.new((-3 + 3), (4 + 8), (-3 + 3), (53 + 4)),
+             Size = UDim2.new((-3 + 3), (151 + 7), (-3 + 3), (11 + 6)),
+             BackgroundColor3 = Color3.fromRGB((4 + 9), (25 + 4), (46 + 6)),
              BackgroundTransparency = 0.08,
-             BorderSizePixel = (-2 + 2),
-             PlaceholderText = _0x3a75d1(72),
-             PlaceholderColor3 = Color3.fromRGB((128 + 4), (153 + 5), (188 + 2)),
-             Text = _0x3a75d1(18),
-             TextColor3 = COLOR_TEXT,
+             BorderSizePixel = (-3 + 3),
+             PlaceholderText = _11IIlIllI(72),
+             PlaceholderColor3 = Color3.fromRGB((123 + 9), (151 + 7), (186 + 4)),
+             Text = _11IIlIllI(18),
+             TextColor3 = _lIllllI,
              Font = Enum.Font.Gotham,
-             TextSize = (3 + 5),
+             TextSize = (4 + 4),
              TextXAlignment = Enum.TextXAlignment.Left,
              ClearTextOnFocus = false,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
-             corner(searchBox, (3 + 4))
-             stroke(searchBox, Color3.fromRGB((108 + 4), (168 + 3), (233 + 5)), 0.58, (-2 + 3))
-             padding(searchBox, (3 + 5), (18 + 4), (-2 + 2), (-2 + 2))
+             _IllllI(_I1II1lI, (4 + 3))
+             _lllllI(_I1II1lI, Color3.fromRGB((109 + 3), (165 + 6), (235 + 3)), 0.58, (-3 + 4))
+             _1llllI(_I1II1lI, (4 + 4), (18 + 4), (-3 + 3), (-3 + 3))
             
-             local clearSearchButton = make(queueCard, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (148 + 3), (-2 + 2), (53 + 4)),
-             Size = UDim2.new((-2 + 2), (13 + 6), (-2 + 2), (13 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(73),
+             local _l1II1lI = _lIlllI(_lI1lllI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (144 + 7), (-3 + 3), (53 + 4)),
+             Size = UDim2.new((-3 + 3), (11 + 8), (-3 + 3), (11 + 6)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(73),
              Font = Enum.Font.GothamBold,
-             TextSize = (8 + 3),
-             TextColor3 = COLOR_TEXT_SOFT,
+             TextSize = (4 + 7),
+             TextColor3 = _1IllllI,
              AutoButtonColor = false,
              Visible = false,
-             ZIndex = (43 + 3),
+             ZIndex = (39 + 7),
              })
             
-             local queueList = make(queueCard, _0x3a75d1(74), {
-             Name = _0x3a75d1(75),
-             Position = UDim2.new((-2 + 2), (8 + 4), (-2 + 2), (73 + 5)),
-             Size = UDim2.new((-2 + 2), (153 + 5), (-2 + 2), (98 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             CanvasSize = UDim2.new((-2 + 2), (-2 + 2), (-2 + 2), (-2 + 2)),
+             local _11II1lI = _lIlllI(_lI1lllI, _11IIlIllI(74), {
+             Name = _11IIlIllI(75),
+             Position = UDim2.new((-3 + 3), (4 + 8), (-3 + 3), (74 + 4)),
+             Size = UDim2.new((-3 + 3), (151 + 7), (-3 + 3), (95 + 7)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             CanvasSize = UDim2.new((-3 + 3), (-3 + 3), (-3 + 3), (-3 + 3)),
              AutomaticCanvasSize = Enum.AutomaticSize.Y,
-             ScrollBarThickness = (-2 + 2),
+             ScrollBarThickness = (-3 + 3),
              ScrollingDirection = Enum.ScrollingDirection.Y,
              ElasticBehavior = Enum.ElasticBehavior.Never,
-             ZIndex = (38 + 4),
+             ZIndex = (39 + 3),
              })
-             padding(queueList, (-2 + 2), (-2 + 2), (-2 + 2), (-2 + 2))
+             _1llllI(_11II1lI, (-3 + 3), (-3 + 3), (-3 + 3), (-3 + 3))
             
-             local queueLayout = make(queueList, _0x3a75d1(76), {
-             Padding = UDim.new((-2 + 2), (-2 + 2)),
+             local _IIlI1lI = _lIlllI(_11II1lI, _11IIlIllI(76), {
+             Padding = UDim.new((-3 + 3), (-3 + 3)),
              SortOrder = Enum.SortOrder.LayoutOrder,
              HorizontalAlignment = Enum.HorizontalAlignment.Left,
              })
             
-             local scrollUpButton = make(queueCard, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 3), -(18 + 5), (-2 + 2), (53 + 6)),
-             Size = UDim2.new((-2 + 2), (13 + 5), (-2 + 2), (13 + 2)),
-             BackgroundColor3 = Color3.fromRGB((18 + 6), (48 + 4), (83 + 3)),
+             local _lIlI1lI = _lIlllI(_lI1lllI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 4), -(18 + 5), (-3 + 3), (53 + 6)),
+             Size = UDim2.new((-3 + 3), (11 + 7), (-3 + 3), (11 + 4)),
+             BackgroundColor3 = Color3.fromRGB((18 + 6), (46 + 6), (81 + 5)),
              BackgroundTransparency = 0.28,
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
-             corner(scrollUpButton, (3 + 3))
-             stroke(scrollUpButton, Color3.fromRGB((108 + 4), (168 + 3), (233 + 5)), 0.58, (-2 + 3))
+             _IllllI(_lIlI1lI, (-3 + 9))
+             _lllllI(_lIlI1lI, Color3.fromRGB((109 + 3), (165 + 6), (235 + 3)), 0.58, (-3 + 4))
             
-             local scrollUpLines = {}
-             for index, data in ipairs({
-             { X = (3 + 4), Rotation = (43 + 2) },
-             { X = (8 + 3), Rotation = -(43 + 2) },
+             local _1IlI1lI = {}
+             for _1Il11lI, data in ipairs({
+             { X = (4 + 3), Rotation = (39 + 6) },
+             { X = (4 + 7), Rotation = -(39 + 6) },
              }) do
-             local line = make(scrollUpButton, _0x3a75d1(51), {
+             local _IllI1lI = _lIlllI(_lIlI1lI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new((-2 + 2), data.X, (-2 + 2), (3 + 5)),
-             Size = UDim2.new((-2 + 2), (-2 + 4), (-2 + 2), (3 + 4)),
-             BackgroundColor3 = COLOR_TEXT_SOFT,
-             BorderSizePixel = (-2 + 2),
+             Position = UDim2.new((-3 + 3), data.X, (-3 + 3), (4 + 4)),
+             Size = UDim2.new((-3 + 3), (-3 + 5), (-3 + 3), (4 + 3)),
+             BackgroundColor3 = _1IllllI,
+             BorderSizePixel = (-3 + 3),
              Rotation = data.Rotation,
-             ZIndex = (43 + 2),
+             ZIndex = (39 + 6),
              })
-             corner(line, (993 + 6))
-             scrollUpLines[index] = line
+             _IllllI(_IllI1lI, (991 + 8))
+             _1IlI1lI[_1Il11lI] = _IllI1lI
              end
             
-             local scrollTrack = make(queueCard, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 3), -(13 + 5), (-2 + 2), (73 + 4)),
-             Size = UDim2.new((-2 + 2), (3 + 2), (-2 + 2), (78 + 2)),
-             BackgroundColor3 = Color3.fromRGB((68 + 6), (83 + 2), (98 + 2)),
+             local _lllI1lI = _lIlllI(_lI1lllI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 4), -(11 + 7), (-3 + 3), (74 + 3)),
+             Size = UDim2.new((-3 + 3), (-3 + 8), (-3 + 3), (74 + 6)),
+             BackgroundColor3 = Color3.fromRGB((67 + 7), (81 + 4), (95 + 5)),
              BackgroundTransparency = 0.88,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (38 + 5),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (39 + 4),
              })
-             corner(scrollTrack, (993 + 6))
+             _IllllI(_lllI1lI, (991 + 8))
             
-             local scrollThumb = make(scrollTrack, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), -(-2 + 3), (-2 + 2), (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (3 + 4), (-2 + 2), (28 + 6)),
-             BackgroundColor3 = Color3.fromRGB((148 + 3), (173 + 3), (203 + 5)),
+             local _1llI1lI = _lIlllI(_lllI1lI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), -(-3 + 4), (-3 + 3), (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (4 + 3), (-3 + 3), (25 + 9)),
+             BackgroundColor3 = Color3.fromRGB((144 + 7), (172 + 4), (200 + 8)),
              BackgroundTransparency = 0.10,
-             BorderSizePixel = (-2 + 2),
+             BorderSizePixel = (-3 + 3),
              Active = true,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
-             corner(scrollThumb, (993 + 6))
-             gradient(scrollThumb, (-2 + 2), {
-             {(-2 + 2), Color3.fromRGB((163 + 3), (183 + 2), (203 + 4))},
-             {(-2 + 3), Color3.fromRGB((103 + 2), (123 + 3), (148 + 3))},
+             _IllllI(_1llI1lI, (991 + 8))
+             _II1llI(_1llI1lI, (-3 + 3), {
+             {(-3 + 3), Color3.fromRGB((158 + 8), (179 + 6), (200 + 7))},
+             {(-3 + 4), Color3.fromRGB((102 + 3), (123 + 3), (144 + 7))},
              }, {
-             {(-2 + 2), 0.04},
-             {(-2 + 3), 0.12},
+             {(-3 + 3), 0.04},
+             {(-3 + 4), 0.12},
              })
             
-             local scrollDownButton = make(queueCard, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 3), -(18 + 5), (-2 + 2), (153 + 6)),
-             Size = UDim2.new((-2 + 2), (13 + 5), (-2 + 2), (13 + 2)),
-             BackgroundColor3 = Color3.fromRGB((18 + 6), (48 + 4), (83 + 3)),
+             local _I1lI1lI = _lIlllI(_lI1lllI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 4), -(18 + 5), (-3 + 3), (151 + 8)),
+             Size = UDim2.new((-3 + 3), (11 + 7), (-3 + 3), (11 + 4)),
+             BackgroundColor3 = Color3.fromRGB((18 + 6), (46 + 6), (81 + 5)),
              BackgroundTransparency = 0.28,
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
-             corner(scrollDownButton, (3 + 3))
-             stroke(scrollDownButton, Color3.fromRGB((108 + 4), (168 + 3), (233 + 5)), 0.58, (-2 + 3))
+             _IllllI(_I1lI1lI, (-3 + 9))
+             _lllllI(_I1lI1lI, Color3.fromRGB((109 + 3), (165 + 6), (235 + 3)), 0.58, (-3 + 4))
             
-             local scrollDownLines = {}
-             for index, data in ipairs({
-             { X = (3 + 4), Rotation = -(43 + 2) },
-             { X = (8 + 3), Rotation = (43 + 2) },
+             local _l1lI1lI = {}
+             for _1Il11lI, data in ipairs({
+             { X = (4 + 3), Rotation = -(39 + 6) },
+             { X = (4 + 7), Rotation = (39 + 6) },
              }) do
-             local line = make(scrollDownButton, _0x3a75d1(51), {
+             local _IllI1lI = _lIlllI(_I1lI1lI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new((-2 + 2), data.X, (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (-2 + 4), (-2 + 2), (3 + 4)),
-             BackgroundColor3 = COLOR_TEXT_SOFT,
-             BorderSizePixel = (-2 + 2),
+             Position = UDim2.new((-3 + 3), data.X, (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (-3 + 5), (-3 + 3), (4 + 3)),
+             BackgroundColor3 = _1IllllI,
+             BorderSizePixel = (-3 + 3),
              Rotation = data.Rotation,
-             ZIndex = (43 + 2),
+             ZIndex = (39 + 6),
              })
-             corner(line, (993 + 6))
-             scrollDownLines[index] = line
+             _IllllI(_IllI1lI, (991 + 8))
+             _l1lI1lI[_1Il11lI] = _IllI1lI
              end
             
-             local collapseButton = make(queueCard, _0x3a75d1(59), {
-             AnchorPoint = Vector2.new(0.5, (-2 + 2)),
-             Position = UDim2.new(0.5, (-2 + 2), (-2 + 2), (188 + 3)),
-             Size = UDim2.new((-2 + 2), (23 + 5), (-2 + 2), (8 + 6)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             local _11lI1lI = _lIlllI(_lI1lllI, _11IIlIllI(59), {
+             AnchorPoint = Vector2.new(0.5, (-3 + 3)),
+             Position = UDim2.new(0.5, (-3 + 3), (-3 + 3), (186 + 5)),
+             Size = UDim2.new((-3 + 3), (25 + 3), (-3 + 3), (11 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
             
-             local collapseLines = {}
-             for index, data in ipairs({
-             { X = (3 + 6), Rotation = (43 + 2) },
-             { X = (13 + 2), Rotation = -(43 + 2) },
+             local _II1I1lI = {}
+             for _1Il11lI, data in ipairs({
+             { X = (4 + 5), Rotation = (39 + 6) },
+             { X = (11 + 4), Rotation = -(39 + 6) },
              }) do
-             local line = make(collapseButton, _0x3a75d1(51), {
+             local _IllI1lI = _lIlllI(_11lI1lI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new((-2 + 2), data.X + (-2 + 4), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (-2 + 4), (-2 + 2), (3 + 5)),
-             BackgroundColor3 = COLOR_TEXT_SOFT,
-             BorderSizePixel = (-2 + 2),
+             Position = UDim2.new((-3 + 3), data.X + (-3 + 5), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (-3 + 5), (-3 + 3), (4 + 4)),
+             BackgroundColor3 = _1IllllI,
+             BorderSizePixel = (-3 + 3),
              Rotation = data.Rotation,
-             ZIndex = (43 + 2),
+             ZIndex = (39 + 6),
              })
-             corner(line, (993 + 6))
-             collapseLines[index] = line
+             _IllllI(_IllI1lI, (991 + 8))
+             _II1I1lI[_1Il11lI] = _IllI1lI
              end
             
-             local expandButton = make(topCard, _0x3a75d1(59), {
-             AnchorPoint = Vector2.new(0.5, (-2 + 2)),
-             Position = UDim2.new(0.5, (-2 + 2), (-2 + 2), (83 + 5)),
-             Size = UDim2.new((-2 + 2), (23 + 5), (-2 + 2), (8 + 6)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             local _lI1I1lI = _lIlllI(_1l1lllI, _11IIlIllI(59), {
+             AnchorPoint = Vector2.new(0.5, (-3 + 3)),
+             Position = UDim2.new(0.5, (-3 + 3), (-3 + 3), (81 + 7)),
+             Size = UDim2.new((-3 + 3), (25 + 3), (-3 + 3), (11 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
              Visible = false,
-             ZIndex = (73 + 6),
+             ZIndex = (74 + 5),
              })
             
-             local expandLines = {}
-             for index, data in ipairs({
-             { X = (3 + 6), Rotation = -(43 + 2) },
-             { X = (13 + 2), Rotation = (43 + 2) },
+             local _1I1I1lI = {}
+             for _1Il11lI, data in ipairs({
+             { X = (4 + 5), Rotation = -(39 + 6) },
+             { X = (11 + 4), Rotation = (39 + 6) },
              }) do
-             local line = make(expandButton, _0x3a75d1(51), {
+             local _IllI1lI = _lIlllI(_lI1I1lI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new((-2 + 2), data.X + (-2 + 4), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (-2 + 4), (-2 + 2), (3 + 5)),
-             BackgroundColor3 = COLOR_TEXT_SOFT,
-             BorderSizePixel = (-2 + 2),
+             Position = UDim2.new((-3 + 3), data.X + (-3 + 5), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (-3 + 5), (-3 + 3), (4 + 4)),
+             BackgroundColor3 = _1IllllI,
+             BorderSizePixel = (-3 + 3),
              Rotation = data.Rotation,
-             ZIndex = (78 + 2),
+             ZIndex = (74 + 6),
              })
-             corner(line, (993 + 6))
-             expandLines[index] = line
+             _IllllI(_IllI1lI, (991 + 8))
+             _1I1I1lI[_1Il11lI] = _IllI1lI
              end
             
-             local toolsButton = make(queueCard, _0x3a75d1(59), {
-             AnchorPoint = Vector2.new((-2 + 3), (-2 + 2)),
-             Position = UDim2.new((-2 + 3), -(28 + 6), (-2 + 2), (33 + 5)),
-             Size = UDim2.new((-2 + 2), (13 + 2), (-2 + 2), (13 + 2)),
-             BackgroundColor3 = Color3.fromRGB((28 + 6), (68 + 2), (113 + 3)),
+             local _Il1I1lI = _lIlllI(_lI1lllI, _11IIlIllI(59), {
+             AnchorPoint = Vector2.new((-3 + 4), (-3 + 3)),
+             Position = UDim2.new((-3 + 4), -(25 + 9), (-3 + 3), (32 + 6)),
+             Size = UDim2.new((-3 + 3), (11 + 4), (-3 + 3), (11 + 4)),
+             BackgroundColor3 = Color3.fromRGB((25 + 9), (67 + 3), (109 + 7)),
              BackgroundTransparency = 0.18,
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (43 + 2),
+             ZIndex = (39 + 6),
              })
-             corner(toolsButton, (993 + 6))
-             stroke(toolsButton, Color3.fromRGB((113 + 5), (168 + 3), (238 + 4)), 0.48, (-2 + 3))
+             _IllllI(_Il1I1lI, (991 + 8))
+             _lllllI(_Il1I1lI, Color3.fromRGB((109 + 9), (165 + 6), (235 + 7)), 0.48, (-3 + 4))
             
-             for _, x in ipairs({ (-2 + 6), (3 + 5), (8 + 3) }) do
-             local dot = make(toolsButton, _0x3a75d1(51), {
+             for _, x in ipairs({ (-3 + 7), (4 + 4), (4 + 7) }) do
+             local _ll1I1lI = _lIlllI(_Il1I1lI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new((-2 + 2), x, 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (-2 + 4), (-2 + 2), (-2 + 4)),
-             BackgroundColor3 = COLOR_TEXT,
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (43 + 3),
+             Position = UDim2.new((-3 + 3), x, 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (-3 + 5), (-3 + 3), (-3 + 5)),
+             BackgroundColor3 = _lIllllI,
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (39 + 7),
              })
-             corner(dot, (993 + 6))
+             _IllllI(_ll1I1lI, (991 + 8))
              end
             
-             local toolsPanel = make(window, _0x3a75d1(51), {
-             Name = _0x3a75d1(77),
-             Position = UDim2.new((-2 + 2), (3 + 4), (-2 + 2), (218 + 4)),
-             Size = UDim2.new((-2 + 2), (193 + 3), (-2 + 2), (53 + 3)),
-             BackgroundColor3 = Color3.fromRGB((13 + 4), (33 + 6), (68 + 3)),
+             local _1l1I1lI = _lIlllI(_l1llllI, _11IIlIllI(51), {
+             Name = _11IIlIllI(77),
+             Position = UDim2.new((-3 + 3), (4 + 3), (-3 + 3), (214 + 8)),
+             Size = UDim2.new((-3 + 3), (193 + 3), (-3 + 3), (53 + 3)),
+             BackgroundColor3 = Color3.fromRGB((11 + 6), (32 + 7), (67 + 4)),
              BackgroundTransparency = 0.03,
-             BorderSizePixel = (-2 + 2),
+             BorderSizePixel = (-3 + 3),
              Visible = false,
              ClipsDescendants = true,
-             ZIndex = (78 + 2),
+             ZIndex = (74 + 6),
              })
-             corner(toolsPanel, (18 + 2))
-             stroke(toolsPanel, Color3.fromRGB((113 + 5), (168 + 3), (238 + 4)), 0.38, 1.25)
-             gradient(toolsPanel, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((43 + 6), (78 + 4), (123 + 5))},
-             {0.55, Color3.fromRGB((23 + 5), (53 + 4), (93 + 3))},
-             {(-2 + 3), Color3.fromRGB((13 + 5), (33 + 4), (63 + 4))},
+             _IllllI(_1l1I1lI, (11 + 9))
+             _lllllI(_1l1I1lI, Color3.fromRGB((109 + 9), (165 + 6), (235 + 7)), 0.38, 1.25)
+             _II1llI(_1l1I1lI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((46 + 3), (74 + 8), (123 + 5))},
+             {0.55, Color3.fromRGB((25 + 3), (53 + 4), (88 + 8))},
+             {(-3 + 4), Color3.fromRGB((11 + 7), (32 + 5), (60 + 7))},
              }, {
-             {(-2 + 2), 0.02},
-             {(-2 + 3), 0.06},
+             {(-3 + 3), 0.02},
+             {(-3 + 4), 0.06},
              })
             
-             local toolsStatus = make(toolsPanel, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 2), (108 + 4), (-2 + 2), (18 + 6)),
-             Size = UDim2.new((-2 + 2), (68 + 4), (-2 + 2), (3 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(18),
+             local _I11I1lI = _lIlllI(_1l1I1lI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 3), (109 + 3), (-3 + 3), (18 + 6)),
+             Size = UDim2.new((-3 + 3), (67 + 5), (-3 + 3), (4 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(18),
              Font = Enum.Font.Gotham,
-             TextSize = (3 + 4),
-             TextColor3 = Color3.fromRGB((158 + 2), (223 + 5), (178 + 2)),
+             TextSize = (4 + 3),
+             TextColor3 = Color3.fromRGB((151 + 9), (221 + 7), (172 + 8)),
              TextXAlignment = Enum.TextXAlignment.Right,
              TextTruncate = Enum.TextTruncate.AtEnd,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
             
-             local toolsMuteButton = make(toolsPanel, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (3 + 5), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (28 + 3), (-2 + 2), (13 + 4)),
-             BackgroundColor3 = Color3.fromRGB((28 + 6), (68 + 2), (113 + 3)),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(78),
+             local _l11I1lI = _lIlllI(_1l1I1lI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (4 + 4), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (25 + 6), (-3 + 3), (11 + 6)),
+             BackgroundColor3 = Color3.fromRGB((25 + 9), (67 + 3), (109 + 7)),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(78),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_TEXT,
+             TextSize = (4 + 4),
+             TextColor3 = _lIllllI,
              AutoButtonColor = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsMuteButton, (993 + 6))
+             _IllllI(_l11I1lI, (991 + 8))
             
-             local toolsScanButton = make(toolsPanel, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (38 + 5), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (28 + 3), (-2 + 2), (13 + 4)),
-             BackgroundColor3 = Color3.fromRGB((28 + 6), (68 + 2), (113 + 3)),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(79),
+             local _111I1lI = _lIlllI(_1l1I1lI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (39 + 4), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (25 + 6), (-3 + 3), (11 + 6)),
+             BackgroundColor3 = Color3.fromRGB((25 + 9), (67 + 3), (109 + 7)),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(79),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_TEXT,
+             TextSize = (4 + 4),
+             TextColor3 = _lIllllI,
              AutoButtonColor = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsScanButton, (993 + 6))
+             _IllllI(_111I1lI, (991 + 8))
             
-             local toolsHideButton = make(toolsPanel, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (73 + 5), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (28 + 3), (-2 + 2), (13 + 4)),
-             BackgroundColor3 = Color3.fromRGB((28 + 6), (68 + 2), (113 + 3)),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(80),
+             local _IIIl1lI = _lIlllI(_1l1I1lI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (74 + 4), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (25 + 6), (-3 + 3), (11 + 6)),
+             BackgroundColor3 = Color3.fromRGB((25 + 9), (67 + 3), (109 + 7)),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(80),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_TEXT,
+             TextSize = (4 + 4),
+             TextColor3 = _lIllllI,
              AutoButtonColor = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsHideButton, (993 + 6))
+             _IllllI(_IIIl1lI, (991 + 8))
             
-             local toolsVolumeLabel = make(toolsPanel, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 2), (108 + 4), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (23 + 5), (-2 + 2), (13 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(81),
+             local _lIIl1lI = _lIlllI(_1l1I1lI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 3), (109 + 3), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (25 + 3), (-3 + 3), (11 + 6)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(81),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_TEXT_SOFT,
-             ZIndex = (78 + 3),
+             TextSize = (4 + 4),
+             TextColor3 = _1IllllI,
+             ZIndex = (74 + 7),
              })
             
-             local toolsVolumeMinus = make(toolsPanel, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (138 + 5), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (13 + 5), (-2 + 2), (13 + 4)),
-             BackgroundColor3 = Color3.fromRGB((28 + 6), (68 + 2), (113 + 3)),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(82),
+             local _1IIl1lI = _lIlllI(_1l1I1lI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (137 + 6), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 7), (-3 + 3), (11 + 6)),
+             BackgroundColor3 = Color3.fromRGB((25 + 9), (67 + 3), (109 + 7)),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(82),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 6),
-             TextColor3 = COLOR_TEXT,
+             TextSize = (4 + 5),
+             TextColor3 = _lIllllI,
              AutoButtonColor = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsVolumeMinus, (993 + 6))
+             _IllllI(_1IIl1lI, (991 + 8))
             
-             local toolsVolumePlus = make(toolsPanel, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 2), (163 + 2), (-2 + 2), (3 + 4)),
-             Size = UDim2.new((-2 + 2), (13 + 5), (-2 + 2), (13 + 4)),
-             BackgroundColor3 = Color3.fromRGB((28 + 6), (68 + 2), (113 + 3)),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(83),
+             local _IlIl1lI = _lIlllI(_1l1I1lI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 3), (158 + 7), (-3 + 3), (4 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 7), (-3 + 3), (11 + 6)),
+             BackgroundColor3 = Color3.fromRGB((25 + 9), (67 + 3), (109 + 7)),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(83),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 6),
-             TextColor3 = COLOR_TEXT,
+             TextSize = (4 + 5),
+             TextColor3 = _lIllllI,
              AutoButtonColor = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsVolumePlus, (993 + 6))
+             _IllllI(_IlIl1lI, (991 + 8))
             
-             local toolsNameBox = make(toolsPanel, _0x3a75d1(70), {
-             Position = UDim2.new((-2 + 2), (3 + 5), (-2 + 2), (28 + 3)),
-             Size = UDim2.new((-2 + 2), (43 + 5), (-2 + 2), (13 + 3)),
-             BackgroundColor3 = Color3.fromRGB((8 + 5), (23 + 6), (48 + 4)),
-             BorderSizePixel = (-2 + 2),
-             PlaceholderText = _0x3a75d1(84),
-             PlaceholderColor3 = COLOR_TEXT_SOFT,
-             Text = _0x3a75d1(18),
-             TextColor3 = COLOR_TEXT,
+             local _llIl1lI = _lIlllI(_1l1I1lI, _11IIlIllI(70), {
+             Position = UDim2.new((-3 + 3), (4 + 4), (-3 + 3), (25 + 6)),
+             Size = UDim2.new((-3 + 3), (39 + 9), (-3 + 3), (11 + 5)),
+             BackgroundColor3 = Color3.fromRGB((4 + 9), (25 + 4), (46 + 6)),
+             BorderSizePixel = (-3 + 3),
+             PlaceholderText = _11IIlIllI(84),
+             PlaceholderColor3 = _1IllllI,
+             Text = _11IIlIllI(18),
+             TextColor3 = _lIllllI,
              Font = Enum.Font.Gotham,
-             TextSize = (3 + 5),
+             TextSize = (4 + 4),
              ClearTextOnFocus = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsNameBox, (993 + 6))
-             padding(toolsNameBox, (3 + 3), (3 + 3), (-2 + 2), (-2 + 2))
+             _IllllI(_llIl1lI, (991 + 8))
+             _1llllI(_llIl1lI, (-3 + 9), (-3 + 9), (-3 + 3), (-3 + 3))
             
-             local toolsIdBox = make(toolsPanel, _0x3a75d1(70), {
-             Position = UDim2.new((-2 + 2), (58 + 2), (-2 + 2), (28 + 3)),
-             Size = UDim2.new((-2 + 2), (88 + 3), (-2 + 2), (13 + 3)),
-             BackgroundColor3 = Color3.fromRGB((8 + 5), (23 + 6), (48 + 4)),
-             BorderSizePixel = (-2 + 2),
-             PlaceholderText = _0x3a75d1(85),
-             PlaceholderColor3 = COLOR_TEXT_SOFT,
-             Text = _0x3a75d1(18),
-             TextColor3 = COLOR_TEXT,
+             local _1lIl1lI = _lIlllI(_1l1I1lI, _11IIlIllI(70), {
+             Position = UDim2.new((-3 + 3), (53 + 7), (-3 + 3), (25 + 6)),
+             Size = UDim2.new((-3 + 3), (88 + 3), (-3 + 3), (11 + 5)),
+             BackgroundColor3 = Color3.fromRGB((4 + 9), (25 + 4), (46 + 6)),
+             BorderSizePixel = (-3 + 3),
+             PlaceholderText = _11IIlIllI(85),
+             PlaceholderColor3 = _1IllllI,
+             Text = _11IIlIllI(18),
+             TextColor3 = _lIllllI,
              Font = Enum.Font.Gotham,
-             TextSize = (3 + 5),
+             TextSize = (4 + 4),
              ClearTextOnFocus = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsIdBox, (993 + 6))
-             padding(toolsIdBox, (3 + 3), (3 + 3), (-2 + 2), (-2 + 2))
+             _IllllI(_1lIl1lI, (991 + 8))
+             _1llllI(_1lIl1lI, (-3 + 9), (-3 + 9), (-3 + 3), (-3 + 3))
             
-             local toolsAddButton = make(toolsPanel, _0x3a75d1(59), {
-             Position = UDim2.new((-2 + 3), -(38 + 3), (-2 + 2), (28 + 3)),
-             Size = UDim2.new((-2 + 2), (28 + 5), (-2 + 2), (13 + 3)),
-             BackgroundColor3 = Color3.fromRGB((38 + 6), (93 + 5), (163 + 2)),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(83),
+             local _I1Il1lI = _lIlllI(_1l1I1lI, _11IIlIllI(59), {
+             Position = UDim2.new((-3 + 4), -(32 + 9), (-3 + 3), (25 + 6)),
+             Size = UDim2.new((-3 + 3), (25 + 8), (-3 + 3), (11 + 5)),
+             BackgroundColor3 = Color3.fromRGB((39 + 5), (95 + 3), (158 + 7)),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(83),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_TEXT,
+             TextSize = (4 + 4),
+             TextColor3 = _lIllllI,
              AutoButtonColor = false,
-             ZIndex = (78 + 3),
+             ZIndex = (74 + 7),
              })
-             corner(toolsAddButton, (993 + 6))
+             _IllllI(_I1Il1lI, (991 + 8))
             
-             local miniButton
-             local miniIcon
-             local miniFallback
+             local _l1Il1lI
+             local _11Il1lI
+             local _IIll1lI
             
-             local sound = make(SoundService, _0x3a75d1(29), {
-             Name = playerName .. _0x3a75d1(29),
+             local _lIll1lI = _lIlllI(_1l1lI, _11IIlIllI(29), {
+             Name = _1II1lI .. _11IIlIllI(29),
              Volume = 0.5,
              Looped = false,
              })
             
-             local currentSongIndex = #songs > (-2 + 2) and (-2 + 3) or (-2 + 2)
-             local activeLibraryView = _0x3a75d1(86)
-             local currentPlaybackMode = _0x3a75d1(86)
-             local isPlaying = false
-             local isMuted = false
-             local savedVolume = 0.5
-             local isChangingSong = false
-             local isScrubbing = false
-             local visualizerPhase = (-2 + 2)
-             local compactMode = false
-             local toolsOpen = false
-             local scrollDragging = false
-             local scrollDragStartY = (-2 + 2)
-             local scrollDragStartCanvas = (-2 + 2)
+             local _1Ill1lI = #_I1IIllI > (-3 + 3) and (-3 + 4) or (-3 + 3)
+             local _Illl1lI = _11IIlIllI(86)
+             local _llll1lI = _11IIlIllI(86)
+             local _1lll1lI = false
+             local _I1ll1lI = false
+             local _l1ll1lI = 0.5
+             local _11ll1lI = false
+             local _II1l1lI = false
+             local _lI1l1lI = (-3 + 3)
+             local _1I1l1lI = false
+             local _Il1l1lI = false
+             local _ll1l1lI = false
+             local _1l1l1lI = (-3 + 3)
+             local _I11l1lI = (-3 + 3)
             
-             local function formatTime(seconds)
-             if not seconds or seconds < (-2 + 2) then
-             return _0x3a75d1(60)
+             local function _l11l1lI(seconds)
+             if not seconds or seconds < (-3 + 3) then
+             return _11IIlIllI(60)
              end
-             return string.format(_0x3a75d1(87), math.floor(seconds / (58 + 2)), math.floor(seconds % (58 + 2)))
+             return string.format(_11IIlIllI(87), math.floor(seconds / (53 + 7)), math.floor(seconds % (53 + 7)))
              end
             
-             local function updatePlayButton()
-             if isPlaying then
-             playIcon.Image = _0x3a75d1(88)
-             playIcon.Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2))
-             playFallback.Text = _0x3a75d1(89)
-             playFallback.Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2))
-             playFallback.TextSize = (8 + 2)
+             local function _111l1lI()
+             if _1lll1lI then
+             _lIII1lI.Image = _11IIlIllI(88)
+             _lIII1lI.Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3))
+             _IIII1lI.Text = _11IIlIllI(89)
+             _IIII1lI.Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3))
+             _IIII1lI.TextSize = (4 + 6)
              else
-             playIcon.Image = _0x3a75d1(67)
-             playIcon.Position = UDim2.new(0.5, (-2 + 3), 0.5, (-2 + 2))
-             playFallback.Text = _0x3a75d1(66)
-             playFallback.Position = UDim2.new(0.5, (-2 + 3), 0.5, (-2 + 2))
-             playFallback.TextSize = (8 + 4)
+             _lIII1lI.Image = _11IIlIllI(67)
+             _lIII1lI.Position = UDim2.new(0.5, (-3 + 4), 0.5, (-3 + 3))
+             _IIII1lI.Text = _11IIlIllI(66)
+             _IIII1lI.Position = UDim2.new(0.5, (-3 + 4), 0.5, (-3 + 3))
+             _IIII1lI.TextSize = (4 + 8)
              end
-             playIcon.ImageColor3 = COLOR_ACCENT_BRIGHT
-             playFallback.TextColor3 = COLOR_ACCENT_BRIGHT
-             end
-            
-             local function setVolume(value)
-             value = math.clamp(tonumber(value) or (-2 + 2), (-2 + 2), (-2 + 3))
-             savedVolume = value
-             sound.Volume = isMuted and (-2 + 2) or value
-             if toolsVolumeLabel and toolsVolumeLabel.Parent then
-             toolsVolumeLabel.Text = tostring(math.floor(value * (98 + 2) + 0.5)) .. _0x3a75d1(90)
-             end
+             _lIII1lI.ImageColor3 = _11IlllI
+             _IIII1lI.TextColor3 = _11IlllI
              end
             
-             local function setMuted(state)
-             isMuted = state == true
-             sound.Volume = isMuted and (-2 + 2) or savedVolume
+             local function _III11lI(value)
+             value = math.clamp(tonumber(value) or (-3 + 3), (-3 + 3), (-3 + 4))
+             _l1ll1lI = value
+             _lIll1lI.Volume = _I1ll1lI and (-3 + 3) or value
+             if _lIIl1lI and _lIIl1lI.Parent then
+             _lIIl1lI.Text = tostring(math.floor(value * (95 + 5) + 0.5)) .. _11IIlIllI(90)
+             end
              end
             
-             local function setToolsStatus(message, color)
-             toolsStatus.Text = message or _0x3a75d1(18)
+             local function _lII11lI(state)
+             _I1ll1lI = state == true
+             _lIll1lI.Volume = _I1ll1lI and (-3 + 3) or _l1ll1lI
+             end
+            
+             local function _1II11lI(message, color)
+             _I11I1lI.Text = message or _11IIlIllI(18)
              if color then
-             toolsStatus.TextColor3 = color
+             _I11I1lI.TextColor3 = color
              end
-             if message and message ~= _0x3a75d1(18) then
+             if message and message ~= _11IIlIllI(18) then
              task.delay(2.4, function()
-             if toolsStatus and toolsStatus.Parent and toolsStatus.Text == message then
-             toolsStatus.Text = _0x3a75d1(18)
+             if _I11I1lI and _I11I1lI.Parent and _I11I1lI.Text == message then
+             _I11I1lI.Text = _11IIlIllI(18)
              end
              end)
              end
              end
             
-             local function resolveSongSoundId(song)
-             if not song then
-             return nil, _0x3a75d1(91)
+             local function _IlI11lI(_IlIIIllI)
+             if not _IlIIIllI then
+             return nil, _11IIlIllI(91)
              end
-             if not song.IsFile then
-             return song.Id, nil
+             if not _IlIIIllI.IsFile then
+             return _IlIIIllI.Id, nil
              end
-             if song.CanPlay == false then
-             return nil, _0x3a75d1(92)
+             if _IlIIIllI.CanPlay == false then
+             return nil, _11IIlIllI(92)
              end
-             if song.Id and song.Id ~= _0x3a75d1(18) then
-             return song.Id, nil
+             if _IlIIIllI.Id and _IlIIIllI.Id ~= _11IIlIllI(18) then
+             return _IlIIIllI.Id, nil
              end
-             if song.RawPath then
-             local resolved = resolveLocalAudio(song.RawPath)
-             if resolved then
-             song.Id = resolved
-             return resolved, nil
-             end
-             end
-             return nil, _0x3a75d1(93)
-             end
-            
-             local rebuildQueue
-             local playSong
-            
-             local function exploreSongIndexes()
-             local order = {}
-             for index, song in ipairs(songs) do
-             if not song.IsDefault then
-             table.insert(order, index)
+             if _IlIIIllI.RawPath then
+             local _llI11lI = _1l11lI(_IlIIIllI.RawPath)
+             if _llI11lI then
+             _IlIIIllI.Id = _llI11lI
+             return _llI11lI, nil
              end
              end
-             for index, song in ipairs(songs) do
-             if song.IsDefault then
-             table.insert(order, index)
-             end
-             end
-             return order
+             return nil, _11IIlIllI(93)
              end
             
-             local function playlistSongIndexes()
-             local indexesByKey = {}
-             for index, song in ipairs(songs) do
-             local key = songKey(song)
-             if key and not indexesByKey[key] then
-             indexesByKey[key] = index
+             local _1lI11lI
+             local _I1I11lI
+            
+             local function _l1I11lI()
+             local _11I11lI = {}
+             for _1Il11lI, _IlIIIllI in ipairs(_I1IIllI) do
+             if not _IlIIIllI.IsDefault then
+             table.insert(_11I11lI, _1Il11lI)
+             end
+             end
+             for _1Il11lI, _IlIIIllI in ipairs(_I1IIllI) do
+             if _IlIIIllI.IsDefault then
+             table.insert(_11I11lI, _1Il11lI)
+             end
+             end
+             return _11I11lI
+             end
+            
+             local function _IIl11lI()
+             local _lIl11lI = {}
+             for _1Il11lI, _IlIIIllI in ipairs(_I1IIllI) do
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             if _I1lIllI and not _lIl11lI[_I1lIllI] then
+             _lIl11lI[_I1lIllI] = _1Il11lI
              end
              end
             
-             local order = {}
-             for _, key in ipairs(playlistKeys) do
-             local index = indexesByKey[key]
-             if index then
-             table.insert(order, index)
+             local _11I11lI = {}
+             for _, _I1lIllI in ipairs(_1IlIllI) do
+             local _1Il11lI = _lIl11lI[_I1lIllI]
+             if _1Il11lI then
+             table.insert(_11I11lI, _1Il11lI)
              end
              end
-             return order
-             end
-            
-             local function visibleSongIndexes()
-             if activeLibraryView == _0x3a75d1(86) then
-             return playlistSongIndexes()
-             end
-             return exploreSongIndexes()
+             return _11I11lI
              end
             
-             local function isSongInPlaylist(song)
-             local key = songKey(song)
-             return key and table.find(playlistKeys, key) ~= nil or false
+             local function _Ill11lI()
+             if _Illl1lI == _11IIlIllI(86) then
+             return _IIl11lI()
+             end
+             return _l1I11lI()
              end
             
-             local function addSongToPlaylist(song, keepAutoPopulate)
-             local key = songKey(song)
-             if not key or table.find(playlistKeys, key) then
+             local function _lll11lI(_IlIIIllI)
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             return _I1lIllI and table.find(_1IlIllI, _I1lIllI) ~= nil or false
+             end
+            
+             local function _1ll11lI(_IlIIIllI, keepAutoPopulate)
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             if not _I1lIllI or table.find(_1IlIllI, _I1lIllI) then
              return false
              end
              if not keepAutoPopulate then
-             playlistAutoPopulate = false
+             _lllIllI = false
              end
-             table.insert(playlistKeys, key)
-             savePlaylist()
+             table.insert(_1IlIllI, _I1lIllI)
+             _lI1IllI()
              return true
              end
             
-             local function removeSongFromPlaylist(song)
-             local key = songKey(song)
-             local position = key and table.find(playlistKeys, key) or nil
-             if not position then
+             local function _I1l11lI(_IlIIIllI)
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             local _l1l11lI = _I1lIllI and table.find(_1IlIllI, _I1lIllI) or nil
+             if not _l1l11lI then
              return false
              end
-             playlistAutoPopulate = false
-             table.remove(playlistKeys, position)
-             savePlaylist()
+             _lllIllI = false
+             table.remove(_1IlIllI, _l1l11lI)
+             _lI1IllI()
              return true
              end
             
-             local function updateLibraryTabs()
-             local playlistActive = activeLibraryView == _0x3a75d1(86)
-             playlistTabButton.TextColor3 = playlistActive and COLOR_ACCENT or COLOR_TEXT_SOFT
-             exploreTabButton.TextColor3 = playlistActive and COLOR_TEXT_SOFT or COLOR_ACCENT
-             tabIndicator.Position = playlistActive and UDim2.new((-2 + 2), (8 + 4), (-2 + 2), (48 + 5)) or UDim2.new((-2 + 2), (73 + 2), (-2 + 2), (48 + 5))
-             tabIndicator.Size = playlistActive and UDim2.new((-2 + 2), (43 + 3), (-2 + 2), (-2 + 3)) or UDim2.new((-2 + 2), (38 + 4), (-2 + 2), (-2 + 3))
+             local function _11l11lI()
+             local _II111lI = _Illl1lI == _11IIlIllI(86)
+             _IlII1lI.TextColor3 = _II111lI and _l1IlllI or _1IllllI
+             _llII1lI.TextColor3 = _II111lI and _1IllllI or _l1IlllI
+             _1lII1lI.Position = _II111lI and UDim2.new((-3 + 3), (4 + 8), (-3 + 3), (46 + 7)) or UDim2.new((-3 + 3), (67 + 8), (-3 + 3), (46 + 7))
+             _1lII1lI.Size = _II111lI and UDim2.new((-3 + 3), (39 + 7), (-3 + 3), (-3 + 4)) or UDim2.new((-3 + 3), (39 + 3), (-3 + 3), (-3 + 4))
              end
             
-             local function adjacentSongIndex(step)
-             local order = currentPlaybackMode == _0x3a75d1(86) and playlistSongIndexes() or exploreSongIndexes()
-             if #order == (-2 + 2) and currentPlaybackMode == _0x3a75d1(86) then
-             order = exploreSongIndexes()
+             local function _lI111lI(step)
+             local _11I11lI = _llll1lI == _11IIlIllI(86) and _IIl11lI() or _l1I11lI()
+             if #_11I11lI == (-3 + 3) and _llll1lI == _11IIlIllI(86) then
+             _11I11lI = _l1I11lI()
              end
-             if #order == (-2 + 2) then
+             if #_11I11lI == (-3 + 3) then
              return nil
              end
             
-             local position = table.find(order, currentSongIndex)
-             if not position then
-             return step >= (-2 + 2) and order[(-2 + 3)] or order[#order]
+             local _l1l11lI = table.find(_11I11lI, _1Ill1lI)
+             if not _l1l11lI then
+             return step >= (-3 + 3) and _11I11lI[(-3 + 4)] or _11I11lI[#_11I11lI]
              end
-             return order[((position - (-2 + 3) + step) % #order) + (-2 + 3)]
+             return _11I11lI[((_l1l11lI - (-3 + 4) + step) % #_11I11lI) + (-3 + 4)]
              end
             
-             local function updateCustomScrollbar()
-             if not queueList.Parent or not scrollTrack.Parent then
+             local function _1I111lI()
+             if not _11II1lI.Parent or not _lllI1lI.Parent then
              return
              end
             
-             local viewportHeight = queueList.AbsoluteSize.Y
-             local contentHeight = queueLayout.AbsoluteContentSize.Y
-             local trackHeight = scrollTrack.AbsoluteSize.Y
-             if viewportHeight <= (-2 + 2) or trackHeight <= (-2 + 2) then
+             local _Il111lI = _11II1lI.AbsoluteSize.Y
+             local _ll111lI = _IIlI1lI.AbsoluteContentSize.Y
+             local _1l111lI = _lllI1lI.AbsoluteSize.Y
+             if _Il111lI <= (-3 + 3) or _1l111lI <= (-3 + 3) then
              return
              end
             
-             local maxCanvas = math.max(contentHeight - viewportHeight, (-2 + 2))
-             if maxCanvas <= (-2 + 2) then
-             scrollThumb.Visible = false
-             scrollUpButton.TextTransparency = 0.55
-             scrollDownButton.TextTransparency = 0.55
-             queueList.CanvasPosition = Vector2.new((-2 + 2), (-2 + 2))
+             local _I1111lI = math.max(_ll111lI - _Il111lI, (-3 + 3))
+             if _I1111lI <= (-3 + 3) then
+             _1llI1lI.Visible = false
+             _lIlI1lI.TextTransparency = 0.55
+             _I1lI1lI.TextTransparency = 0.55
+             _11II1lI.CanvasPosition = Vector2.new((-3 + 3), (-3 + 3))
              return
              end
             
-             scrollThumb.Visible = true
-             scrollUpButton.TextTransparency = (-2 + 2)
-             scrollDownButton.TextTransparency = (-2 + 2)
+             _1llI1lI.Visible = true
+             _lIlI1lI.TextTransparency = (-3 + 3)
+             _I1lI1lI.TextTransparency = (-3 + 3)
             
-             local thumbHeight = math.clamp(trackHeight * (viewportHeight / math.max(contentHeight, (-2 + 3))), (28 + 6), trackHeight)
-             local travel = math.max(trackHeight - thumbHeight, (-2 + 2))
-             local ratio = math.clamp(queueList.CanvasPosition.Y / maxCanvas, (-2 + 2), (-2 + 3))
-             scrollThumb.Size = UDim2.new((-2 + 2), (3 + 4), (-2 + 2), thumbHeight)
-             scrollThumb.Position = UDim2.new((-2 + 2), -(-2 + 3), (-2 + 2), ratio * travel)
+             local _l1111lI = math.clamp(_1l111lI * (_Il111lI / math.max(_ll111lI, (-3 + 4))), (25 + 9), _1l111lI)
+             local _11111lI = math.max(_1l111lI - _l1111lI, (-3 + 3))
+             local _IIIIIllI = math.clamp(_11II1lI.CanvasPosition.Y / _I1111lI, (-3 + 3), (-3 + 4))
+             _1llI1lI.Size = UDim2.new((-3 + 3), (4 + 3), (-3 + 3), _l1111lI)
+             _1llI1lI.Position = UDim2.new((-3 + 3), -(-3 + 4), (-3 + 3), _IIIIIllI * _11111lI)
              end
             
-             rebuildQueue = function()
-             for _, child in ipairs(queueList:GetChildren()) do
-             if child:IsA(_0x3a75d1(51)) and child.Name == _0x3a75d1(94) then
+             _1lI11lI = function()
+             for _, child in ipairs(_11II1lI:GetChildren()) do
+             if child:IsA(_11IIlIllI(51)) and child.Name == _11IIlIllI(94) then
              child:Destroy()
              end
              end
             
-             updateLibraryTabs()
-             local query = searchBox.Text:lower():match(_0x3a75d1(95)) or _0x3a75d1(18)
-             local visibleCount = (-2 + 2)
+             _11l11lI()
+             local _lIIIIllI = _I1II1lI.Text:lower():match(_11IIlIllI(95)) or _11IIlIllI(18)
+             local _1IIIIllI = (-3 + 3)
             
-             for _, index in ipairs(visibleSongIndexes()) do
-             local song = songs[index]
-             local matchesSearch = query == _0x3a75d1(18) or song.Name:lower():find(query, (-2 + 3), true) ~= nil
-             if matchesSearch then
-             visibleCount = visibleCount + (-2 + 3)
-             local layoutOrder = visibleCount
-             local isCurrent = index == currentSongIndex
-             local canPlay = song.CanPlay ~= false
-             local inPlaylist = isSongInPlaylist(song)
+             for _, _1Il11lI in ipairs(_Ill11lI()) do
+             local _IlIIIllI = _I1IIllI[_1Il11lI]
+             local _llIIIllI = _lIIIIllI == _11IIlIllI(18) or _IlIIIllI.Name:lower():find(_lIIIIllI, (-3 + 4), true) ~= nil
+             if _llIIIllI then
+             _1IIIIllI = _1IIIIllI + (-3 + 4)
+             local _1lIIIllI = _1IIIIllI
+             local _I1IIIllI = _1Il11lI == _1Ill1lI
+             local _l1IIIllI = _IlIIIllI.CanPlay ~= false
+             local _11IIIllI = _lll11lI(_IlIIIllI)
             
-             local row = make(queueList, _0x3a75d1(51), {
-             Name = _0x3a75d1(94),
-             LayoutOrder = layoutOrder,
-             Size = UDim2.new((-2 + 2), (148 + 5), (-2 + 2), (13 + 3)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (38 + 5),
+             local _IIlIIllI = _lIlllI(_11II1lI, _11IIlIllI(51), {
+             Name = _11IIlIllI(94),
+             LayoutOrder = _1lIIIllI,
+             Size = UDim2.new((-3 + 3), (144 + 9), (-3 + 3), (11 + 5)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (39 + 4),
              })
             
-             make(row, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 2), (-2 + 2), (-2 + 2), (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (8 + 4), (-2 + 3), (-2 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             Text = _0x3a75d1(96),
+             _lIlllI(_IIlIIllI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 3), (-3 + 3), (-3 + 3), (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (4 + 8), (-3 + 4), (-3 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _11IIlIllI(96),
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 6),
-             TextColor3 = isCurrent and COLOR_ACCENT_BRIGHT or Color3.fromRGB((183 + 4), (188 + 6), (198 + 6)),
+             TextSize = (4 + 5),
+             TextColor3 = _I1IIIllI and _11IlllI or Color3.fromRGB((179 + 8), (186 + 8), (200 + 4)),
              TextXAlignment = Enum.TextXAlignment.Left,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
             
-             make(row, _0x3a75d1(56), {
-             Position = UDim2.new((-2 + 2), (8 + 5), (-2 + 2), (-2 + 2)),
-             Size = UDim2.new((-2 + 3), -(28 + 6), (-2 + 3), (-2 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             Text = song.Name,
+             _lIlllI(_IIlIIllI, _11IIlIllI(56), {
+             Position = UDim2.new((-3 + 3), (4 + 9), (-3 + 3), (-3 + 3)),
+             Size = UDim2.new((-3 + 4), -(25 + 9), (-3 + 4), (-3 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _IlIIIllI.Name,
              Font = Enum.Font.GothamBold,
-             TextSize = (3 + 4),
-             TextColor3 = canPlay and COLOR_TEXT or Color3.fromRGB((138 + 6), (143 + 6), (153 + 5)),
+             TextSize = (4 + 3),
+             TextColor3 = _l1IIIllI and _lIllllI or Color3.fromRGB((137 + 7), (144 + 5), (151 + 7)),
              TextXAlignment = Enum.TextXAlignment.Left,
              TextTruncate = Enum.TextTruncate.AtEnd,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
             
-             local selectButton = make(row, _0x3a75d1(59), {
-             Size = UDim2.new((-2 + 3), -(18 + 4), (-2 + 3), (-2 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             local _lIlIIllI = _lIlllI(_IIlIIllI, _11IIlIllI(59), {
+             Size = UDim2.new((-3 + 4), -(18 + 4), (-3 + 4), (-3 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             ZIndex = (43 + 2),
+             ZIndex = (39 + 6),
              })
             
-             local playlistActionButton = make(row, _0x3a75d1(59), {
-             AnchorPoint = Vector2.new((-2 + 3), (-2 + 2)),
-             Position = UDim2.new((-2 + 3), (-2 + 2), (-2 + 2), (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (18 + 2), (-2 + 3), (-2 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Text = activeLibraryView == _0x3a75d1(86) and _0x3a75d1(97) or (inPlaylist and _0x3a75d1(98) or _0x3a75d1(83)),
+             local _1IlIIllI = _lIlllI(_IIlIIllI, _11IIlIllI(59), {
+             AnchorPoint = Vector2.new((-3 + 4), (-3 + 3)),
+             Position = UDim2.new((-3 + 4), (-3 + 3), (-3 + 3), (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 9), (-3 + 4), (-3 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Text = _Illl1lI == _11IIlIllI(86) and _11IIlIllI(97) or (_11IIIllI and _11IIlIllI(98) or _11IIlIllI(83)),
              Font = Enum.Font.GothamBold,
-             TextSize = activeLibraryView == _0x3a75d1(86) and (8 + 3) or (3 + 6),
-             TextColor3 = inPlaylist and COLOR_ACCENT or COLOR_TEXT_SOFT,
+             TextSize = _Illl1lI == _11IIlIllI(86) and (4 + 7) or (4 + 5),
+             TextColor3 = _11IIIllI and _l1IlllI or _1IllllI,
              AutoButtonColor = false,
-             ZIndex = (43 + 4),
+             ZIndex = (39 + 8),
              })
             
-             connect(selectButton.MouseButton1Click, function()
-             local liveIndex = table.find(songs, song)
-             if liveIndex then
-             currentPlaybackMode = activeLibraryView
-             playSong(liveIndex, true)
+             _lIl1lI(_lIlIIllI.MouseButton1Click, function()
+             local _IllIIllI = table.find(_I1IIllI, _IlIIIllI)
+             if _IllIIllI then
+             _llll1lI = _Illl1lI
+             _I1I11lI(_IllIIllI, true)
              end
              end)
             
-             connect(playlistActionButton.MouseButton1Click, function()
-             if activeLibraryView == _0x3a75d1(86) then
-             removeSongFromPlaylist(song)
-             elseif not isSongInPlaylist(song) then
-             addSongToPlaylist(song)
+             _lIl1lI(_1IlIIllI.MouseButton1Click, function()
+             if _Illl1lI == _11IIlIllI(86) then
+             _I1l11lI(_IlIIIllI)
+             elseif not _lll11lI(_IlIIIllI) then
+             _1ll11lI(_IlIIIllI)
              end
-             rebuildQueue()
+             _1lI11lI()
              end)
             
-             connect(selectButton.MouseEnter, function()
-             TweenService:Create(row, TweenInfo.new(0.12), {
+             _lIl1lI(_lIlIIllI.MouseEnter, function()
+             _lI1lI:Create(_IIlIIllI, TweenInfo.new(0.12), {
              BackgroundTransparency = 0.88,
-             BackgroundColor3 = Color3.fromRGB((58 + 5), (93 + 4), (143 + 3)),
+             BackgroundColor3 = Color3.fromRGB((60 + 3), (88 + 9), (137 + 9)),
              }):Play()
              end)
             
-             connect(selectButton.MouseLeave, function()
-             TweenService:Create(row, TweenInfo.new(0.12), {
-             BackgroundTransparency = (-2 + 3),
+             _lIl1lI(_lIlIIllI.MouseLeave, function()
+             _lI1lI:Create(_IIlIIllI, TweenInfo.new(0.12), {
+             BackgroundTransparency = (-3 + 4),
              }):Play()
              end)
              end
              end
             
-             if visibleCount == (-2 + 2) then
-             local emptyRow = make(queueList, _0x3a75d1(51), {
-             Name = _0x3a75d1(94),
-             LayoutOrder = (-2 + 3),
-             Size = UDim2.new((-2 + 2), (148 + 5), (-2 + 2), (28 + 4)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (38 + 5),
+             if _1IIIIllI == (-3 + 3) then
+             local _lllIIllI = _lIlllI(_11II1lI, _11IIlIllI(51), {
+             Name = _11IIlIllI(94),
+             LayoutOrder = (-3 + 4),
+             Size = UDim2.new((-3 + 3), (144 + 9), (-3 + 3), (25 + 7)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (39 + 4),
              })
             
-             make(emptyRow, _0x3a75d1(56), {
-             Size = UDim2.new((-2 + 3), (-2 + 2), (-2 + 3), (-2 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             Text = query ~= _0x3a75d1(18) and _0x3a75d1(99) or (activeLibraryView == _0x3a75d1(86) and _0x3a75d1(100) or _0x3a75d1(99)),
+             _lIlllI(_lllIIllI, _11IIlIllI(56), {
+             Size = UDim2.new((-3 + 4), (-3 + 3), (-3 + 4), (-3 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             Text = _lIIIIllI ~= _11IIlIllI(18) and _11IIlIllI(99) or (_Illl1lI == _11IIlIllI(86) and _11IIlIllI(100) or _11IIlIllI(99)),
              Font = Enum.Font.Gotham,
-             TextSize = (3 + 5),
-             TextColor3 = COLOR_TEXT_SOFT,
+             TextSize = (4 + 4),
+             TextColor3 = _1IllllI,
              TextWrapped = true,
-             ZIndex = (38 + 6),
+             ZIndex = (39 + 5),
              })
              end
             
-             task.defer(updateCustomScrollbar)
+             task.defer(_1I111lI)
              end
             
-             playSong = function(index, autoPlay)
-             if #songs == (-2 + 2) then
-             return false, _0x3a75d1(58)
+             _I1I11lI = function(_1Il11lI, autoPlay)
+             if #_I1IIllI == (-3 + 3) then
+             return false, _11IIlIllI(58)
              end
             
-             index = math.clamp(tonumber(index) or (-2 + 3), (-2 + 3), #songs)
-             isChangingSong = true
-             currentSongIndex = index
+             _1Il11lI = math.clamp(tonumber(_1Il11lI) or (-3 + 4), (-3 + 4), #_I1IIllI)
+             _11ll1lI = true
+             _1Ill1lI = _1Il11lI
             
-             local song = songs[index]
-             local soundId, errorMessage = resolveSongSoundId(song)
+             local _IlIIIllI = _I1IIllI[_1Il11lI]
+             local _1llIIllI, errorMessage = _IlI11lI(_IlIIIllI)
             
-             sound:Stop()
-             sound.TimePosition = (-2 + 2)
-             progressFill.Size = UDim2.new((-2 + 2), (-2 + 2), (-2 + 3), (-2 + 2))
-             progressThumb.Position = UDim2.new((-2 + 2), (-2 + 2), 0.5, (-2 + 2))
-             currentTimeLabel.Text = _0x3a75d1(60)
-             totalTimeLabel.Text = _0x3a75d1(60)
+             _lIll1lI:Stop()
+             _lIll1lI.TimePosition = (-3 + 3)
+             _lIl1llI.Size = UDim2.new((-3 + 3), (-3 + 3), (-3 + 4), (-3 + 3))
+             _1Il1llI.Position = UDim2.new((-3 + 3), (-3 + 3), 0.5, (-3 + 3))
+             _lll1llI.Text = _11IIlIllI(60)
+             _1ll1llI.Text = _11IIlIllI(60)
             
-             if not soundId then
-             songNameLabel.Text = errorMessage or _0x3a75d1(101)
-             isPlaying = false
-             updatePlayButton()
-             rebuildQueue()
-             isChangingSong = false
+             if not _1llIIllI then
+             _1II1llI.Text = errorMessage or _11IIlIllI(101)
+             _1lll1lI = false
+             _111l1lI()
+             _1lI11lI()
+             _11ll1lI = false
              return false, errorMessage
              end
             
-             local assigned = pcall(function()
-             sound.SoundId = soundId
+             local _I1lIIllI = pcall(function()
+             _lIll1lI.SoundId = _1llIIllI
              end)
-             if not assigned then
-             songNameLabel.Text = _0x3a75d1(102)
-             isPlaying = false
-             updatePlayButton()
-             rebuildQueue()
-             isChangingSong = false
-             return false, _0x3a75d1(102)
+             if not _I1lIIllI then
+             _1II1llI.Text = _11IIlIllI(102)
+             _1lll1lI = false
+             _111l1lI()
+             _1lI11lI()
+             _11ll1lI = false
+             return false, _11IIlIllI(102)
              end
             
-             songNameLabel.Text = song.Name
-             rebuildQueue()
+             _1II1llI.Text = _IlIIIllI.Name
+             _1lI11lI()
             
              if autoPlay then
-             isPlaying = true
-             updatePlayButton()
+             _1lll1lI = true
+             _111l1lI()
              task.spawn(function()
              pcall(function()
-             if not sound.IsLoaded then
-             sound.Loaded:Wait()
+             if not _lIll1lI.IsLoaded then
+             _lIll1lI.Loaded:Wait()
              end
-             if destroyed or currentSongIndex ~= index then
+             if _IIl1lI or _1Ill1lI ~= _1Il11lI then
              return
              end
-             sound.TimePosition = (-2 + 2)
-             sound:Play()
+             _lIll1lI.TimePosition = (-3 + 3)
+             _lIll1lI:Play()
              end)
              end)
              else
-             isPlaying = false
-             updatePlayButton()
+             _1lll1lI = false
+             _111l1lI()
              end
             
              task.defer(function()
-             isChangingSong = false
+             _11ll1lI = false
              end)
              return true
              end
             
-             local function ratioFromTrack(track, inputPosition)
-             local width = track.AbsoluteSize.X
-             if width <= (-2 + 2) then
-             return (-2 + 2)
+             local function _l1lIIllI(track, inputPosition)
+             local _11lIIllI = track.AbsoluteSize.X
+             if _11lIIllI <= (-3 + 3) then
+             return (-3 + 3)
              end
-             return math.clamp((inputPosition.X - track.AbsolutePosition.X) / width, (-2 + 2), (-2 + 3))
-             end
-            
-             local function seekTo(ratio)
-             if sound.IsLoaded and sound.TimeLength and sound.TimeLength > (-2 + 2) then
-             ratio = math.clamp(ratio, (-2 + 2), (-2 + 3))
-             sound.TimePosition = ratio * sound.TimeLength
-             progressFill.Size = UDim2.new(ratio, (-2 + 2), (-2 + 3), (-2 + 2))
-             progressThumb.Position = UDim2.new(ratio, (-2 + 2), 0.5, (-2 + 2))
-             currentTimeLabel.Text = formatTime(sound.TimePosition)
-             end
+             return math.clamp((inputPosition.X - track.AbsolutePosition.X) / _11lIIllI, (-3 + 3), (-3 + 4))
              end
             
-             local function setCompactMode(state)
-             compactMode = state == true
-             queueHolder.Visible = not compactMode
-             expandButton.Visible = compactMode
-             if compactMode then
-             toolsPanel.Visible = false
-             elseif toolsOpen then
-             toolsPanel.Visible = true
+             local function _II1IIllI(_IIIIIllI)
+             if _lIll1lI.IsLoaded and _lIll1lI.TimeLength and _lIll1lI.TimeLength > (-3 + 3) then
+             _IIIIIllI = math.clamp(_IIIIIllI, (-3 + 3), (-3 + 4))
+             _lIll1lI.TimePosition = _IIIIIllI * _lIll1lI.TimeLength
+             _lIl1llI.Size = UDim2.new(_IIIIIllI, (-3 + 3), (-3 + 4), (-3 + 3))
+             _1Il1llI.Position = UDim2.new(_IIIIIllI, (-3 + 3), 0.5, (-3 + 3))
+             _lll1llI.Text = _l11l1lI(_lIll1lI.TimePosition)
              end
-             window.Size = compactMode and COMPACT_SIZE or EXPANDED_SIZE
              end
             
-             connect(progressHitbox.MouseEnter, function()
-             progressThumb.Visible = true
+             local function _lI1IIllI(state)
+             _1I1l1lI = state == true
+             _11llllI.Visible = not _1I1l1lI
+             _lI1I1lI.Visible = _1I1l1lI
+             if _1I1l1lI then
+             _1l1I1lI.Visible = false
+             elseif _Il1l1lI then
+             _1l1I1lI.Visible = true
+             end
+             _l1llllI.Size = _1I1l1lI and _I1llllI or _1lllllI
+             end
+            
+             _lIl1lI(_Ill1llI.MouseEnter, function()
+             _1Il1llI.Visible = true
              end)
             
-             connect(progressHitbox.MouseLeave, function()
-             if not isScrubbing then
-             progressThumb.Visible = false
+             _lIl1lI(_Ill1llI.MouseLeave, function()
+             if not _II1l1lI then
+             _1Il1llI.Visible = false
              end
              end)
             
-             connect(progressHitbox.InputBegan, function(input)
+             _lIl1lI(_Ill1llI.InputBegan, function(input)
              if input.UserInputType == Enum.UserInputType.MouseButton1
              or input.UserInputType == Enum.UserInputType.Touch then
-             isScrubbing = true
-             progressThumb.Visible = true
-             seekTo(ratioFromTrack(progressTrack, input.Position))
+             _II1l1lI = true
+             _1Il1llI.Visible = true
+             _II1IIllI(_l1lIIllI(_IIl1llI, input.Position))
              end
              end)
             
-             connect(UserInputService.InputChanged, function(input)
-             if isScrubbing and (input.UserInputType == Enum.UserInputType.MouseMovement
+             _lIl1lI(_1I1lI.InputChanged, function(input)
+             if _II1l1lI and (input.UserInputType == Enum.UserInputType.MouseMovement
              or input.UserInputType == Enum.UserInputType.Touch) then
-             seekTo(ratioFromTrack(progressTrack, input.Position))
+             _II1IIllI(_l1lIIllI(_IIl1llI, input.Position))
              end
             
-             if scrollDragging and (input.UserInputType == Enum.UserInputType.MouseMovement
+             if _ll1l1lI and (input.UserInputType == Enum.UserInputType.MouseMovement
              or input.UserInputType == Enum.UserInputType.Touch) then
-             local viewportHeight = queueList.AbsoluteSize.Y
-             local contentHeight = queueLayout.AbsoluteContentSize.Y
-             local maxCanvas = math.max(contentHeight - viewportHeight, (-2 + 2))
-             local travel = math.max(scrollTrack.AbsoluteSize.Y - scrollThumb.AbsoluteSize.Y, (-2 + 3))
-             local delta = input.Position.Y - scrollDragStartY
-             local target = math.clamp(scrollDragStartCanvas + (delta / travel) * maxCanvas, (-2 + 2), maxCanvas)
-             queueList.CanvasPosition = Vector2.new((-2 + 2), target)
+             local _Il111lI = _11II1lI.AbsoluteSize.Y
+             local _ll111lI = _IIlI1lI.AbsoluteContentSize.Y
+             local _I1111lI = math.max(_ll111lI - _Il111lI, (-3 + 3))
+             local _11111lI = math.max(_lllI1lI.AbsoluteSize.Y - _1llI1lI.AbsoluteSize.Y, (-3 + 4))
+             local _111llI = input.Position.Y - _1l1l1lI
+             local _1I1IIllI = math.clamp(_I11l1lI + (_111llI / _11111lI) * _I1111lI, (-3 + 3), _I1111lI)
+             _11II1lI.CanvasPosition = Vector2.new((-3 + 3), _1I1IIllI)
              end
              end)
             
-             connect(UserInputService.InputEnded, function(input)
+             _lIl1lI(_1I1lI.InputEnded, function(input)
              if input.UserInputType == Enum.UserInputType.MouseButton1
              or input.UserInputType == Enum.UserInputType.Touch then
-             isScrubbing = false
-             progressThumb.Visible = false
-             scrollDragging = false
+             _II1l1lI = false
+             _1Il1llI.Visible = false
+             _ll1l1lI = false
              end
              end)
             
-             connect(scrollThumb.InputBegan, function(input)
+             _lIl1lI(_1llI1lI.InputBegan, function(input)
              if input.UserInputType == Enum.UserInputType.MouseButton1
              or input.UserInputType == Enum.UserInputType.Touch then
-             scrollDragging = true
-             scrollDragStartY = input.Position.Y
-             scrollDragStartCanvas = queueList.CanvasPosition.Y
+             _ll1l1lI = true
+             _1l1l1lI = input.Position.Y
+             _I11l1lI = _11II1lI.CanvasPosition.Y
              end
              end)
             
-             connect(scrollUpButton.MouseButton1Click, function()
-             local maxCanvas = math.max(queueLayout.AbsoluteContentSize.Y - queueList.AbsoluteSize.Y, (-2 + 2))
-             queueList.CanvasPosition = Vector2.new((-2 + 2), math.clamp(queueList.CanvasPosition.Y - (78 + 2), (-2 + 2), maxCanvas))
+             _lIl1lI(_lIlI1lI.MouseButton1Click, function()
+             local _I1111lI = math.max(_IIlI1lI.AbsoluteContentSize.Y - _11II1lI.AbsoluteSize.Y, (-3 + 3))
+             _11II1lI.CanvasPosition = Vector2.new((-3 + 3), math.clamp(_11II1lI.CanvasPosition.Y - (74 + 6), (-3 + 3), _I1111lI))
              end)
             
-             connect(scrollDownButton.MouseButton1Click, function()
-             local maxCanvas = math.max(queueLayout.AbsoluteContentSize.Y - queueList.AbsoluteSize.Y, (-2 + 2))
-             queueList.CanvasPosition = Vector2.new((-2 + 2), math.clamp(queueList.CanvasPosition.Y + (78 + 2), (-2 + 2), maxCanvas))
+             _lIl1lI(_I1lI1lI.MouseButton1Click, function()
+             local _I1111lI = math.max(_IIlI1lI.AbsoluteContentSize.Y - _11II1lI.AbsoluteSize.Y, (-3 + 3))
+             _11II1lI.CanvasPosition = Vector2.new((-3 + 3), math.clamp(_11II1lI.CanvasPosition.Y + (74 + 6), (-3 + 3), _I1111lI))
              end)
             
-             connect(playlistTabButton.MouseButton1Click, function()
-             activeLibraryView = _0x3a75d1(86)
-             currentPlaybackMode = _0x3a75d1(86)
-             queueList.CanvasPosition = Vector2.new((-2 + 2), (-2 + 2))
-             rebuildQueue()
+             _lIl1lI(_IlII1lI.MouseButton1Click, function()
+             _Illl1lI = _11IIlIllI(86)
+             _llll1lI = _11IIlIllI(86)
+             _11II1lI.CanvasPosition = Vector2.new((-3 + 3), (-3 + 3))
+             _1lI11lI()
              end)
             
-             connect(exploreTabButton.MouseButton1Click, function()
-             activeLibraryView = _0x3a75d1(103)
-             currentPlaybackMode = _0x3a75d1(103)
-             queueList.CanvasPosition = Vector2.new((-2 + 2), (-2 + 2))
-             rebuildQueue()
+             _lIl1lI(_llII1lI.MouseButton1Click, function()
+             _Illl1lI = _11IIlIllI(103)
+             _llll1lI = _11IIlIllI(103)
+             _11II1lI.CanvasPosition = Vector2.new((-3 + 3), (-3 + 3))
+             _1lI11lI()
              end)
             
-             connect(searchBox:GetPropertyChangedSignal(_0x3a75d1(104)), function()
-             clearSearchButton.Visible = searchBox.Text ~= _0x3a75d1(18)
-             queueList.CanvasPosition = Vector2.new((-2 + 2), (-2 + 2))
-             rebuildQueue()
+             _lIl1lI(_I1II1lI:GetPropertyChangedSignal(_11IIlIllI(104)), function()
+             _l1II1lI.Visible = _I1II1lI.Text ~= _11IIlIllI(18)
+             _11II1lI.CanvasPosition = Vector2.new((-3 + 3), (-3 + 3))
+             _1lI11lI()
              end)
             
-             connect(clearSearchButton.MouseButton1Click, function()
-             searchBox.Text = _0x3a75d1(18)
-             searchBox:ReleaseFocus()
+             _lIl1lI(_l1II1lI.MouseButton1Click, function()
+             _I1II1lI.Text = _11IIlIllI(18)
+             _I1II1lI:ReleaseFocus()
              end)
             
-             connect(searchBox.Focused, function()
-             TweenService:Create(searchBox, TweenInfo.new(0.12), {
-             BackgroundTransparency = (-2 + 2),
+             _lIl1lI(_I1II1lI.Focused, function()
+             _lI1lI:Create(_I1II1lI, TweenInfo.new(0.12), {
+             BackgroundTransparency = (-3 + 3),
              }):Play()
              end)
             
-             connect(searchBox.FocusLost, function()
-             TweenService:Create(searchBox, TweenInfo.new(0.12), {
+             _lIl1lI(_I1II1lI.FocusLost, function()
+             _lI1lI:Create(_I1II1lI, TweenInfo.new(0.12), {
              BackgroundTransparency = 0.08,
              }):Play()
              end)
             
-             connect(clearSearchButton.MouseEnter, function()
-             TweenService:Create(clearSearchButton, TweenInfo.new(0.12), {
-             TextColor3 = COLOR_TEXT,
+             _lIl1lI(_l1II1lI.MouseEnter, function()
+             _lI1lI:Create(_l1II1lI, TweenInfo.new(0.12), {
+             TextColor3 = _lIllllI,
              }):Play()
              end)
             
-             connect(clearSearchButton.MouseLeave, function()
-             TweenService:Create(clearSearchButton, TweenInfo.new(0.12), {
-             TextColor3 = COLOR_TEXT_SOFT,
+             _lIl1lI(_l1II1lI.MouseLeave, function()
+             _lI1lI:Create(_l1II1lI, TweenInfo.new(0.12), {
+             TextColor3 = _1IllllI,
              }):Play()
              end)
             
-             connect(queueList:GetPropertyChangedSignal(_0x3a75d1(105)), updateCustomScrollbar)
-             connect(queueLayout:GetPropertyChangedSignal(_0x3a75d1(106)), updateCustomScrollbar)
+             _lIl1lI(_11II1lI:GetPropertyChangedSignal(_11IIlIllI(105)), _1I111lI)
+             _lIl1lI(_IIlI1lI:GetPropertyChangedSignal(_11IIlIllI(106)), _1I111lI)
             
-             connect(previousButton.MouseButton1Click, function()
-             local index = adjacentSongIndex(-(-2 + 3))
-             if index then
-             playSong(index, true)
+             _lIl1lI(_II11llI.MouseButton1Click, function()
+             local _1Il11lI = _lI111lI(-(-3 + 4))
+             if _1Il11lI then
+             _I1I11lI(_1Il11lI, true)
              end
              end)
             
-             connect(nextButton.MouseButton1Click, function()
-             local index = adjacentSongIndex((-2 + 3))
-             if index then
-             playSong(index, true)
+             _lIl1lI(_Il11llI.MouseButton1Click, function()
+             local _1Il11lI = _lI111lI((-3 + 4))
+             if _1Il11lI then
+             _I1I11lI(_1Il11lI, true)
              end
              end)
             
-             connect(playButton.MouseButton1Click, function()
-             if #songs == (-2 + 2) then
+             _lIl1lI(_l111llI.MouseButton1Click, function()
+             if #_I1IIllI == (-3 + 3) then
              return
              end
             
-             if sound.SoundId == _0x3a75d1(18) then
-             playSong(math.max(currentSongIndex, (-2 + 3)), true)
+             if _lIll1lI.SoundId == _11IIlIllI(18) then
+             _I1I11lI(math.max(_1Ill1lI, (-3 + 4)), true)
              return
              end
             
-             if isPlaying then
-             sound:Pause()
-             isPlaying = false
+             if _1lll1lI then
+             _lIll1lI:Pause()
+             _1lll1lI = false
              else
-             if sound.TimeLength > (-2 + 2) and sound.TimePosition >= sound.TimeLength then
-             sound.TimePosition = (-2 + 2)
+             if _lIll1lI.TimeLength > (-3 + 3) and _lIll1lI.TimePosition >= _lIll1lI.TimeLength then
+             _lIll1lI.TimePosition = (-3 + 3)
              end
              pcall(function()
-             sound:Resume()
+             _lIll1lI:Resume()
              end)
-             if not sound.IsPlaying then
-             sound:Play()
+             if not _lIll1lI.IsPlaying then
+             _lIll1lI:Play()
              end
-             isPlaying = true
+             _1lll1lI = true
              end
-             updatePlayButton()
+             _111l1lI()
              end)
             
-             connect(collapseButton.MouseButton1Click, function()
-             setCompactMode(true)
+             _lIl1lI(_11lI1lI.MouseButton1Click, function()
+             _lI1IIllI(true)
              end)
             
-             connect(expandButton.MouseButton1Click, function()
-             setCompactMode(false)
+             _lIl1lI(_lI1I1lI.MouseButton1Click, function()
+             _lI1IIllI(false)
              end)
             
-             connect(toolsButton.MouseButton1Click, function()
-             toolsOpen = not toolsOpen
-             if not compactMode then
-             toolsPanel.Visible = toolsOpen
-             end
-             end)
-            
-             connect(toolsMuteButton.MouseButton1Click, function()
-             setMuted(not isMuted)
-             setToolsStatus(isMuted and _0x3a75d1(107) or _0x3a75d1(108), Color3.fromRGB((158 + 2), (223 + 5), (178 + 2)))
-             end)
-            
-             connect(toolsVolumeMinus.MouseButton1Click, function()
-             setVolume(savedVolume - 0.1)
-             end)
-            
-             connect(toolsVolumePlus.MouseButton1Click, function()
-             setVolume(savedVolume + 0.1)
-             end)
-            
-             connect(toolsScanButton.MouseButton1Click, function()
-             local api = _G[globalKey]
-             local count = api and api.ScanFolder and api.ScanFolder() or (-2 + 2)
-             setToolsStatus(tostring(count) .. _0x3a75d1(109), Color3.fromRGB((158 + 2), (223 + 5), (178 + 2)))
-             end)
-            
-             connect(toolsHideButton.MouseButton1Click, function()
-             window.Visible = false
-             if miniButton and miniButton.Parent then
-             miniButton.Visible = true
+             _lIl1lI(_Il1I1lI.MouseButton1Click, function()
+             _Il1l1lI = not _Il1l1lI
+             if not _1I1l1lI then
+             _1l1I1lI.Visible = _Il1l1lI
              end
              end)
             
-             connect(toolsAddButton.MouseButton1Click, function()
-             local api = _G[globalKey]
-             local ok, message = api and api.AddSong and api.AddSong(toolsNameBox.Text, toolsIdBox.Text)
-             if ok == true then
-             toolsNameBox.Text = _0x3a75d1(18)
-             toolsIdBox.Text = _0x3a75d1(18)
-             setToolsStatus(_0x3a75d1(110), Color3.fromRGB((158 + 2), (223 + 5), (178 + 2)))
+             _lIl1lI(_l11I1lI.MouseButton1Click, function()
+             _lII11lI(not _I1ll1lI)
+             _1II11lI(_I1ll1lI and _11IIlIllI(107) or _11IIlIllI(108), Color3.fromRGB((151 + 9), (221 + 7), (172 + 8)))
+             end)
+            
+             _lIl1lI(_1IIl1lI.MouseButton1Click, function()
+             _III11lI(_l1ll1lI - 0.1)
+             end)
+            
+             _lIl1lI(_IlIl1lI.MouseButton1Click, function()
+             _III11lI(_l1ll1lI + 0.1)
+             end)
+            
+             _lIl1lI(_111I1lI.MouseButton1Click, function()
+             local _Il1IIllI = _G[_IlI1lI]
+             local _ll1IIllI = _Il1IIllI and _Il1IIllI.ScanFolder and _Il1IIllI.ScanFolder() or (-3 + 3)
+             _1II11lI(tostring(_ll1IIllI) .. _11IIlIllI(109), Color3.fromRGB((151 + 9), (221 + 7), (172 + 8)))
+             end)
+            
+             _lIl1lI(_IIIl1lI.MouseButton1Click, function()
+             _l1llllI.Visible = false
+             if _l1Il1lI and _l1Il1lI.Parent then
+             _l1Il1lI.Visible = true
+             end
+             end)
+            
+             _lIl1lI(_I1Il1lI.MouseButton1Click, function()
+             local _Il1IIllI = _G[_IlI1lI]
+             local _IlIllI, message = _Il1IIllI and _Il1IIllI.AddSong and _Il1IIllI.AddSong(_llIl1lI.Text, _1lIl1lI.Text)
+             if _IlIllI == true then
+             _llIl1lI.Text = _11IIlIllI(18)
+             _1lIl1lI.Text = _11IIlIllI(18)
+             _1II11lI(_11IIlIllI(110), Color3.fromRGB((151 + 9), (221 + 7), (172 + 8)))
              else
-             setToolsStatus(message or _0x3a75d1(111), Color3.fromRGB((253 + 2), (158 + 2), (138 + 2)))
+             _1II11lI(message or _11IIlIllI(111), Color3.fromRGB((249 + 6), (151 + 9), (137 + 3)))
              end
              end)
             
-             local function tweenGraphicColor(icon, fallback, color)
-             TweenService:Create(icon, TweenInfo.new(0.12), {
+             local function _1l1IIllI(icon, fallback, color)
+             _lI1lI:Create(icon, TweenInfo.new(0.12), {
              ImageColor3 = color,
              }):Play()
-             TweenService:Create(fallback, TweenInfo.new(0.12), {
+             _lI1lI:Create(fallback, TweenInfo.new(0.12), {
              TextColor3 = color,
              }):Play()
              end
             
-             local function tweenLineColor(lines, color)
-             for _, line in ipairs(lines) do
-             TweenService:Create(line, TweenInfo.new(0.12), {
+             local function _I11IIllI(lines, color)
+             for _, _IllI1lI in ipairs(lines) do
+             _lI1lI:Create(_IllI1lI, TweenInfo.new(0.12), {
              BackgroundColor3 = color,
              }):Play()
              end
              end
             
-             connect(previousButton.MouseEnter, function()
-             tweenGraphicColor(previousIcon, previousFallback, Color3.fromRGB((158 + 6), (208 + 3), (248 + 2)))
+             _lIl1lI(_II11llI.MouseEnter, function()
+             _1l1IIllI(_1I11llI, _lI11llI, Color3.fromRGB((158 + 6), (207 + 4), (242 + 8)))
              end)
-             connect(previousButton.MouseLeave, function()
-             tweenGraphicColor(previousIcon, previousFallback, COLOR_ACCENT_BRIGHT)
-             end)
-            
-             connect(nextButton.MouseEnter, function()
-             tweenGraphicColor(nextIcon, nextFallback, Color3.fromRGB((158 + 6), (208 + 3), (248 + 2)))
-             end)
-             connect(nextButton.MouseLeave, function()
-             tweenGraphicColor(nextIcon, nextFallback, COLOR_ACCENT_BRIGHT)
+             _lIl1lI(_II11llI.MouseLeave, function()
+             _1l1IIllI(_1I11llI, _lI11llI, _11IlllI)
              end)
             
-             connect(playButton.MouseEnter, function()
-             TweenService:Create(playButton, TweenInfo.new(0.12), {
-             BackgroundColor3 = Color3.fromRGB((68 + 2), (123 + 5), (178 + 3)),
-             Size = UDim2.new((-2 + 2), (23 + 4), (-2 + 2), (23 + 4)),
+             _lIl1lI(_Il11llI.MouseEnter, function()
+             _1l1IIllI(_1l11llI, _ll11llI, Color3.fromRGB((158 + 6), (207 + 4), (242 + 8)))
+             end)
+             _lIl1lI(_Il11llI.MouseLeave, function()
+             _1l1IIllI(_1l11llI, _ll11llI, _11IlllI)
+             end)
+            
+             _lIl1lI(_l111llI.MouseEnter, function()
+             _lI1lI:Create(_l111llI, TweenInfo.new(0.12), {
+             BackgroundColor3 = Color3.fromRGB((67 + 3), (123 + 5), (172 + 9)),
+             Size = UDim2.new((-3 + 3), (18 + 9), (-3 + 3), (18 + 9)),
              }):Play()
-             tweenGraphicColor(playIcon, playFallback, Color3.fromRGB((158 + 6), (208 + 3), (248 + 2)))
+             _1l1IIllI(_lIII1lI, _IIII1lI, Color3.fromRGB((158 + 6), (207 + 4), (242 + 8)))
              end)
             
-             connect(playButton.MouseLeave, function()
-             TweenService:Create(playButton, TweenInfo.new(0.12), {
-             BackgroundColor3 = Color3.fromRGB((48 + 4), (98 + 6), (148 + 5)),
-             Size = UDim2.new((-2 + 2), (23 + 2), (-2 + 2), (23 + 2)),
+             _lIl1lI(_l111llI.MouseLeave, function()
+             _lI1lI:Create(_l111llI, TweenInfo.new(0.12), {
+             BackgroundColor3 = Color3.fromRGB((46 + 6), (95 + 9), (144 + 9)),
+             Size = UDim2.new((-3 + 3), (18 + 7), (-3 + 3), (18 + 7)),
              }):Play()
-             tweenGraphicColor(playIcon, playFallback, COLOR_ACCENT_BRIGHT)
+             _1l1IIllI(_lIII1lI, _IIII1lI, _11IlllI)
              end)
             
-             connect(scrollUpButton.MouseEnter, function()
-             tweenLineColor(scrollUpLines, Color3.fromRGB((223 + 2), (233 + 5), (248 + 4)))
-             TweenService:Create(scrollUpButton, TweenInfo.new(0.12), {
+             _lIl1lI(_lIlI1lI.MouseEnter, function()
+             _I11IIllI(_1IlI1lI, Color3.fromRGB((221 + 4), (235 + 3), (249 + 3)))
+             _lI1lI:Create(_lIlI1lI, TweenInfo.new(0.12), {
              BackgroundTransparency = 0.08,
              }):Play()
              end)
-             connect(scrollUpButton.MouseLeave, function()
-             tweenLineColor(scrollUpLines, COLOR_TEXT_SOFT)
-             TweenService:Create(scrollUpButton, TweenInfo.new(0.12), {
+             _lIl1lI(_lIlI1lI.MouseLeave, function()
+             _I11IIllI(_1IlI1lI, _1IllllI)
+             _lI1lI:Create(_lIlI1lI, TweenInfo.new(0.12), {
              BackgroundTransparency = 0.28,
              }):Play()
              end)
             
-             connect(scrollDownButton.MouseEnter, function()
-             tweenLineColor(scrollDownLines, Color3.fromRGB((223 + 2), (233 + 5), (248 + 4)))
-             TweenService:Create(scrollDownButton, TweenInfo.new(0.12), {
+             _lIl1lI(_I1lI1lI.MouseEnter, function()
+             _I11IIllI(_l1lI1lI, Color3.fromRGB((221 + 4), (235 + 3), (249 + 3)))
+             _lI1lI:Create(_I1lI1lI, TweenInfo.new(0.12), {
              BackgroundTransparency = 0.08,
              }):Play()
              end)
-             connect(scrollDownButton.MouseLeave, function()
-             tweenLineColor(scrollDownLines, COLOR_TEXT_SOFT)
-             TweenService:Create(scrollDownButton, TweenInfo.new(0.12), {
+             _lIl1lI(_I1lI1lI.MouseLeave, function()
+             _I11IIllI(_l1lI1lI, _1IllllI)
+             _lI1lI:Create(_I1lI1lI, TweenInfo.new(0.12), {
              BackgroundTransparency = 0.28,
              }):Play()
              end)
             
-             connect(collapseButton.MouseEnter, function()
-             tweenLineColor(collapseLines, Color3.fromRGB((208 + 2), (223 + 3), (238 + 6)))
+             _lIl1lI(_11lI1lI.MouseEnter, function()
+             _I11IIllI(_II1I1lI, Color3.fromRGB((207 + 3), (221 + 5), (235 + 9)))
              end)
-             connect(collapseButton.MouseLeave, function()
-             tweenLineColor(collapseLines, COLOR_TEXT_SOFT)
-             end)
-            
-             connect(expandButton.MouseEnter, function()
-             tweenLineColor(expandLines, Color3.fromRGB((208 + 2), (223 + 3), (238 + 6)))
-             end)
-             connect(expandButton.MouseLeave, function()
-             tweenLineColor(expandLines, COLOR_TEXT_SOFT)
+             _lIl1lI(_11lI1lI.MouseLeave, function()
+             _I11IIllI(_II1I1lI, _1IllllI)
              end)
             
-             connect(sound.Ended, function()
-             if not isChangingSong and isPlaying and #songs > (-2 + 2) then
+             _lIl1lI(_lI1I1lI.MouseEnter, function()
+             _I11IIllI(_1I1I1lI, Color3.fromRGB((207 + 3), (221 + 5), (235 + 9)))
+             end)
+             _lIl1lI(_lI1I1lI.MouseLeave, function()
+             _I11IIllI(_1I1I1lI, _1IllllI)
+             end)
+            
+             _lIl1lI(_lIll1lI.Ended, function()
+             if not _11ll1lI and _1lll1lI and #_I1IIllI > (-3 + 3) then
              task.defer(function()
-             if not destroyed then
-             local index = adjacentSongIndex((-2 + 3))
-             if index then
-             playSong(index, true)
+             if not _IIl1lI then
+             local _1Il11lI = _lI111lI((-3 + 4))
+             if _1Il11lI then
+             _I1I11lI(_1Il11lI, true)
              end
              end
              end)
              end
              end)
             
-             makeDraggable(dragHandle, window, connect)
+             _1I1llI(_1III1lI, _l1llllI, _lIl1lI)
             
-             if createMini then
-             miniButton = make(rootParent, _0x3a75d1(59), {
-             Name = playerName .. _0x3a75d1(112),
-             AnchorPoint = Vector2.new((-2 + 3), 0.5),
-             Position = config.MiniPosition or UDim2.new((-2 + 3), -(18 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (38 + 2), (-2 + 2), (18 + 6)),
-             BackgroundColor3 = Color3.fromRGB((13 + 4), (33 + 6), (68 + 3)),
+             if _llI1lI then
+             _l1Il1lI = _lIlllI(_lII1lI, _11IIlIllI(59), {
+             Name = _1II1lI .. _11IIlIllI(112),
+             AnchorPoint = Vector2.new((-3 + 4), 0.5),
+             Position = config.MiniPosition or UDim2.new((-3 + 4), -(11 + 9), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (32 + 8), (-3 + 3), (18 + 6)),
+             BackgroundColor3 = Color3.fromRGB((11 + 6), (32 + 7), (67 + 4)),
              BackgroundTransparency = 0.04,
-             BorderSizePixel = (-2 + 2),
-             Text = _0x3a75d1(18),
+             BorderSizePixel = (-3 + 3),
+             Text = _11IIlIllI(18),
              AutoButtonColor = false,
-             Visible = not startVisible,
-             ZIndex = (98 + 2),
+             Visible = not _1lI1lI,
+             ZIndex = (95 + 5),
              })
-             corner(miniButton, (993 + 6))
-             stroke(miniButton, Color3.fromRGB((88 + 6), (133 + 6), (178 + 3)), 0.28, 1.5)
-             gradient(miniButton, (88 + 2), {
-             {(-2 + 2), Color3.fromRGB((43 + 5), (63 + 4), (83 + 5))},
-             {(-2 + 3), Color3.fromRGB((18 + 4), (28 + 2), (38 + 4))},
+             _IllllI(_l1Il1lI, (991 + 8))
+             _lllllI(_l1Il1lI, Color3.fromRGB((88 + 6), (130 + 9), (172 + 9)), 0.28, 1.5)
+             _II1llI(_l1Il1lI, (81 + 9), {
+             {(-3 + 3), Color3.fromRGB((39 + 9), (60 + 7), (81 + 7))},
+             {(-3 + 4), Color3.fromRGB((18 + 4), (25 + 5), (39 + 3))},
              }, {
-             {(-2 + 2), 0.01},
-             {(-2 + 3), 0.04},
+             {(-3 + 3), 0.01},
+             {(-3 + 4), 0.04},
              })
             
-             miniFallback = make(miniButton, _0x3a75d1(51), {
+             _IIll1lI = _lIlllI(_l1Il1lI, _11IIlIllI(51), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (13 + 2), (-2 + 2), (13 + 2)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (98 + 3),
+             Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 4), (-3 + 3), (11 + 4)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (95 + 6),
              })
             
-             local miniStem = make(miniFallback, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (3 + 5), (-2 + 2), (-2 + 4)),
-             Size = UDim2.new((-2 + 2), (-2 + 4), (-2 + 2), (3 + 6)),
-             BackgroundColor3 = Color3.fromRGB((148 + 6), (203 + 2), (253 + 2)),
-             BorderSizePixel = (-2 + 2),
-             ZIndex = (98 + 4),
+             local _l11IIllI = _lIlllI(_IIll1lI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (4 + 4), (-3 + 3), (-3 + 5)),
+             Size = UDim2.new((-3 + 3), (-3 + 5), (-3 + 3), (4 + 5)),
+             BackgroundColor3 = Color3.fromRGB((151 + 3), (200 + 5), (249 + 6)),
+             BorderSizePixel = (-3 + 3),
+             ZIndex = (95 + 7),
              })
-             corner(miniStem, (993 + 6))
+             _IllllI(_l11IIllI, (991 + 8))
             
-             local miniFlag = make(miniFallback, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (3 + 5), (-2 + 2), (-2 + 4)),
-             Size = UDim2.new((-2 + 2), (3 + 2), (-2 + 2), (-2 + 4)),
-             BackgroundColor3 = Color3.fromRGB((148 + 6), (203 + 2), (253 + 2)),
-             BorderSizePixel = (-2 + 2),
-             Rotation = (8 + 4),
-             ZIndex = (98 + 4),
+             local _111IIllI = _lIlllI(_IIll1lI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (4 + 4), (-3 + 3), (-3 + 5)),
+             Size = UDim2.new((-3 + 3), (-3 + 8), (-3 + 3), (-3 + 5)),
+             BackgroundColor3 = Color3.fromRGB((151 + 3), (200 + 5), (249 + 6)),
+             BorderSizePixel = (-3 + 3),
+             Rotation = (4 + 8),
+             ZIndex = (95 + 7),
              })
-             corner(miniFlag, (993 + 6))
+             _IllllI(_111IIllI, (991 + 8))
             
-             local miniDot = make(miniFallback, _0x3a75d1(51), {
-             Position = UDim2.new((-2 + 2), (-2 + 6), (-2 + 2), (3 + 6)),
-             Size = UDim2.new((-2 + 2), (3 + 3), (-2 + 2), (3 + 2)),
-             BackgroundColor3 = Color3.fromRGB((148 + 6), (203 + 2), (253 + 2)),
-             BorderSizePixel = (-2 + 2),
-             Rotation = -(8 + 4),
-             ZIndex = (98 + 4),
+             local _IIIlIllI = _lIlllI(_IIll1lI, _11IIlIllI(51), {
+             Position = UDim2.new((-3 + 3), (-3 + 7), (-3 + 3), (4 + 5)),
+             Size = UDim2.new((-3 + 3), (-3 + 9), (-3 + 3), (-3 + 8)),
+             BackgroundColor3 = Color3.fromRGB((151 + 3), (200 + 5), (249 + 6)),
+             BorderSizePixel = (-3 + 3),
+             Rotation = -(4 + 8),
+             ZIndex = (95 + 7),
              })
-             corner(miniDot, (993 + 6))
+             _IllllI(_IIIlIllI, (991 + 8))
             
-             miniIcon = make(miniButton, _0x3a75d1(62), {
+             _11Il1lI = _lIlllI(_l1Il1lI, _11IIlIllI(62), {
              AnchorPoint = Vector2.new(0.5, 0.5),
-             Position = UDim2.new(0.5, (-2 + 2), 0.5, (-2 + 2)),
-             Size = UDim2.new((-2 + 2), (8 + 6), (-2 + 2), (8 + 6)),
-             BackgroundTransparency = (-2 + 3),
-             BorderSizePixel = (-2 + 2),
-             Image = _0x3a75d1(113),
-             ImageColor3 = Color3.fromRGB((148 + 6), (203 + 2), (253 + 2)),
+             Position = UDim2.new(0.5, (-3 + 3), 0.5, (-3 + 3)),
+             Size = UDim2.new((-3 + 3), (11 + 3), (-3 + 3), (11 + 3)),
+             BackgroundTransparency = (-3 + 4),
+             BorderSizePixel = (-3 + 3),
+             Image = _11IIlIllI(113),
+             ImageColor3 = Color3.fromRGB((151 + 3), (200 + 5), (249 + 6)),
              ScaleType = Enum.ScaleType.Fit,
-             ZIndex = (98 + 4),
+             ZIndex = (95 + 7),
              })
             
-             connect(miniButton.MouseButton1Click, function()
-             window.Visible = true
-             miniButton.Visible = false
+             _lIl1lI(_l1Il1lI.MouseButton1Click, function()
+             _l1llllI.Visible = true
+             _l1Il1lI.Visible = false
              end)
-             makeDraggable(miniButton, miniButton, connect)
+             _1I1llI(_l1Il1lI, _l1Il1lI, _lIl1lI)
              end
             
-             connect(RunService.Heartbeat, function(deltaTime)
-             if destroyed then
+             _lIl1lI(_Il1lI.Heartbeat, function(deltaTime)
+             if _IIl1lI then
              return
              end
             
-             if not isScrubbing and sound.IsLoaded and sound.TimeLength and sound.TimeLength > (-2 + 2) then
-             local ratio = math.clamp(sound.TimePosition / sound.TimeLength, (-2 + 2), (-2 + 3))
-             progressFill.Size = UDim2.new(ratio, (-2 + 2), (-2 + 3), (-2 + 2))
-             progressThumb.Position = UDim2.new(ratio, (-2 + 2), 0.5, (-2 + 2))
-             currentTimeLabel.Text = formatTime(sound.TimePosition)
-             totalTimeLabel.Text = formatTime(sound.TimeLength)
+             if not _II1l1lI and _lIll1lI.IsLoaded and _lIll1lI.TimeLength and _lIll1lI.TimeLength > (-3 + 3) then
+             local _IIIIIllI = math.clamp(_lIll1lI.TimePosition / _lIll1lI.TimeLength, (-3 + 3), (-3 + 4))
+             _lIl1llI.Size = UDim2.new(_IIIIIllI, (-3 + 3), (-3 + 4), (-3 + 3))
+             _1Il1llI.Position = UDim2.new(_IIIIIllI, (-3 + 3), 0.5, (-3 + 3))
+             _lll1llI.Text = _l11l1lI(_lIll1lI.TimePosition)
+             _1ll1llI.Text = _l11l1lI(_lIll1lI.TimeLength)
              end
             
-             if isPlaying then
-             visualizerPhase = visualizerPhase + deltaTime * 5.2
+             if _1lll1lI then
+             _lI1l1lI = _lI1l1lI + deltaTime * 5.2
              end
             
-             local visualVolume = isMuted and (-2 + 2) or savedVolume
-             for index, bar in ipairs(visualizerBars) do
-             local targetHeight = (-2 + 6)
-             local targetColor = Color3.fromRGB((178 + 6), (193 + 3), (208 + 6))
-             if isPlaying and visualVolume > (-2 + 2) then
-             local waveA = math.sin(visualizerPhase + index * 0.76) * 0.5 + 0.5
-             local waveB = math.sin(visualizerPhase * 0.61 + index * 1.37) * 0.5 + 0.5
-             targetHeight = (-2 + 5) + math.floor((waveA * 0.68 + waveB * 0.32) * (8 + 4) * visualVolume)
-             targetColor = Color3.fromRGB((228 + 5), (238 + 2), (248 + 2))
+             local _lIIlIllI = _I1ll1lI and (-3 + 3) or _l1ll1lI
+             for _1Il11lI, _11I1llI in ipairs(_llI1llI) do
+             local _1IIlIllI = (-3 + 7)
+             local _IlIlIllI = Color3.fromRGB((179 + 5), (193 + 3), (207 + 7))
+             if _1lll1lI and _lIIlIllI > (-3 + 3) then
+             local _llIlIllI = math.sin(_lI1l1lI + _1Il11lI * 0.76) * 0.5 + 0.5
+             local _1lIlIllI = math.sin(_lI1l1lI * 0.61 + _1Il11lI * 1.37) * 0.5 + 0.5
+             _1IIlIllI = (-3 + 6) + math.floor((_llIlIllI * 0.68 + _1lIlIllI * 0.32) * (4 + 8) * _lIIlIllI)
+             _IlIlIllI = Color3.fromRGB((228 + 5), (235 + 5), (242 + 8))
              end
             
-             local currentHeight = bar.Size.Y.Offset
-             local height = currentHeight + (targetHeight - currentHeight) * 0.30
-             bar.Size = UDim2.new((-2 + 2), visualizerWidth, (-2 + 2), height)
-             bar.BackgroundColor3 = targetColor
+             local _I1IlIllI = _11I1llI.Size.Y.Offset
+             local _l1IlIllI = _I1IlIllI + (_1IIlIllI - _I1IlIllI) * 0.30
+             _11I1llI.Size = UDim2.new((-3 + 3), _I1I1llI, (-3 + 3), _l1IlIllI)
+             _11I1llI.BackgroundColor3 = _IlIlIllI
              end
              end)
             
              task.spawn(function()
-             local preloadImage = Instance.new(_0x3a75d1(62))
-             preloadImage.Image = MP_ICON_SONG
-             local pausePreload = Instance.new(_0x3a75d1(62))
-             pausePreload.Image = _0x3a75d1(88)
+             local _11IlIllI = Instance.new(_11IIlIllI(62))
+             _11IlIllI.Image = _11l1lI
+             local _IIllIllI = Instance.new(_11IIlIllI(62))
+             _IIllIllI.Image = _11IIlIllI(88)
             
-             local assets = {
-             preloadImage,
-             pausePreload,
-             previousIcon,
-             nextIcon,
-             playIcon,
+             local _lIllIllI = {
+             _11IlIllI,
+             _IIllIllI,
+             _1I11llI,
+             _1l11llI,
+             _lIII1lI,
              }
-             if miniIcon then
-             table.insert(assets, miniIcon)
+             if _11Il1lI then
+             table.insert(_lIllIllI, _11Il1lI)
              end
             
              pcall(function()
-             ContentProvider:PreloadAsync(assets)
+             _l11lI:PreloadAsync(_lIllIllI)
              end)
             
-             local function showFallbackWhenMissing(icon, fallback)
-             local loaded = false
+             local function _1IllIllI(icon, fallback)
+             local _llIIllI = false
              pcall(function()
-             loaded = icon.IsLoaded
+             _llIIllI = icon.IsLoaded
              end)
-             fallback.Visible = not loaded
+             fallback.Visible = not _llIIllI
              end
             
-             if not destroyed then
-             showFallbackWhenMissing(previousIcon, previousFallback)
-             showFallbackWhenMissing(nextIcon, nextFallback)
-             showFallbackWhenMissing(playIcon, playFallback)
-             if miniIcon and miniFallback then
-             showFallbackWhenMissing(miniIcon, miniFallback)
+             if not _IIl1lI then
+             _1IllIllI(_1I11llI, _lI11llI)
+             _1IllIllI(_1l11llI, _ll11llI)
+             _1IllIllI(_lIII1lI, _IIII1lI)
+             if _11Il1lI and _IIll1lI then
+             _1IllIllI(_11Il1lI, _IIll1lI)
              end
              end
             
-             preloadImage:Destroy()
-             pausePreload:Destroy()
+             _11IlIllI:Destroy()
+             _IIllIllI:Destroy()
              end)
             
-             rebuildQueue()
-             setVolume(0.5)
-             savePlaylist()
-             if #songs > (-2 + 2) then
-             local initialPlaylist = playlistSongIndexes()
-             playSong(initialPlaylist[(-2 + 3)] or (-2 + 3), false)
+             _1lI11lI()
+             _III11lI(0.5)
+             _lI1IllI()
+             if #_I1IIllI > (-3 + 3) then
+             local _IlllIllI = _IIl11lI()
+             _I1I11lI(_IlllIllI[(-3 + 4)] or (-3 + 4), false)
              end
             
              task.spawn(function()
-             local folderSongs = scanFolderSongs()
-             if destroyed or #folderSongs == (-2 + 2) then
+             local _llllIllI = _1I1IllI()
+             if _IIl1lI or #_llllIllI == (-3 + 3) then
              return
              end
             
-             local existingPaths = {}
-             for _, song in ipairs(songs) do
-             if song.RawPath then
-             existingPaths[song.RawPath] = true
+             local _1lllIllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             if _IlIIIllI.RawPath then
+             _1lllIllI[_IlIIIllI.RawPath] = true
              end
              end
             
-             local added = false
-             for _, song in ipairs(folderSongs) do
-             if not existingPaths[song.RawPath] then
-             table.insert(songs, song)
-             addSongToPlaylist(song, true)
-             existingPaths[song.RawPath] = true
-             added = true
+             local _I1llIllI = false
+             for _, _IlIIIllI in ipairs(_llllIllI) do
+             if not _1lllIllI[_IlIIIllI.RawPath] then
+             table.insert(_I1IIllI, _IlIIIllI)
+             _1ll11lI(_IlIIIllI, true)
+             _1lllIllI[_IlIIIllI.RawPath] = true
+             _I1llIllI = true
              end
              end
             
-             if added and not destroyed then
-             rebuildQueue()
+             if _I1llIllI and not _IIl1lI then
+             _1lI11lI()
              end
              end)
             
-             local controller = {}
+             local _l1llIllI = {}
             
-             function controller.Toggle()
-             if not window or not window.Parent then
+             function _l1llIllI.Toggle()
+             if not _l1llllI or not _l1llllI.Parent then
              return
              end
-             window.Visible = not window.Visible
-             if miniButton and miniButton.Parent then
-             miniButton.Visible = not window.Visible
+             _l1llllI.Visible = not _l1llllI.Visible
+             if _l1Il1lI and _l1Il1lI.Parent then
+             _l1Il1lI.Visible = not _l1llllI.Visible
              end
              end
             
-             function controller.Show()
-             if window and window.Parent then
-             window.Visible = true
+             function _l1llIllI.Show()
+             if _l1llllI and _l1llllI.Parent then
+             _l1llllI.Visible = true
              end
-             if miniButton and miniButton.Parent then
-             miniButton.Visible = false
-             end
-             end
-            
-             function controller.Hide()
-             if window and window.Parent then
-             window.Visible = false
-             end
-             if miniButton and miniButton.Parent then
-             miniButton.Visible = true
+             if _l1Il1lI and _l1Il1lI.Parent then
+             _l1Il1lI.Visible = false
              end
              end
             
-             function controller.Compact()
-             setCompactMode(true)
+             function _l1llIllI.Hide()
+             if _l1llllI and _l1llllI.Parent then
+             _l1llllI.Visible = false
+             end
+             if _l1Il1lI and _l1Il1lI.Parent then
+             _l1Il1lI.Visible = true
+             end
              end
             
-             function controller.Expand()
-             setCompactMode(false)
+             function _l1llIllI.Compact()
+             _lI1IIllI(true)
              end
             
-             function controller.ToggleCompact()
-             setCompactMode(not compactMode)
+             function _l1llIllI.Expand()
+             _lI1IIllI(false)
              end
             
-             function controller.Play(index)
-             return playSong(index or math.max(currentSongIndex, (-2 + 3)), true)
+             function _l1llIllI.ToggleCompact()
+             _lI1IIllI(not _1I1l1lI)
              end
             
-             function controller.Pause()
-             sound:Pause()
-             isPlaying = false
-             updatePlayButton()
+             function _l1llIllI.Play(_1Il11lI)
+             return _I1I11lI(_1Il11lI or math.max(_1Ill1lI, (-3 + 4)), true)
              end
             
-             function controller.Next()
-             local index = adjacentSongIndex((-2 + 3))
-             if index then
-             return playSong(index, true)
-             end
-             return false, _0x3a75d1(58)
+             function _l1llIllI.Pause()
+             _lIll1lI:Pause()
+             _1lll1lI = false
+             _111l1lI()
              end
             
-             function controller.Previous()
-             local index = adjacentSongIndex(-(-2 + 3))
-             if index then
-             return playSong(index, true)
+             function _l1llIllI.Next()
+             local _1Il11lI = _lI111lI((-3 + 4))
+             if _1Il11lI then
+             return _I1I11lI(_1Il11lI, true)
              end
-             return false, _0x3a75d1(58)
-             end
-            
-             function controller.SetVolume(value)
-             setVolume(value)
+             return false, _11IIlIllI(58)
              end
             
-             function controller.SetMuted(state)
-             setMuted(state)
+             function _l1llIllI.Previous()
+             local _1Il11lI = _lI111lI(-(-3 + 4))
+             if _1Il11lI then
+             return _I1I11lI(_1Il11lI, true)
+             end
+             return false, _11IIlIllI(58)
              end
             
-             function controller.AddSong(name, rawId)
-             name = tostring(name or _0x3a75d1(18)):match(_0x3a75d1(95))
-             rawId = tostring(rawId or _0x3a75d1(18)):match(_0x3a75d1(95))
-             if name == _0x3a75d1(18) then
-             return false, _0x3a75d1(114)
-             end
-             if rawId == _0x3a75d1(18) then
-             return false, _0x3a75d1(115)
+             function _l1llIllI.SetVolume(value)
+             _III11lI(value)
              end
             
-             local finalId
-             local isFile = false
-             local rawPath
-             local extension
+             function _l1llIllI.SetMuted(state)
+             _lII11lI(state)
+             end
             
-             if rawId:match(_0x3a75d1(116)) then
-             finalId = rawId
-             elseif rawId:match(_0x3a75d1(117)) then
-             finalId = _0x3a75d1(21) .. rawId
-             elseif rawId:lower():match(_0x3a75d1(118)) or rawId:lower():match(_0x3a75d1(119)) then
-             if not canFolderIO() then
-             return false, _0x3a75d1(120)
+             function _l1llIllI.AddSong(_IIlllI, rawId)
+             _IIlllI = tostring(_IIlllI or _11IIlIllI(18)):match(_11IIlIllI(95))
+             rawId = tostring(rawId or _11IIlIllI(18)):match(_11IIlIllI(95))
+             if _IIlllI == _11IIlIllI(18) then
+             return false, _11IIlIllI(114)
              end
-             extension = (rawId:match(_0x3a75d1(48)) or _0x3a75d1(18)):lower()
-             local okRead, data = pcall(readfile, rawId)
-             if not okRead or not validateAudioFile(data, extension) then
-             return false, _0x3a75d1(121)
+             if rawId == _11IIlIllI(18) then
+             return false, _11IIlIllI(115)
              end
-             finalId = resolveLocalAudio(rawId)
-             if not finalId then
-             return false, _0x3a75d1(93)
+            
+             local _11llIllI
+             local _1lIIllI = false
+             local _II1lIllI
+             local _I11IllI
+            
+             if rawId:match(_11IIlIllI(116)) then
+             _11llIllI = rawId
+             elseif rawId:match(_11IIlIllI(117)) then
+             _11llIllI = _11IIlIllI(21) .. rawId
+             elseif rawId:lower():match(_11IIlIllI(118)) or rawId:lower():match(_11IIlIllI(119)) then
+             if not _Il11lI() then
+             return false, _11IIlIllI(120)
              end
-             isFile = true
-             rawPath = rawId
+             _I11IllI = (rawId:match(_11IIlIllI(48)) or _11IIlIllI(18)):lower()
+             local _IlIIllI, data = pcall(readfile, rawId)
+             if not _IlIIllI or not _I111lI(data, _I11IllI) then
+             return false, _11IIlIllI(121)
+             end
+             _11llIllI = _1l11lI(rawId)
+             if not _11llIllI then
+             return false, _11IIlIllI(93)
+             end
+             _1lIIllI = true
+             _II1lIllI = rawId
              else
-             return false, _0x3a75d1(122)
+             return false, _11IIlIllI(122)
              end
             
-             local song = {
-             Name = name,
-             Id = finalId,
-             Icon = MP_ICON_SONG,
-             IsFile = isFile,
-             RawPath = rawPath,
+             local _IlIIIllI = {
+             Name = _IIlllI,
+             Id = _11llIllI,
+             Icon = _11l1lI,
+             IsFile = _1lIIllI,
+             RawPath = _II1lIllI,
              CanPlay = true,
-             FileExt = extension,
+             FileExt = _I11IllI,
              Persist = true,
              }
-             table.insert(songs, song)
-             addSongToPlaylist(song)
-             saveCustomSongs()
-             rebuildQueue()
+             table.insert(_I1IIllI, _IlIIIllI)
+             _1ll11lI(_IlIIIllI)
+             _11lIllI()
+             _1lI11lI()
              return true
              end
             
-             function controller.RemoveSong(index)
-             index = tonumber(index)
-             local song = index and songs[index]
-             if not song then
-             return false, _0x3a75d1(91)
+             function _l1llIllI.RemoveSong(_1Il11lI)
+             _1Il11lI = tonumber(_1Il11lI)
+             local _IlIIIllI = _1Il11lI and _I1IIllI[_1Il11lI]
+             if not _IlIIIllI then
+             return false, _11IIlIllI(91)
              end
-             if song.IsDefault then
-             return false, _0x3a75d1(123)
-             end
-            
-             local wasCurrent = index == currentSongIndex
-             removeSongFromPlaylist(song)
-             table.remove(songs, index)
-             if song.Persist then
-             saveCustomSongs()
+             if _IlIIIllI.IsDefault then
+             return false, _11IIlIllI(123)
              end
             
-             if #songs == (-2 + 2) then
-             currentSongIndex = (-2 + 2)
-             sound:Stop()
-             isPlaying = false
-             songNameLabel.Text = _0x3a75d1(58)
-             updatePlayButton()
+             local _lI1lIllI = _1Il11lI == _1Ill1lI
+             _I1l11lI(_IlIIIllI)
+             table.remove(_I1IIllI, _1Il11lI)
+             if _IlIIIllI.Persist then
+             _11lIllI()
+             end
+            
+             if #_I1IIllI == (-3 + 3) then
+             _1Ill1lI = (-3 + 3)
+             _lIll1lI:Stop()
+             _1lll1lI = false
+             _1II1llI.Text = _11IIlIllI(58)
+             _111l1lI()
              else
-             if index < currentSongIndex then
-             currentSongIndex = currentSongIndex - (-2 + 3)
-             elseif currentSongIndex > #songs then
-             currentSongIndex = #songs
+             if _1Il11lI < _1Ill1lI then
+             _1Ill1lI = _1Ill1lI - (-3 + 4)
+             elseif _1Ill1lI > #_I1IIllI then
+             _1Ill1lI = #_I1IIllI
              end
-             if wasCurrent then
-             playSong(currentSongIndex, false)
+             if _lI1lIllI then
+             _I1I11lI(_1Ill1lI, false)
              end
              end
             
-             rebuildQueue()
+             _1lI11lI()
              return true
              end
             
-             function controller.ScanFolder()
-             local retained = {}
-             for _, song in ipairs(songs) do
-             if not song.FolderSong then
-             table.insert(retained, song)
+             function _l1llIllI.ScanFolder()
+             local _1I1lIllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             if not _IlIIIllI.FolderSong then
+             table.insert(_1I1lIllI, _IlIIIllI)
              end
              end
             
-             local folderSongs = scanFolderSongs()
-             table.clear(songs)
-             for _, song in ipairs(retained) do
-             table.insert(songs, song)
+             local _llllIllI = _1I1IllI()
+             table.clear(_I1IIllI)
+             for _, _IlIIIllI in ipairs(_1I1lIllI) do
+             table.insert(_I1IIllI, _IlIIIllI)
              end
-             for _, song in ipairs(folderSongs) do
-             table.insert(songs, song)
-             addSongToPlaylist(song, true)
+             for _, _IlIIIllI in ipairs(_llllIllI) do
+             table.insert(_I1IIllI, _IlIIIllI)
+             _1ll11lI(_IlIIIllI, true)
              end
-             savePlaylist()
+             _lI1IllI()
             
-             if currentSongIndex > #songs then
-             currentSongIndex = math.max((-2 + 3), #songs)
+             if _1Ill1lI > #_I1IIllI then
+             _1Ill1lI = math.max((-3 + 4), #_I1IIllI)
              end
-             rebuildQueue()
-             return #folderSongs
+             _1lI11lI()
+             return #_llllIllI
              end
             
-             function controller.Destroy()
-             if destroyed then
+             function _l1llIllI.Destroy()
+             if _IIl1lI then
              return
              end
-             destroyed = true
-             disconnectAll()
+             _IIl1lI = true
+             _Ill1lI()
              pcall(function()
-             sound:Stop()
-             sound:Destroy()
+             _lIll1lI:Stop()
+             _lIll1lI:Destroy()
              end)
-             if miniButton and miniButton.Parent then
-             miniButton:Destroy()
+             if _l1Il1lI and _l1Il1lI.Parent then
+             _l1Il1lI:Destroy()
              end
-             if window and window.Parent then
-             window:Destroy()
+             if _l1llllI and _l1llllI.Parent then
+             _l1llllI:Destroy()
              end
-             if _G[globalKey] == controller then
-             _G[globalKey] = nil
+             if _G[_IlI1lI] == _l1llIllI then
+             _G[_IlI1lI] = nil
              end
              end
             
-             controller.Window = window
-             controller.Sound = sound
-             controller.Songs = songs
-             controller.MiniButton = miniButton
+             _l1llIllI.Window = _l1llllI
+             _l1llIllI.Sound = _lIll1lI
+             _l1llIllI.Songs = _I1IIllI
+             _l1llIllI.MiniButton = _l1Il1lI
             
-             connect(rootParent.AncestryChanged, function(_, parent)
+             _lIl1lI(_lII1lI.AncestryChanged, function(_, parent)
              if not parent then
-             controller.Destroy()
+             _l1llIllI.Destroy()
              end
              end)
             
              
              
-             function controller.SyncVault()
-             local fresh, success = fetchVaultSongs(MP_ICON_SONG)
-             if not success or destroyed then
+             function _l1llIllI.SyncVault()
+             local _Il1lIllI, success = _llIllI(_11l1lI)
+             if not success or _IIl1lI then
              return false
              end
             
-             local currentId = songs[currentSongIndex] and songs[currentSongIndex].Id or nil
-             local oldSignatureParts = {}
-             local retained = {}
-             for _, song in ipairs(songs) do
-             if song.VaultSong or song.VaultFallback then
-             table.insert(oldSignatureParts, tostring(song.Id) .. _0x3a75d1(124) .. tostring(song.Name))
+             local _ll1lIllI = _I1IIllI[_1Ill1lI] and _I1IIllI[_1Ill1lI].Id or nil
+             local _1l1lIllI = {}
+             local _1I1lIllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             if _IlIIIllI.VaultSong or _IlIIIllI.VaultFallback then
+             table.insert(_1l1lIllI, tostring(_IlIIIllI.Id) .. _11IIlIllI(124) .. tostring(_IlIIIllI.Name))
              else
-             table.insert(retained, song)
+             table.insert(_1I1lIllI, _IlIIIllI)
              end
              end
             
-             local newSignatureParts = {}
-             for _, song in ipairs(fresh) do
-             table.insert(newSignatureParts, tostring(song.Id) .. _0x3a75d1(124) .. tostring(song.Name))
+             local _I11lIllI = {}
+             for _, _IlIIIllI in ipairs(_Il1lIllI) do
+             table.insert(_I11lIllI, tostring(_IlIIIllI.Id) .. _11IIlIllI(124) .. tostring(_IlIIIllI.Name))
              end
-             local changed = table.concat(oldSignatureParts, _0x3a75d1(125)) ~= table.concat(newSignatureParts, _0x3a75d1(125))
-             if not changed then
+             local _l11lIllI = table.concat(_1l1lIllI, _11IIlIllI(125)) ~= table.concat(_I11lIllI, _11IIlIllI(125))
+             if not _l11lIllI then
              return true
              end
             
-             table.clear(songs)
-             for _, song in ipairs(fresh) do
-             table.insert(songs, song)
+             table.clear(_I1IIllI)
+             for _, _IlIIIllI in ipairs(_Il1lIllI) do
+             table.insert(_I1IIllI, _IlIIIllI)
              end
-             for _, song in ipairs(retained) do
-             table.insert(songs, song)
-             end
-            
-             local validPlaylistKeys = {}
-             for _, song in ipairs(songs) do
-             local key = songKey(song)
-             if key then
-             validPlaylistKeys[key] = true
-             end
+             for _, _IlIIIllI in ipairs(_1I1lIllI) do
+             table.insert(_I1IIllI, _IlIIIllI)
              end
             
-             local nextPlaylistKeys = {}
-             if playlistAutoPopulate then
-             local insertedKeys = {}
-             for _, song in ipairs(songs) do
-             local key = songKey(song)
-             if key and not insertedKeys[key] then
-             insertedKeys[key] = true
-             table.insert(nextPlaylistKeys, key)
+             local _111lIllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             if _I1lIllI then
+             _111lIllI[_I1lIllI] = true
+             end
+             end
+            
+             local _III1IllI = {}
+             if _lllIllI then
+             local _l1lIllI = {}
+             for _, _IlIIIllI in ipairs(_I1IIllI) do
+             local _I1lIllI = _l1IIllI(_IlIIIllI)
+             if _I1lIllI and not _l1lIllI[_I1lIllI] then
+             _l1lIllI[_I1lIllI] = true
+             table.insert(_III1IllI, _I1lIllI)
              end
              end
              else
-             for _, key in ipairs(playlistKeys) do
-             if validPlaylistKeys[key] then
-             table.insert(nextPlaylistKeys, key)
+             for _, _I1lIllI in ipairs(_1IlIllI) do
+             if _111lIllI[_I1lIllI] then
+             table.insert(_III1IllI, _I1lIllI)
              end
              end
              end
             
-             table.clear(playlistKeys)
-             for _, key in ipairs(nextPlaylistKeys) do
-             table.insert(playlistKeys, key)
+             table.clear(_1IlIllI)
+             for _, _I1lIllI in ipairs(_III1IllI) do
+             table.insert(_1IlIllI, _I1lIllI)
              end
-             savePlaylist()
+             _lI1IllI()
             
-             local nextIndex = (-2 + 2)
-             if currentId then
-             for index, song in ipairs(songs) do
-             if song.Id == currentId then
-             nextIndex = index
+             local _lII1IllI = (-3 + 3)
+             if _ll1lIllI then
+             for _1Il11lI, _IlIIIllI in ipairs(_I1IIllI) do
+             if _IlIIIllI.Id == _ll1lIllI then
+             _lII1IllI = _1Il11lI
              break
              end
              end
              end
-             currentSongIndex = nextIndex > (-2 + 2) and nextIndex or (#songs > (-2 + 2) and (-2 + 3) or (-2 + 2))
-             rebuildQueue()
+             _1Ill1lI = _lII1IllI > (-3 + 3) and _lII1IllI or (#_I1IIllI > (-3 + 3) and (-3 + 4) or (-3 + 3))
+             _1lI11lI()
             
-             if #songs == (-2 + 2) then
-             sound:Stop()
-             isPlaying = false
-             songNameLabel.Text = _0x3a75d1(58)
-             updatePlayButton()
-             elseif nextIndex > (-2 + 2) then
-             songNameLabel.Text = songs[currentSongIndex].Name
-             elseif nextIndex == (-2 + 2) and isPlaying then
-             playSong(currentSongIndex, true)
+             if #_I1IIllI == (-3 + 3) then
+             _lIll1lI:Stop()
+             _1lll1lI = false
+             _1II1llI.Text = _11IIlIllI(58)
+             _111l1lI()
+             elseif _lII1IllI > (-3 + 3) then
+             _1II1llI.Text = _I1IIllI[_1Ill1lI].Name
+             elseif _lII1IllI == (-3 + 3) and _1lll1lI then
+             _I1I11lI(_1Ill1lI, true)
              end
             
-             print(_0x3a75d1(126))
+             print(_11IIlIllI(126))
              return true
              end
             
              task.spawn(function()
-             while not destroyed do
-             task.wait(MUSIC_VAULT_REFRESH)
-             if not destroyed then
-             controller.SyncVault()
+             while not _IIl1lI do
+             task.wait(_lIIllI)
+             if not _IIl1lI then
+             _l1llIllI.SyncVault()
              end
              end
              end)
             
-             _G[globalKey] = controller
-             return controller
+             _G[_IlI1lI] = _l1llIllI
+             return _l1llIllI
             end
             
-            local guiParent = CoreGui
-            local okGuiParent = pcall(function()
-             local probe = Instance.new(_0x3a75d1(127))
-             probe.Name = _0x3a75d1(128)
-             probe.Parent = guiParent
-             probe:Destroy()
+            local _1II1IllI = _I11lI
+            local _IlI1IllI = pcall(function()
+             local _llI1IllI = Instance.new(_11IIlIllI(127))
+             _llI1IllI.Name = _11IIlIllI(128)
+             _llI1IllI.Parent = _1II1IllI
+             _llI1IllI:Destroy()
             end)
             
-            if not okGuiParent then
-             guiParent = LocalPlayer:WaitForChild(_0x3a75d1(129))
+            if not _IlI1IllI then
+             _1II1IllI = _111lI:WaitForChild(_11IIlIllI(129))
             end
             
-            local oldGui = guiParent:FindFirstChild(_0x3a75d1(130))
-            if oldGui then
-             oldGui:Destroy()
+            local _1lI1IllI = _1II1IllI:FindFirstChild(_11IIlIllI(130))
+            if _1lI1IllI then
+             _1lI1IllI:Destroy()
             end
             
-            local screenGui = make(guiParent, _0x3a75d1(131), {
-             Name = _0x3a75d1(130),
+            local _I1I1IllI = _lIlllI(_1II1IllI, _11IIlIllI(131), {
+             Name = _11IIlIllI(130),
              ResetOnSpawn = false,
              ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
-             DisplayOrder = (98 + 2),
+             DisplayOrder = (95 + 5),
              IgnoreGuiInset = false,
             })
             
-            createMusicPlayer({
-             Parent = screenGui,
-             Name = _0x3a75d1(132),
-             GlobalKey = _0x3a75d1(133),
+            _III1lI({
+             Parent = _I1I1IllI,
+             Name = _11IIlIllI(132),
+             GlobalKey = _11IIlIllI(133),
              CreateMini = true,
              Visible = true,
             })
+            end)(...) }
+            _lIlIlIllI = nil
+        else
+            _lIlIlIllI = nil
         end
-        _0xa8964d = nil
-    else
-        _0xa8964d = nil
+    end
+
+    if _lllIlIllI then
+        return _1llIlIllI(_lllIlIllI)
     end
 end
+
+return _l1lIlIllI()
